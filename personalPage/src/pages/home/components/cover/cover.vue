@@ -1,6 +1,6 @@
 <template>
-  <div clas="cover">
-  <section class="cover-section">
+  <div class="cover">
+  <section class="cover-section screen-box">
     <h-fullwidth class="big-title" content="PORTFILIO"></h-fullwidth>
     <h2 class="name-title">Jin</br>Chenhao</h2>
     <div class="select-lang">
@@ -15,17 +15,14 @@
       <span>Email</span>
     </div>
     <ul class=menu>
-      <li>sketch / modeling / product</li>
-      <li>UI / front-end / graphic</li>
-      <li>photography</li>
-      <li>musical / audio works</li>
-      <li>aesthetics research</li>
-      <li>resume</li>
+      <li v-for="item in menuList" :href="item.url" scroll-fire>
+        {{item.name}}
+      </li>
     </ul>
     <slider-ctrl class="slider-ctrl" @shift="shiftSlider"></slider-ctrl>
     <div class=btn-down></div>
   </section>
-  <slider :slider-num="sliderNum"></slider>
+  <slider class="slider" :slider-num="sliderNum"></slider>
 </div>
 </template>
 
@@ -43,6 +40,32 @@ export default {
   data() {
     return {
       sliderNum: undefined,
+      menuList: [
+        {
+          name: 'sketch / modeling / product',
+          url: '#product',
+        },
+        {
+          name: 'UI / front-end / graphic',
+          url: '#ui',
+        },
+        {
+          name: 'photography',
+          url: '#photo',
+        },
+        {
+          name: 'musical / audio works',
+          url: '#music',
+        },
+        {
+          name: 'aesthetics research',
+          url: '#research',
+        },
+        {
+          name: 'resume',
+          url: '#resume',
+        },
+      ],
     }
   },
   methods: {
@@ -68,11 +91,7 @@ export default {
     #4f4646 0,
     #464242 32%,
     #3e3e3e 80%);
-  margin: 20px auto;
-  width: calc(100vw - 40px);
-  height: calc(100vh - 40px);
   padding: 30px 60px;
-  box-sizing: border-box;
   color: white;
   font-family: 'Avenir Next', 'MicrosoftYaHei';
 }
@@ -172,5 +191,26 @@ export default {
 /* text-shadow */
 .big-title, .name-title, .menu > li:hover {
   text-shadow: 1px 0 0 black;
+}
+@media screen and (max-width: 768px) {
+  .cover-section {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 25% 10% 13% auto 30px;
+    grid-template-areas: "contact lang"
+      "portfilio portfilio"
+      "name name"
+      "menu menu"
+      "down down";
+  }
+  .slider, .slider-ctrl {
+    display: none;
+  }
+  .name-title {
+    font-size: 16px;
+  }
+  .menu {
+    font-size: 20px;
+    padding-left: 20px;
+  }
 }
 </style>
