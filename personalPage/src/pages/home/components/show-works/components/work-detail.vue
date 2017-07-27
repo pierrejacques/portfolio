@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="work-detail" v-if="picUrls.length > 0">
     <div class="slider">
-      <div v-for="(url, idx) in picUrls" @click="toOperate(idx)" class="work-box"
+      <div v-for="(pic, idx) in pics" @click="toOperate(idx)" class="work-box"
       :class="{
         'pre-main': isPreMain(idx),
         'post-main': isPostMain(idx),
@@ -10,8 +10,8 @@
       }">
       </div>
     </div>
-    <p class="description">{{currentActive + 1}}/{{picUrls.length}}
-      {{descripts[currentActive]}}</p>
+    <p class="note">{{currentActive + 1}}/{{pics.length}}
+      {{pics[currentActive].note}</p>
   </div>
 
 </template>
@@ -24,8 +24,6 @@ export default {
     return {
       currentActive: undefined,
       isScaled: false,
-      descripts: [],
-      picUrls: [],
     }
   },
   methods: {
@@ -44,15 +42,6 @@ export default {
       } else {
         this.currentActive = idx
       }
-    },
-  },
-  watch: {
-    work(val) {
-      // get query data with new
-      // then
-      this.descripts = val.hasOwnProperty('descripts') ? val.descripts : []
-      this.picUrls = val.hasOwnProperty('picUrls') ? val.picUrls : []
-      this.currentActive = 0;
     },
   },
 }

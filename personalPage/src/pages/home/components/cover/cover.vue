@@ -32,6 +32,7 @@ import sliderCtrl from './components/slider-ctrl'
 import hFullwidth from './components/h-fullwidth'
 export default {
   name: 'cover',
+	props: ['menuList'],
   components: {
     slider,
     sliderCtrl,
@@ -40,32 +41,6 @@ export default {
   data() {
     return {
       sliderNum: undefined,
-      menuList: [
-        {
-          name: 'sketch / modeling / product',
-          url: '#product',
-        },
-        {
-          name: 'UI / front-end / graphic',
-          url: '#ui',
-        },
-        {
-          name: 'photography',
-          url: '#photo',
-        },
-        {
-          name: 'musical / audio works',
-          url: '#music',
-        },
-        {
-          name: 'aesthetics research',
-          url: '#research',
-        },
-        {
-          name: 'resume',
-          url: '#resume',
-        },
-      ],
     }
   },
   methods: {

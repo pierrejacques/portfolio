@@ -11,34 +11,9 @@
 
 <script>
 export default {
+	props: ['list'],
   data() {
     return {
-      list: [
-        {
-          name: 'sketch / modeling / product',
-          url: '#product',
-        },
-        {
-          name: 'UI / front-end / graphic',
-          url: '#ui',
-        },
-        {
-          name: 'photography',
-          url: '#photo',
-        },
-        {
-          name: 'musical / audio works',
-          url: '#music',
-        },
-        {
-          name: 'aesthetics research',
-          url: '#research',
-        },
-        {
-          name: 'resume',
-          url: '#resume',
-        },
-      ],
       isOpen: false,
     }
   },
