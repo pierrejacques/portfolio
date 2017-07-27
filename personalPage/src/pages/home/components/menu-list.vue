@@ -59,32 +59,37 @@ export default {
 </script>
 
 <style scoped lang="css">
-.list-menu {
+.menu-list {
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	width: 300px;
+	opacity: 1;
+	transition: 0.3s;
 }
 .list {
   position: absolute;
   bottom: 0;
-  right: 40px;
+  right: 0;
   list-style: none;
   text-align: right;
   font-weight: lighter;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 .list > li {
   position: relative;
   right: 0;
-  display: block;
   box-sizing: border-box;
   overflow: hidden;
-  width: 100%;
   margin: 15px 0;
   padding: 5px 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
   opacity: 0;
   height: 0;
   transition: 0.2s;
   cursor: pointer;
-  background: white;
+  background: black;
+	color: white;
 }
 .list.shown > li {
   height: 2em;
@@ -94,8 +99,10 @@ export default {
   right: 15px;
 }
 .btn {
+	opacity: 0.5;
   position: absolute;
-  right: 40px;
+  right: 0;
+	bottom: 0;
   width: 50px;
   height: 50px;
   border-radius: 50%;

@@ -64,7 +64,8 @@ export default {
 }
 .slider {
   position: relative;
-  height: 80%;
+  height: 75%;
+	margin-top: 5%;
 }
 .work-box {
   display: block;
@@ -79,7 +80,7 @@ export default {
 .work-box.main {
   z-index: 1;
   background: white;
-  height: 400px; /**/
+  height: 100%; /**/
   width: 500px; /**/
   max-width: 70%;
   top: 50%;

@@ -3,12 +3,10 @@
     <h3 class="title">{{title}}</h3>
     <work-detail :work="works[currentWork]" class="work-detail"></work-detail>
     <work-list :works="works" class="work-list" @selectWork="selectWork"></work-list>
-    <menu-list class="btn-menu"></menu-list>
   </div>
 </template>
 
 <script>
-import menuList from './components/menu-list'
 import workList from './components/work-list'
 import workDetail from './components/work-detail'
 export default {
@@ -51,7 +49,6 @@ export default {
   },
   components: {
     workList,
-    menuList,
     workDetail,
   }
 }
@@ -63,11 +60,11 @@ export default {
   display: grid;
   padding: 30px 40px;
   grid-template-columns: 5fr 2fr ;
-  grid-template-rows: 50px auto 50px;
+  grid-template-rows: 50px auto;
   grid-template-areas: "title title"
-                       "detail list"
-                       "detail btn";
+                       "detail list";
 }
+/*
 .show-works::before, .show-works::after {
   position: absolute;
   content: '';
@@ -81,6 +78,7 @@ export default {
   border-bottom-style: none;
   border-left-style: none;
 }
+*/
 .show-works::before {
   bottom: 0;
   left: 0;
@@ -111,9 +109,5 @@ export default {
 }
 .work-list {
   grid-area: list;
-}
-.btn-menu {
-  grid-area: btn;
-  width: 100%;
 }
 </style>

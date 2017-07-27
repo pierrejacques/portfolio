@@ -129,7 +129,7 @@ export default {
   font-weight: lighter;
   list-style: none;
   line-height: 1.8em;
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
 }
 .menu > li {
@@ -208,8 +208,7 @@ export default {
   .name-title {
     font-size: 16px;
   }
-  .menu {
-    font-size: 20px;
+	.menu {
     padding-left: 20px;
   }
 }
