@@ -1,0 +1,52 @@
+{
+  "name": "金辰浩",
+  born: "",
+  location: "",
+  edu: [
+    {
+      type: "",
+      "name": "",
+    },
+  ],
+  studentWork: [
+    {
+      "at": "",
+      "as": "",
+    },
+  ],
+  intern: [
+    {
+      "at": "",
+      "as": "",
+    },
+    {
+
+    }
+  ],
+  design: [
+    {
+      type: "",
+      "note": "",
+    }
+  ],
+  programming: {
+    "note": "",
+    projects: [
+      {
+        "name": "",
+        "as": "",
+        "note": "",
+      }
+    ]
+  },
+  research: {
+    "note": "",
+    projects: [
+      {
+        "name": "",
+        "as": "",
+        "note": "",
+      },
+    ]
+  }
+}

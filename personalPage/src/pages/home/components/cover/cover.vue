@@ -48,6 +48,8 @@ export default {
       this.sliderNum = sliderNum;
     },
   },
+  created() {
+  },
 }
 </script>
 
@@ -60,7 +62,7 @@ export default {
   grid-template-areas: "contact . lang"
     "portfilio portfilio portfilio"
     "name . menu"
-    "slider down .";
+    "slider down menu";
   background: #3e3e3e
   linear-gradient(to right,
     #4f4646 0,
@@ -104,7 +106,7 @@ export default {
   font-weight: lighter;
   list-style: none;
   line-height: 1.8em;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
 }
 .menu > li {

@@ -2,18 +2,31 @@
   <div class="work-list">
     <div class="work" :class="{selected: isSelected(idx)}" v-for="(work, idx) in works">
       <span class="name">{{work.name}}</span>
-      <img class="icon-image" :src="work.iconUrl"  @click="toSelect(idx)">
+      <img class="icon-image" :src="imgUrlList[idx]"  @click="toSelect(idx)">
     </div>
   </div>
 </template>
 
 <script>
+import api from '@/common/api'
 export default {
   name: 'workList',
-  props: ['works'],
+  props: [
+    'works',
+    'flag',
+  ],
   data() {
     return {
       currentSelected: undefined,
+    }
+  },
+  computed: {
+    imgUrlList() {
+      const urlList = []
+      this.works.forEach(work => {
+        urlList.push(api.getUrl(this.flag, work.iconUrl))
+      })
+      return urlList
     }
   },
   methods: {

@@ -1,0 +1,108 @@
+[
+  {
+    "name": "Rubiks游戏配乐",
+    "note": "",
+    "iconUrl": "",
+    "songList": [
+      {
+        "title": "草地",
+        "audioUrl": "",
+      },
+      {
+        "title": "雪夜",
+        "audioUrl": "",
+      },
+      {
+        "title": "工厂",
+        "audioUrl": "",
+      },
+      {
+        "title": "墓地",
+        "audioUrl": "",
+      },
+      {
+        "title": "中东",
+        "audioUrl": "",
+      },
+      {
+        "title": "南美",
+        "audioUrl": "",
+      },
+      {
+        "title": "中国",
+        "audioUrl": "",
+      },
+      {
+        "title": "火山",
+        "audioUrl": "",
+      },
+      {
+        "title": "丛林",
+        "audioUrl": "",
+      },
+      {
+        "title": "爱琴海",
+        "audioUrl": "",
+      },
+    ],
+  },
+  {
+    "name": "闵行区青年男女防骗指南",
+    "note": "",
+    "iconUrl": "",
+    "songList": [
+      {
+        "title": "投胎",
+        "audioUrl": "",
+      },
+      {
+        "title": "野猫",
+        "audioUrl": "",
+      },
+      {
+        "title": "乡下人",
+        "audioUrl": "",
+      },
+      {
+        "title": "大哥你说",
+        "audioUrl": "",
+      },
+      {
+        "title": "寝室楼兽",
+        "audioUrl": "",
+      },
+      {
+        "title": "安防队",
+        "audioUrl": "",
+      },
+      {
+        "title": "三省吾身",
+        "audioUrl": "",
+      },
+      {
+        "title": "手里拿着吉他",
+        "audioUrl": "",
+      },
+      {
+        "title": "碧绿的、紫色的、长满鳞片的",
+        "audioUrl": "",
+      },
+      {
+        "title": "潮落",
+        "audioUrl": "",
+      },
+      {
+        "title": "样一不然果",
+        "audioUrl": "",
+      },
+      {
+        "title": "样品",
+        "audioUrl": "",
+      },
+      {
+        "title": "空洞",
+        "audioUrl": "",
+      },
+    ],
+  },
+]

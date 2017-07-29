@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="show-works screen-box">
     <h3 class="title">{{title}}</h3>
-    <work-detail :work="works[currentWork]" class="work-detail"></work-detail>
-    <work-list :works="works" class="work-list" @selectWork="selectWork"></work-list>
+    <work-detail :work="works[currentWork]" :flag="flag" class="work-detail"></work-detail>
+    <work-list :works="works" :flag="flag" class="work-list" @selectWork="selectWork"></work-list>
   </div>
 </template>
 
 <script>
+import api from '@/common/api'
 import workList from './components/work-list'
 import workDetail from './components/work-detail'
 export default {
@@ -17,35 +18,20 @@ export default {
   ],
   data() {
     return {
-      currentWork: undefined,
-      works: [
-        {
-          name: 'sketch',
-          iconUrl: '',
-          picUrls: [1,2,3,4,5,6,
-
-          ],
-          descripts: [
-            'asdasdasd','asdasdad','11sss','asd','123','asdas',
-          ],
-        },
-        {
-          name: 'modeling',
-          iconUrl: '',
-          picUrls: [1,2,3,4,
-
-          ],
-          descripts: [
-            'qweqwe','asdaqweqwesdad','qwe11sss','asdasdd'
-          ],
-        },
-      ],
+      currentWork: 0,
+      works: [],
     }
   },
   methods: {
     selectWork(workIdx) {
       this.currentWork = workIdx
     },
+  },
+  created() {
+    api.getWorks(this.flag)
+    .then(data => {
+      this.works = data
+    })
   },
   components: {
     workList,

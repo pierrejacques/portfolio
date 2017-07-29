@@ -1,13 +1,13 @@
 <template>
   <div class=home>
 		<main>
-			<cover :menu-list="menuList"></cover>
-			<show-works title="sketch / modeling / product" flag="product" id="product"></show-works>
-			<show-works title="UI / front-end / graphic" flag="ui" id="ui"></show-works>
-			<show-works title="photography" flag="photo" id="photo"></show-works>
-			<show-works title="musical / audio works" flag="music" id="music"></show-works>
-			<show-works title="aesthetics research" flag="research" id="research"></show-works>
-			<show-works title="resume" flag="resume" id="resume"></show-works>
+		  <cover :menu-list="menuList"></cover>
+		  <!-- <show-works title="sketch / modeling / product" flag="product" id="product"></show-works> -->
+		  <show-works title="UI / front-end / graphic" flag="ui" id="ui"></show-works>
+		  <!-- <show-works title="photography" flag="photo" id="photo"></show-works> -->
+		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->
+		  <!-- <show-works title="aesthetics research" flag="research" id="research"></show-works> -->
+		  <!-- <show-works title="resume" flag="resume" id="resume"></show-works> -->
 		</main>
 		<menu-list :list="menuList" class="menu-list" :class="{hide: isMenuHide}"></menu-list>
   </div>
@@ -15,6 +15,7 @@
 
 <script>
 import $ from 'jquery'
+import api from '@/common/api'
 import menuList from './components/menu-list'
 import cover from './components/cover/cover'
 import showWorks from './components/show-works/show-works'
@@ -23,32 +24,7 @@ export default {
   data () {
     return {
       isMenuHide: true,
-			menuList: [
-        {
-          name: 'sketch / modeling / product',
-          url: '#product',
-        },
-        {
-          name: 'UI / front-end / graphic',
-          url: '#ui',
-        },
-        {
-          name: 'photography',
-          url: '#photo',
-        },
-        {
-          name: 'musical / audio works',
-          url: '#music',
-        },
-        {
-          name: 'aesthetics research',
-          url: '#research',
-        },
-        {
-          name: 'resume',
-          url: '#resume',
-        },
-      ],
+			menuList: [],
     }
   },
   methods: {
@@ -75,7 +51,9 @@ export default {
     showWorks,
   },
   created() {
-		// 请求api
+    api.getMenu().then(data => {
+      this.menuList = data
+    })
   },
 	mounted() {
 		this.domOperations()
