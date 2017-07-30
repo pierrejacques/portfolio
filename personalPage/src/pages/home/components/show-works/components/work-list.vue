@@ -48,7 +48,7 @@ export default {
 
 <style scoped lang="css">
 .work-list {
-  padding-top: 20px;
+  padding-top: 100px;
 }
 .work {
   display: grid;

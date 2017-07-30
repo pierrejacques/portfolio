@@ -28,22 +28,6 @@ export default {
     }
   },
   methods: {
-		domOperations() {
-			const scrollTo = targetY => {
-				$('html, body').stop().animate({
-					scrollTop: targetY - 20
-				}, 500)
-			}
-			$(window).scroll((event) => {
-				this.isMenuHide = $(window).scrollTop() < 0.75 * $(window).height()
-			})
-			$('[scroll-fire]').on('click', (e) => {
-				e.preventDefault();
-				const targetId = $(e.target).attr('href')
-				const targetY = $(targetId).offset().top
-				scrollTo(targetY)
-			})
-		},
   },
   components: {
 		menuList,
@@ -51,13 +35,29 @@ export default {
     showWorks,
   },
   created() {
+    const domOperations = () => {
+      const scrollTo = targetY => {
+        $('html, body').stop().animate({
+          scrollTop: targetY - 20
+        }, 500)
+      }
+      $(document).ready(() => {
+        $(window).scroll((event) => {
+          this.isMenuHide = $(window).scrollTop() < 0.75 * $(window).height()
+        })
+        $('[scroll-fire]').on('click', (e) => {
+          e.preventDefault();
+          const targetId = $(e.target).attr('href')
+          const targetY = $(targetId).offset().top
+          scrollTo(targetY)
+        })
+      })
+    }
+    domOperations()
     api.getMenu().then(data => {
       this.menuList = data
     })
   },
-	mounted() {
-		this.domOperations()
-	},
 }
 </script>
 

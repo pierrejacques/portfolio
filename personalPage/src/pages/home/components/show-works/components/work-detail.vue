@@ -12,22 +12,21 @@
     </div>
     <p class="note">{{currentActive + 1}}/{{work.pics.length}}
     {{work.pics[currentActive].note}}</p>
-    <div class="big-view" @click="toCloseBigView" v-show="isScaled">
+    <div class="big-view" @click="toCloseBigView" v-if="isScaled" @keydown.esc="toCloseBigView">
       <button class="btn-pre"
-              :class"{hide: currentActive === 0}"
-              @click="toOperate(currentActive - 1)"
-              >
+              :class="{hide: !isValid(currentActive - 1)}"
+              @click.stop="toOperate(currentActive - 1)"
+              @keydown.left="toOperate(currentActive - 1)">
       </button>
       <div class="big-img"  :class="{
           hide: !isScaled || unLoaded(currentActive),
           }">
         <img :src="getImgSrc(currentActive)">
-        <a class="btn-close" @click="toCloseBigView"><img src="../../../../../common/asset/btn-close.png"></a>
-      </div>
+        </div>
       <button class="btn-post"
-              :class="{hide: currentActive + 1 === work.pics.length}"
-              @click="toOperate(currentActive + 1)"
-      >
+              :class="{hide: !isValid(currentActive + 1)}"
+              @click.stop="toOperate(currentActive + 1)"
+              @keydown.right="toOperate(currentActive + 1)">
       </button>
     </div>
   </div>
@@ -63,10 +62,10 @@ export default {
     },
     requestImgs(idx) {
       this.imgSrc[idx] = this.imgSrc[idx] || api.getUrl(this.flag, this.work.pics[idx].url)
-      if (idx - 1 >= 0) {
+      if (this.isValid(idx - 1)) {
         this.imgSrc[idx - 1] = this.imgSrc[idx - 1] || api.getUrl(this.flag, this.work.pics[idx - 1].url)
       }
-      if (idx + 1 < this.work.pics.length) {
+      if (this.isValid(idx + 1)) {
         this.imgSrc[idx + 1] = this.imgSrc[idx + 1] || api.getUrl(this.flag, this.work.pics[idx + 1].url)
       }
     },
@@ -82,10 +81,13 @@ export default {
     isPostMain(idx) {
       return idx === this.currentActive + 1
     },
+    isValid(idx) {
+      return idx < this.work.pics.length && idx >= 0
+    },
     toOperate(idx) {
       if (this.isMain(idx)) {
         this.toOpenBigView()
-      } else {
+      } else if (this.isValid(idx)) {
         this.currentActive = idx
         this.requestImgs(idx)
       }
@@ -103,9 +105,6 @@ export default {
 </script>
 
 <style scoped lang="css">
-.work-detail {
-
-}
 .slider {
   position: relative;
   height: 75%;
@@ -115,7 +114,7 @@ export default {
   display: flex;
   position: absolute;
   transition: 0.5s;
-  bottom: 50%;
+  top: 50%;
   left: 50%;
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.3);
@@ -137,7 +136,7 @@ export default {
   width: 300px; /**/
   top: 55%;
   transform: scale(1) translate(0, -50%);
-  filter: blur(2px);
+  filter: blur(3px);
 }
 .work-box.pre-main {
   left: 0;
@@ -172,36 +171,20 @@ export default {
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
 }
 .big-view .big-img {
   position: relative;
   max-width: 90%;
   max-height: 90%;
   margin: auto;
-  transition: 0.5s;
+  transition: 0.1s; /**/
   opacity: 1;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-}
-.btn-close {
-  position: absolute;
-  display: block;
-  height: 24px;
-  width: 24px;
-  top: -12px;
-  right: -12px;
-  border-radius: 50%;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.1);
-}
-.btn-close:hover {
-  background: rgba(0, 0, 0, 0.3);
-}
-.btn-close > img {
-  height: 100%;
-  width: 100%;
+  /* box-shadow: 0 5px 20px rgba(0,0,0,0.3); */
+  transform: scale(1.5);
 }
 .btn-pre, .btn-post {
+  position: relative;
   background: transparent;
   border: none;
   outline: none;
@@ -216,17 +199,18 @@ export default {
 }
 .btn-post:hover, .btn-pre:hover {
   opacity: 1;
+  transition: 0.1s; /**/
+}
+.btn-post::before, .btn-pre:before {
+  position: absolute;
+  content: '';
+  left: -30px; right: -30px; top: -30px; bottom: -30px;
 }
 .btn-post {
   transform: rotate(135deg)
 }
-.btn-post, .btn-pre, .btn-close {
-  transition: 0.3s;
-}
-/* .btn-post.hide, .btn-pre.hide {
-  pointer-events: none;
-} */
-.hide {
+.hide, .hide:hover {
   opacity: 0;
+  pointer-events: none;
 }
 </style>

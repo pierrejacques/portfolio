@@ -14,9 +14,12 @@
       <i></i>
       <span>Email</span>
     </div>
-    <ul class=menu>
+    <ul class="menu">
       <li v-for="item in menuList" :href="item.url" scroll-fire>
         {{item.name}}
+      </li>
+      <li @click="routeResume">
+        resume
       </li>
     </ul>
     <slider-ctrl class="slider-ctrl" @shift="shiftSlider"></slider-ctrl>
@@ -30,6 +33,7 @@
 import slider from './components/slider'
 import sliderCtrl from './components/slider-ctrl'
 import hFullwidth from './components/h-fullwidth'
+import Router from 'vue-router'
 export default {
   name: 'cover',
 	props: ['menuList'],
@@ -47,6 +51,9 @@ export default {
     shiftSlider(sliderNum) {
       this.sliderNum = sliderNum;
     },
+    routeResume() {
+      this.$router.push({ name: 'resume' })
+    }
   },
   created() {
   },
