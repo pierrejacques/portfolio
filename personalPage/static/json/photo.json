@@ -2,36 +2,41 @@
   {
     "name": "JEEZ X 田笑",
     "iconUrl": "",
-    "pics": [],
+    "pics": []
   },
   {
     "name": "JEEZ X F2",
     "iconUrl": "",
-    "pics": [],
+    "pics": []
   },
   {
     "name": "JEEZ X 钟媛&陆晨琪",
     "iconUrl": "",
-    "pics": [],
+    "pics": []
   },
+	{
+		"name": "JEEZ X 美术协会",
+		"iconUrl": "",
+		"pics": []
+	},
   {
     "name": "JEEZ X 5Guys",
     "iconUrl": "",
-    "pics": [],
+    "pics": []
   },
   {
-    "name": "JEEZ X 张婧琦",
+    "name": "人像",
     "iconUrl": "",
-    "pics": [],
+    "pics": []
   },
   {
-    "name": "人物单张",
+    "name": "旅行 & 人文",
     "iconUrl": "",
-    "pics": [],
+    "pics": []
   },
-  {
-    "name": "人文 & 风光",
+	{
+    "name": "静景",
     "iconUrl": "",
-    "pics": [],
-  },
+    "pics": []
+  }
 ]
