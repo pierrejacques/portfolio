@@ -46,7 +46,7 @@ export default {
 			this.works.forEach((work, idx) => {
 				if (work.id === newId) {
 					this.currentSelected = idx
-					break
+					return
 				}
 			})
 		},

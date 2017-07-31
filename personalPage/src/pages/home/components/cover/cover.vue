@@ -9,9 +9,9 @@
       <a>English</a>
     </div>
     <div class="contact-list">
-      <i></i>
+			<img class="iconfont" src="../../../../common/assets/github.svg">
       <span>Github</span>
-      <i></i>
+      <img class="iconfont" src="../../../../common/assets/email.svg">
       <span>Email</span>
     </div>
     <ul class="menu">
@@ -107,6 +107,12 @@ export default {
   font-weight: lighter;
   text-align: left;
   text-indent: -30px;
+}
+.contact-list .iconfont {
+	height: 20px;
+	filter: invert();
+	vertical-align: -0.5em;
+	margin: 0 5px 0 15px;
 }
 .menu {
   grid-area: menu;

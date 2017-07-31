@@ -60,7 +60,7 @@ export default {
 			this.pics.forEach((pic, idx) => {
 				if (pic.id === newId) {
 					this.currentActive = idx
-					break
+					return
 				}
 			})
 		},
