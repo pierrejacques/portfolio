@@ -1,16 +1,17 @@
 <template lang="html">
   <div class="show-works screen-box">
     <div class="title">{{title}}</div>
-    <work-detail 
-								 @to-work="updateCurrentWork" 
-								 :to-pic-id="toPicId" 
-								 :pics="pics" 
-								 :flag="flag" 
+    <work-detail
+								 @onchange="updateCurrentWork"
+								 :to-pic-of="toPicOf"
+								 :pics="pics"
+								 :flag="flag"
 								 class="work-detail"></work-detail>
-    <work-list 
-							 	 @to-pic="toSelectPic"
-							 	 :to-work-id="toWorkId"		
-							 	 :works="works" :flag="flag" class="work-list" @selectWork="selectWork"></work-list>
+    <work-list
+							 	 @onchange="toSelectPic"
+							 	 :to-work-id="toWorkId"
+							 	 :works="works" :flag="flag"
+                 class="work-list"></work-list>
   </div>
 </template>
 
@@ -26,9 +27,10 @@ export default {
   ],
   data() {
     return {
-			toPicId: undefined,
+			toPicOf: undefined,
 			toWorkId: undefined,
       works: [],
+      pics: [],
     }
   },
   methods: {
@@ -36,7 +38,7 @@ export default {
 			this.toWorkId = id
 		},
 		toSelectPic(id) {
-			this.toPicId = id
+			this.toPicOf = id
 		}
   },
   created() {

@@ -2,7 +2,7 @@
   <div class="work-list">
     <div class="work" :class="{selected: isSelected(idx)}" v-for="(work, idx) in works">
       <span class="name">{{work.name}}</span>
-      <img class="icon-image" :src="iconList[idx]"  @click="toSelect(idx)">
+      <img class="icon-image" :src="icons[idx]"  @click="toSelect(idx)">
     </div>
   </div>
 </template>
@@ -18,18 +18,26 @@ export default {
   ],
   data() {
     return {
-      currentSelected: undefined,
+      currentSelected: 0,
+      icons: [],
+      ids: [],
     }
   },
-  computed: {
-    iconList() {
-      const urlList = []
-      this.works.forEach(work => {
-        urlList.push(api.getUrl(this.flag, work.icon))
-      })
-      return urlList
-    }
-  },
+  watch: {
+    works(newVal) {
+      if (newVal) {
+        this.icons = []
+        this.ids = []
+        newVal.forEach(work => {
+          this.icons.push(api.getUrl(this.flag, work.icon))
+          this.ids.push(work.id)
+        })
+      }
+    },
+		toWorkId(newId) {
+      this.currentSelected = this.ids.indexOf(newId)
+		},
+	},
   methods: {
     isSelected(idx) {
       return this.currentSelected === idx;
@@ -37,22 +45,9 @@ export default {
     toSelect(idx) {
       if (!this.isSelected(idx)) {
         this.currentSelected = idx;
-        this.$emit('toPic', this.works[idx].id)
+        this.$emit('onchange', this.works[idx].id)
       }
     },
-  },
-	watch: {
-		toWorkId(newId) {
-			this.works.forEach((work, idx) => {
-				if (work.id === newId) {
-					this.currentSelected = idx
-					return
-				}
-			})
-		},
-	},
-  created() {
-    this.toSelect(0)
   },
 }
 </script>
@@ -75,5 +70,9 @@ export default {
   width: 100%;
   height: 100%;
   cursor: pointer;
+  transition: 0.3s;
+}
+.selected .icon-image {
+  transform: scale(1.1);
 }
 </style>

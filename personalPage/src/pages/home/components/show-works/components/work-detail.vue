@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="work-detail" v-if="work">
+  <div class="work-detail" v-if="pics.length > 0">
     <div class="slider">
       <div v-for="(pic, idx) in pics" @click="toOperate(idx)" class="work-box"
       :class="{
@@ -39,11 +39,12 @@ export default {
   props: [
     'pics',
     'flag',
-		'toPicId',
+		'toPicOf',
   ],
   data() {
     return {
       imgSrc: {},
+      ids: [], // 便于之后的搜索计算
       currentActive: 0,
       isScaled: false,
     }
@@ -52,17 +53,17 @@ export default {
     pics(newVal) {
       if (newVal) {
         this.imgSrc = {}
+        this.ids = [];
+        newVal.forEach(val => {
+          this.ids.push(val.of)
+        })
         this.currentActive = 0
         this.requestImgs(this.currentActive)
       }
     },
-		toPicId(newId) {
-			this.pics.forEach((pic, idx) => {
-				if (pic.id === newId) {
-					this.currentActive = idx
-					return
-				}
-			})
+		toPicOf(newId) {
+      const idx = this.ids.indexOf(newId)
+      this.toOperate(idx)
 		},
   },
   methods: {
@@ -97,7 +98,7 @@ export default {
       if (this.isMain(idx)) {
         this.toOpenBigView()
       } else if (this.isValid(idx)) {
-				this.$emit('toWork', this.pics[idx].of)
+				this.$emit('onchange', this.pics[idx].of)
         this.currentActive = idx
         this.requestImgs(idx)
       }

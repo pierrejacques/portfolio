@@ -2,11 +2,13 @@
   "works": [
     {
       "name": "MickeyIcons",
-      "icon": "test1.png"
+      "icon": "test1.png",
+      "id": "mickey"
     },
     {
       "name": "Recho",
-      "icon": ""
+      "icon": "test1.png",
+      "id": "recho"
     },
     {
       "name": "安防队专辑",
@@ -25,27 +27,27 @@
     {
       "url": "test2.png",
       "note": "camera icon",
-      "of": "MickeyIcons"
+      "of": "mickey"
     },
     {
       "url": "test3.png",
       "note": "clock icon",
-      "of": "MickeyIcons"
+      "of": "mickey"
     },
     {
       "url": "test4.png",
       "note": "contact icon",
-      "of": "MickeyIcons"
+      "of": "mickey"
     },
     {
       "url": "test5.png",
       "note": "music icon",
-      "of": "MickeyIcons"
+      "of": "recho"
     },
     {
       "url": "test6.png",
       "note": "weather icon",
-      "of": "MickeyIcons"
+      "of": "recho"
     }
   ]
 }
