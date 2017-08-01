@@ -1,21 +1,22 @@
 {
   "works": [
+		{
+      "name": "默马专辑",
+      "icon": "moma_icon.jpg",
+			"id": "moma"
+    },
     {
       "name": "MickeyIcons",
-      "icon": "test1.png",
+      "icon": "test1.jpg",
       "id": "mickey"
     },
     {
       "name": "Recho",
-      "icon": "test1.png",
+      "icon": "test1.jpg",
       "id": "recho"
     },
     {
       "name": "安防队专辑",
-      "icon": ""
-    },
-    {
-      "name": "默马专辑",
       "icon": ""
     },
     {
@@ -25,29 +26,49 @@
   ],
   "pics": [
     {
-      "url": "test2.png",
-      "note": "camera icon",
-      "of": "mickey"
-    },
-    {
-      "url": "test3.png",
-      "note": "clock icon",
-      "of": "mickey"
-    },
-    {
-      "url": "test4.png",
-      "note": "contact icon",
-      "of": "mickey"
-    },
-    {
-      "url": "test5.png",
-      "note": "music icon",
-      "of": "recho"
-    },
-    {
-      "url": "test6.png",
-      "note": "weather icon",
-      "of": "recho"
-    }
+      "url": "moma_1.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_2.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_3.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_4.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_5.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_6.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_7.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_8.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_9.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_10.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+    },    {
+      "url": "moma_11.jpg",
+      "note": "专辑效果图",
+      "of": "moma"
+		}
   ]
 }
