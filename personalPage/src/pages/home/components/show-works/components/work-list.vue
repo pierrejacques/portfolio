@@ -2,7 +2,7 @@
   <div class="work-list">
     <div class="work" :class="{selected: isSelected(idx)}" v-for="(work, idx) in works">
       <span class="name">{{work.name}}</span>
-      <img class="icon-image" :src="imgUrlList[idx]"  @click="toSelect(idx)">
+      <img class="icon-image" :src="iconList[idx]"  @click="toSelect(idx)">
     </div>
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
   props: [
     'works',
     'flag',
+		'toWorkId',
   ],
   data() {
     return {
@@ -21,10 +22,10 @@ export default {
     }
   },
   computed: {
-    imgUrlList() {
+    iconList() {
       const urlList = []
       this.works.forEach(work => {
-        urlList.push(api.getUrl(this.flag, work.iconUrl))
+        urlList.push(api.getUrl(this.flag, work.icon))
       })
       return urlList
     }
@@ -36,10 +37,20 @@ export default {
     toSelect(idx) {
       if (!this.isSelected(idx)) {
         this.currentSelected = idx;
-        this.$emit('selectWork', idx)
+        this.$emit('toPic', this.works[idx].id)
       }
     },
   },
+	watch: {
+		toWorkId(newId) {
+			this.works.forEach((work, idx) => {
+				if (work.id === newId) {
+					this.currentSelected = idx
+					return
+				}
+			})
+		},
+	},
   created() {
     this.toSelect(0)
   },

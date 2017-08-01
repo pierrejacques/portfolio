@@ -1,8 +1,16 @@
 <template lang="html">
   <div class="show-works screen-box">
     <div class="title">{{title}}</div>
-    <work-detail :work="works[currentWork]" :flag="flag" class="work-detail"></work-detail>
-    <work-list :works="works" :flag="flag" class="work-list" @selectWork="selectWork"></work-list>
+    <work-detail 
+								 @to-work="updateCurrentWork" 
+								 :to-pic-id="toPicId" 
+								 :pics="pics" 
+								 :flag="flag" 
+								 class="work-detail"></work-detail>
+    <work-list 
+							 	 @to-pic="toSelectPic"
+							 	 :to-work-id="toWorkId"		
+							 	 :works="works" :flag="flag" class="work-list" @selectWork="selectWork"></work-list>
   </div>
 </template>
 
@@ -18,19 +26,24 @@ export default {
   ],
   data() {
     return {
-      currentWork: 0,
+			toPicId: undefined,
+			toWorkId: undefined,
       works: [],
     }
   },
   methods: {
-    selectWork(workIdx) {
-      this.currentWork = workIdx
-    },
+		updateCurrentWork(id) {
+			this.toWorkId = id
+		},
+		toSelectPic(id) {
+			this.toPicId = id
+		}
   },
   created() {
     api.getWorks(this.flag)
     .then(data => {
-      this.works = data
+      this.pics = data.pics
+			this.works = data.works
     })
   },
   components: {

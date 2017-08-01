@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="work-detail" v-if="work">
     <div class="slider">
-      <div v-for="(pic, idx) in work.pics" @click="toOperate(idx)" class="work-box"
+      <div v-for="(pic, idx) in pics" @click="toOperate(idx)" class="work-box"
       :class="{
         'pre-main': isPreMain(idx),
         'post-main': isPostMain(idx),
@@ -10,8 +10,8 @@
         <img :src="getImgSrc(idx)" alt="" class="slider-img" :class="{hide: unLoaded(idx)}">
       </div>
     </div>
-    <p class="note">{{currentActive + 1}}/{{work.pics.length}}
-    {{work.pics[currentActive].note}}</p>
+    <p class="note">{{currentActive + 1}}/{{pics.length}}
+    {{pics[currentActive].note}}</p>
     <div class="big-view" @click="toCloseBigView" v-if="isScaled" @keydown.esc="toCloseBigView">
       <button class="btn-pre"
               :class="{hide: !isValid(currentActive - 1)}"
@@ -37,8 +37,9 @@ import api from '@/common/api'
 export default {
   name: 'workDetail',
   props: [
-    'work',
+    'pics',
     'flag',
+		'toPicId',
   ],
   data() {
     return {
@@ -48,25 +49,33 @@ export default {
     }
   },
   watch: {
-    work(newVal) {
+    pics(newVal) {
       if (newVal) {
         this.imgSrc = {}
         this.currentActive = 0
         this.requestImgs(this.currentActive)
       }
-    }
+    },
+		toPicId(newId) {
+			this.pics.forEach((pic, idx) => {
+				if (pic.id === newId) {
+					this.currentActive = idx
+					return
+				}
+			})
+		},
   },
   methods: {
     unLoaded(idx) {
       return this.imgSrc[idx] === undefined
     },
     requestImgs(idx) {
-      this.imgSrc[idx] = this.imgSrc[idx] || api.getUrl(this.flag, this.work.pics[idx].url)
+      this.imgSrc[idx] = this.imgSrc[idx] || api.getUrl(this.flag, this.pics[idx].url)
       if (this.isValid(idx - 1)) {
-        this.imgSrc[idx - 1] = this.imgSrc[idx - 1] || api.getUrl(this.flag, this.work.pics[idx - 1].url)
+        this.imgSrc[idx - 1] = this.imgSrc[idx - 1] || api.getUrl(this.flag, this.pics[idx - 1].url)
       }
       if (this.isValid(idx + 1)) {
-        this.imgSrc[idx + 1] = this.imgSrc[idx + 1] || api.getUrl(this.flag, this.work.pics[idx + 1].url)
+        this.imgSrc[idx + 1] = this.imgSrc[idx + 1] || api.getUrl(this.flag, this.pics[idx + 1].url)
       }
     },
     getImgSrc(idx) {
@@ -82,12 +91,13 @@ export default {
       return idx === this.currentActive + 1
     },
     isValid(idx) {
-      return idx < this.work.pics.length && idx >= 0
+      return idx < this.pics.length && idx >= 0
     },
     toOperate(idx) {
       if (this.isMain(idx)) {
         this.toOpenBigView()
       } else if (this.isValid(idx)) {
+				this.$emit('toWork', this.pics[idx].of)
         this.currentActive = idx
         this.requestImgs(idx)
       }
