@@ -20,4 +20,8 @@ body {
   width: calc(100vw - 40px);
   height: calc(100vh - 40px);
 }
+a, a:active {
+  color: black;
+  text-decoration: none;
+}
 </style>

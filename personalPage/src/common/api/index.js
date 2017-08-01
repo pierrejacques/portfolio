@@ -29,7 +29,7 @@ const get = url => {
 
 export default {
   getMenu: () => ({ then: get(`${rootAddress}/json/menu.json`) }),
-  getWorks: category => ({ then: get(`${rootAddress}/json/${category}.json`) }),
+  getJSON: category => ({ then: get(`${rootAddress}/json/${category}.json`) }),
   getData: (category, url) => Vue.http.get(`${rootAddress}/data/${category}/${url}`),
   getUrl: (category, url) => `${rootAddress}/data/${category}/${url}`,
 }

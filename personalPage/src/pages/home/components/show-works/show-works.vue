@@ -42,7 +42,7 @@ export default {
 		}
   },
   created() {
-    api.getWorks(this.flag)
+    api.getJSON(this.flag)
     .then(data => {
       this.pics = data.pics
 			this.works = data.works

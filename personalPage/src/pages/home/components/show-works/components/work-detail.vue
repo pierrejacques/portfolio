@@ -162,7 +162,7 @@ export default {
 .work-box.scaled {
   position: fixed;
   top: 50vh; left: 50vw;
-  transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%);
 }
 .slider-img {
   max-width: 100%;
