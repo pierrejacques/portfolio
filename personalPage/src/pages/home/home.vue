@@ -2,9 +2,9 @@
   <div class=home>
 		<main>
 		  <cover :menu-list="menuList"></cover>
-		   <show-works title="sketch / modeling / product" flag="product" id="product"></show-works> 
-		  <show-works title="UI / front-end / graphic" flag="ui" id="ui"></show-works>
-		  <show-works title="photography" flag="photo" id="photo"></show-works> 
+		   <show-works title="sketch / modeling / product" flag="product" id="product"></show-works>
+		  <show-works title="UI / front-end / graphic" flag="ui" id="ui" direction="left"></show-works>
+		  <show-works title="photography" flag="photo" id="photo"></show-works>
 		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->
 		  <!-- <show-works title="aesthetics research" flag="research" id="research"></show-works> -->
 		  <!-- <show-works title="resume" flag="resume" id="resume"></show-works> -->
