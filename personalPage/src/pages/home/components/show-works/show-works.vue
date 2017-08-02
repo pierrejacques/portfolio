@@ -1,17 +1,17 @@
 <template lang="html">
   <div class="show-works screen-box">
     <div class="title">{{title}}</div>
-    <work-detail
-								 @onchange="updateCurrentWork"
-								 :to-pic-of="toPicOf"
-								 :pics="pics"
-								 :flag="flag"
-								 class="work-detail"></work-detail>
+    <!-- <work-detail
+                     @onchange="updateCurrentWork"
+                     :to-pic-of="toPicOf"
+                     :pics="pics"
+                     :flag="flag"
+                     class="work-detail"></work-detail>
     <work-list
-							 	 @onchange="toSelectPic"
-							 	 :to-work-id="toWorkId"
-							 	 :works="works" :flag="flag"
-                 class="work-list"></work-list>
+                      @onchange="toSelectPic"
+                      :to-work-id="toWorkId"
+                      :works="works" :flag="flag"
+                 class="work-list"></work-list> -->
   </div>
 </template>
 
@@ -60,7 +60,7 @@ export default {
   position: relative;
   display: grid;
   padding: 30px 40px;
-  grid-template-columns: 5fr 2fr ;
+  grid-template-columns: 7fr 2fr ;
   grid-template-areas: "detail list";
 }
 .show-works::before {

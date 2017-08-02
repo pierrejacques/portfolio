@@ -68,7 +68,7 @@ a {
     "portfilio portfilio portfilio"
     "name . menu"
     ". down menu";
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.2);
   /* background: #3e3e3e
   linear-gradient(to right,
     #4f4646 0,

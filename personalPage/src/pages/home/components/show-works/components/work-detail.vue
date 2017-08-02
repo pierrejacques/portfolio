@@ -119,12 +119,18 @@ export default {
 .slider {
   position: relative;
   height: 75%;
+  width: 100%;
 	margin-top: 5%;
+  transform-style: preserve-3d;
+  perspective: 1px;
+/*   background: black; */
 }
 .work-box {
   display: flex;
   position: absolute;
   transition: 0.5s;
+  height: 100%; /**/
+  max-height: 75vh;
   top: 50%;
   left: 50%;
   opacity: 0;
@@ -132,9 +138,7 @@ export default {
 }
 .work-box.main {
   z-index: 1;
-  height: 100%; /**/
-  width: 500px; /**/
-  max-width: 70%;
+  max-width: 80%;
   top: 50%;
   left: 45%;
   opacity: 1;
@@ -143,16 +147,16 @@ export default {
 }
 .work-box.pre-main, .work-box.post-main {
   z-index: 0;
-  height: 70%; /**/
-  width: 300px; /**/
-  top: 55%;
+  top: 50%;
   transform: scale(1) translate(0, -50%);
-  filter: blur(3px);
+  /* filter: blur(1px); */
 }
 .work-box.pre-main {
   left: 0;
   right: auto;
-  opacity: 0.3;
+  opacity: 0.5;
+  transform: rotateY(45deg);
+  transform-origin: left 50%;
 }
 .work-box.post-main {
   left: auto;
@@ -162,7 +166,6 @@ export default {
 .work-box.scaled {
   position: fixed;
   top: 50vh; left: 50vw;
-  transform: translate(-50%, -50%);
 }
 .slider-img {
   max-width: 100%;
@@ -170,6 +173,7 @@ export default {
   margin: auto;
   pointer-events: all;
   cursor: pointer;
+  background: white;
 }
 .work-box.main .slider-img {
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -186,13 +190,15 @@ export default {
 }
 .big-view .big-img {
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   margin: auto;
   transition: 0.1s; /**/
   opacity: 1;
   /* box-shadow: 0 5px 20px rgba(0,0,0,0.3); */
-  transform: scale(1.5);
 }
 .btn-pre, .btn-post {
   position: relative;

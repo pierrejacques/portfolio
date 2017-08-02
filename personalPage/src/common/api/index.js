@@ -3,6 +3,7 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 const rootAddress = 'static'
+const remoteAddress = 'http://121.196.192.102/static'
 const tryParse = str => {
   let data
   try {
@@ -30,6 +31,6 @@ const get = url => {
 export default {
   getMenu: () => ({ then: get(`${rootAddress}/json/menu.json`) }),
   getJSON: category => ({ then: get(`${rootAddress}/json/${category}.json`) }),
-  getData: (category, url) => Vue.http.get(`${rootAddress}/data/${category}/${url}`),
-  getUrl: (category, url) => `${rootAddress}/data/${category}/${url}`,
+  getData: (category, url) => Vue.http.get(`${remoteAddress}/data/${category}/${url}`),
+  getUrl: (category, url) => `${remoteAddress}/data/${category}/${url}`,
 }
