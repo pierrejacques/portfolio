@@ -3,7 +3,7 @@
     <div class="title">{{title}}</div>
     <ul class="work-menu" v-if="works">
       <li v-for="work in works"
-          :class="{active: work.id === pics[currentPic].of}"
+          :class="{active: work.id === ids[currentPic]}"
           @click="toSelectWork(work.id)">
         {{work.name}}
         {{work.note}} <!-- TODO: alter JSON note for each work, not each pic -->
@@ -22,6 +22,7 @@
          <img :src="imgSrc[idx]" @click=toSelectPic(idx)>
       </div>
     </div>
+    <div class="big-view"></div>
   </div>
 </template>
 
@@ -40,6 +41,7 @@ export default {
       works: [],
       pics: [],
       imgSrc: [],
+      ids: [], // 初始化后存放每个pic的id以便于查找
     }
   },
   methods: {
@@ -63,6 +65,9 @@ export default {
         this.requestImgs(idx)
       }
     },
+    toSelectWork(id) {
+      this.toSelectPic(this.ids.indexOf(id))
+    },
     toOpenBigView() {
 
     },
@@ -72,6 +77,9 @@ export default {
     .then(data => {
       this.pics = data.pics
 			this.works = data.works
+      this.pics.forEach(pic => {
+        this.ids.push(pic.of)
+      })
       this.toSelectPic(0)
     })
   },
@@ -79,10 +87,11 @@ export default {
 </script>
 
 <style scoped lang="css">
+/* gridding */
 .show-works {
   display: grid;
   box-sizing: border-box;
-  padding: 100px 50px 100px;
+  padding: 100px 50px;
   width: 100vw;
   height: 45vw;
   grid-template-columns: 1fr 2fr 1fr ;
@@ -93,16 +102,22 @@ export default {
 .show-works.reverse {
   grid-template-areas: "title slider slider" "list slider slider";
 }
-.work-list {
+.work-menu {
   grid-area: list;
+}
+.work-menu .active {
+  color: red;
 }
 .title {
   grid-area: title;
-  /* font-family: 'Quicksand', sans-serif; */
-  /* background: black; */
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.4rem;
 }
+
+/* slider */
 .img-slider {
   position: relative;
+  top: -10vw;
   grid-area: slider;
   perspective: 400px;
 }
@@ -118,6 +133,7 @@ export default {
 .img-box.main {
   z-index: 3;
   left: 50%;
+  max-width: 100%;
   transform-origin: center;
   transform: translate3d(-50%, -50%, 0);
 }
@@ -150,6 +166,7 @@ img {
   opacity: 0;
   background: white;
   pointer-events: all;
+  filter: none;
 }
 .main > img {
   left: 50%;
@@ -161,7 +178,7 @@ img {
 }
 .pre > img, .post > img {
   opacity: 0.5;
-  /* filter: blur(7px); */
+  filter: blur(7px);
 }
 .left-to-main > img {
   left: 0;
@@ -171,4 +188,7 @@ img {
   left: 100%;
   transform: translate(-100%, -50%);
 }
+
+/* big view */
+
 </style>

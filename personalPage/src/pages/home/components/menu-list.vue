@@ -43,6 +43,7 @@ export default {
 	transition: 0.3s;
 }
 .list {
+  visibility: hidden;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -65,6 +66,9 @@ export default {
   cursor: pointer;
   background: black;
 	color: white;
+}
+.list.shown {
+  visibility: visible;
 }
 .list.shown > li {
   height: 2em;
