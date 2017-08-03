@@ -1,6 +1,6 @@
 <template>
   <div class=home>
-		<main>
+		<main :class="{'blur': isBigViewOpen}">
 		  <cover :menu-list="menuList"></cover>
 		   <show-works title="sketch / modeling / product" flag="product" id="product"></show-works>
 		  <show-works title="UI / front-end / graphic" flag="ui" id="ui" direction="left"></show-works>
@@ -8,8 +8,12 @@
 		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->
 		  <!-- <show-works title="aesthetics research" flag="research" id="research"></show-works> -->
 		  <!-- <show-works title="resume" flag="resume" id="resume"></show-works> -->
+      <resume></resume>
 		</main>
-		<menu-list :list="menuList" class="menu-list" :class="{hide: isMenuHide}"></menu-list>
+    <div class="big-view" v-show="isBigViewOpen">
+      <img class="big-img" :src="bigUrl" @click="toCloseBigView">
+    </div>
+		<menu-list :list="menuList" class="menu-list" :class="{hide: isMenuHide || isBigViewOpen}"></menu-list>
   </div>
 </template>
 
@@ -28,11 +32,22 @@ export default {
     }
   },
   methods: {
+    toCloseBigView() {
+      this.$store.state.isBigViewOpen = false
+    }
   },
   components: {
 		menuList,
     cover,
     showWorks,
+  },
+  computed: {
+    isBigViewOpen() {
+      return this.$store.state.isBigViewOpen
+    },
+    bigUrl() {
+      return this.$store.state.bigUrl
+    }
   },
   created() {
     const domOperations = () => {
@@ -66,4 +81,23 @@ export default {
 	.menu-list.hide {
 		right: -300px;
 	}
+  main.blur {
+    filter: blur(10px);
+  }
+  .big-view {
+    display: flex;
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .big-img {
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    pointer-events: all;
+    cursor: zoom-out;
+    box-shadow: 0 5px 10px gray;
+  }
 </style>

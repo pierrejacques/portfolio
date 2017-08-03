@@ -22,7 +22,7 @@
          <img :src="imgSrc[idx]" @click=toSelectPic(idx)>
       </div>
     </div>
-    <div class="big-view"></div>
+    <div class="background"></div>
   </div>
 </template>
 
@@ -42,6 +42,7 @@ export default {
       pics: [],
       imgSrc: [],
       ids: [], // 初始化后存放每个pic的id以便于查找
+      isOpen: false,
     }
   },
   methods: {
@@ -66,10 +67,15 @@ export default {
       }
     },
     toSelectWork(id) {
-      this.toSelectPic(this.ids.indexOf(id))
+      const idx = this.ids.indexOf(id)
+      if (this.isValid(idx)) {
+        this.currentPic = idx
+        this.requestImgs(idx)
+      }
     },
     toOpenBigView() {
-
+      this.$store.state.isBigViewOpen = true
+      this.$store.state.bigUrl = this.imgSrc[this.currentPic]
     },
   },
   created() {
@@ -77,10 +83,12 @@ export default {
     .then(data => {
       this.pics = data.pics
 			this.works = data.works
-      this.pics.forEach(pic => {
-        this.ids.push(pic.of)
-      })
-      this.toSelectPic(0)
+      if (this.pics) {
+        this.pics.forEach(pic => {
+          this.ids.push(pic.of)
+        })
+        this.toSelectPic(0)
+      }
     })
   },
 }
@@ -96,30 +104,45 @@ export default {
   height: 45vw;
   grid-template-columns: 1fr 2fr 1fr ;
   grid-column-gap: 50px;
-  grid-template-rows: 1fr 2fr ;
+  grid-template-rows: 1fr 3fr ;
+  grid-row-gap: 20px;
   grid-template-areas: "slider slider title" "slider slider list";
+  perspective: 400px;
 }
 .show-works.reverse {
   grid-template-areas: "title slider slider" "list slider slider";
 }
 .work-menu {
   grid-area: list;
+  position: relative;
+  list-style-type: none;
+  left: -20px;
 }
-.work-menu .active {
-  color: red;
+.work-menu li {
+  cursor: pointer;
+  font-family:'msyhlc4dfe54171858c';
+  letter-spacing: .2em;
+  line-height: 1.5em;
+  opacity: 0.3;
+  /* font-family: 'Raleway'; */
+}
+.work-menu .active, .work-menu li:hover {
+  opacity: 1;
 }
 .title {
   grid-area: title;
   font-family: 'Quicksand', sans-serif;
-  font-size: 1.4rem;
+  font-family:'msyhlc4dfe54171858c';
+  font-size: 1.2rem;
+  height: 50px;
+  margin-top: calc(5vw - 20px);
+  border-bottom: 1px solid black;
 }
-
 /* slider */
 .img-slider {
   position: relative;
-  top: -10vw;
+  top: -8vw;
   grid-area: slider;
-  perspective: 400px;
 }
 .img-box {
   position: absolute;
@@ -175,10 +198,12 @@ img {
 }
 .main > img, .pre > img, .post > img {
   box-shadow: 0 0 15px grey;
+  cursor: zoom-in;
 }
 .pre > img, .post > img {
   opacity: 0.5;
-  filter: blur(7px);
+  cursor: pointer;
+  /* filter: blur(7px); */
 }
 .left-to-main > img {
   left: 0;
@@ -188,7 +213,8 @@ img {
   left: 100%;
   transform: translate(-100%, -50%);
 }
-
-/* big view */
-
+/* reverse */
+.reverse {
+  text-align: right;
+}
 </style>

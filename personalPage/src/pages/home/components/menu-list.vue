@@ -40,7 +40,7 @@ export default {
 	bottom: 50px;
 	width: 300px;
 	opacity: 1;
-	transition: 0.3s;
+	transition: 0.5s;
 }
 .list {
   visibility: hidden;
