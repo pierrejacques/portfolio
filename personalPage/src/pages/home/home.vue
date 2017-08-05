@@ -8,7 +8,7 @@
 		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->
 		  <!-- <show-works title="aesthetics research" flag="research" id="research"></show-works> -->
 		  <!-- <show-works title="resume" flag="resume" id="resume"></show-works> -->
-      <resume></resume>
+<!--       <resume></resume> -->
 		</main>
     <div class="big-view" v-show="isBigViewOpen">
       <img class="big-img" :src="bigUrl" @click="toCloseBigView">

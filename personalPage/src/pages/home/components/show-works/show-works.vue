@@ -13,13 +13,16 @@
       <div class="img-box"
            v-for="(pic, idx) in pics"
            :class="{
+             'loading': !isLoaded[idx],
              'main': idx === currentPic,
              'pre': idx === currentPic - 1,
              'post': idx === currentPic + 1,
              'left-to-main': idx < currentPic,
              'right-to-main': idx > currentPic,
            }">
-         <img :src="imgSrc[idx]" @click=toSelectPic(idx)>
+         <img :src="imgSrc[idx]"
+              @load="loadedHandler(idx)"
+              @click=toSelectPic(idx)>
       </div>
     </div>
     <div class="background"></div>
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import api from '@/common/api'
 export default {
   name: 'show-works',
@@ -43,6 +47,7 @@ export default {
       imgSrc: [],
       ids: [], // 初始化后存放每个pic的id以便于查找
       isOpen: false,
+      isLoaded: [], // 存放每个图片是不是被加载
     }
   },
   methods: {
@@ -76,6 +81,12 @@ export default {
     toOpenBigView() {
       this.$store.state.isBigViewOpen = true
       this.$store.state.bigUrl = this.imgSrc[this.currentPic]
+    },
+    loadedHandler(idx) {
+      if (this.imgSrc[idx]) {
+        this.isLoaded[idx] = true
+        console.log(idx);
+      }
     },
   },
   created() {
@@ -123,7 +134,7 @@ export default {
   font-family:'msyhlc4dfe54171858c';
   letter-spacing: .2em;
   line-height: 1.5em;
-  opacity: 0.3;
+  opacity: 0.4;
   /* font-family: 'Raleway'; */
 }
 .work-menu .active, .work-menu li:hover {
@@ -141,7 +152,7 @@ export default {
 /* slider */
 .img-slider {
   position: relative;
-  top: -8vw;
+  height: 100%;
   grid-area: slider;
 }
 .img-box {
@@ -151,9 +162,10 @@ export default {
   height: 100%;
   transition: 0.5s;
   pointer-events: none;
-  /* background: black; */
+  opacity: 0;
 }
 .img-box.main {
+  opacity: 1;
   z-index: 3;
   left: 50%;
   max-width: 100%;
@@ -167,6 +179,7 @@ export default {
   transform: translate3d(0, -50%, -10px) rotateY(90deg);
 }
 .img-box.left-to-main.pre {
+  opacity: 1;
   z-index: 2;
   transform: translate3d(0, -50%, -10px) rotateY(10deg);
 }
@@ -177,17 +190,19 @@ export default {
   transform: translate3d(-100%, -50%, -10px) rotateY(-90deg);
 }
 .img-box.right-to-main.post {
+  opacity: 1;
   z-index: 1;
   transform: translate3d(-100%, -50%, -10px) rotateY(-10deg);
 }
+
+/* 幻灯 */
 img {
   position: absolute;
   max-width: 100%;
   max-height: 100%;
-  top: 80%;
-  transition: 0.7s;
+  top: 50%;
+  transition: 0.5s;
   opacity: 0;
-  background: white;
   pointer-events: all;
   filter: none;
 }
@@ -213,8 +228,34 @@ img {
   left: 100%;
   transform: translate(-100%, -50%);
 }
+
+/* loading效果 */ /* TODO: loading的效果不对 */
+@keyframes imgLoader {
+ 0% { background: #FF2121; }
+ 25% { background: #FF8BB5; }
+ 50% { background:  #78A4FC; }
+ 75% { background: #8BF0FF; }
+ 100% { background:  #FF2121; }
+}
+.loading {
+  background: white url('./loading.gif');
+  background-repeat: no-repeat;
+  background-size: 50px;
+  background-position: center;
+  box-shadow: 0 0 15px grey;
+}
+.left-to-main.loading {
+  background-position: left;
+}
+.right-to-main.loading {
+  background-position: right;
+}
+.loading img {
+  opacity: 0;
+}
 /* reverse */
 .reverse {
   text-align: right;
 }
+
 </style>

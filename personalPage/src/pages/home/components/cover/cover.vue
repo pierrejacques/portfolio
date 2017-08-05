@@ -58,15 +58,13 @@ export default {
 a {
   color: white;
 }
-
-.cover-section {
+.cover-section { /* TODO: 背景的位置不太对 */ /* TODO: menu的热区错位 */ /* TODO: down的位置 */
   display: grid;
-  pointer-events: none;
   grid-template-columns: 3fr 4fr 3fr;
   grid-template-rows: 35% 20% auto 50px;
   grid-template-areas: "contact . lang"
     "portfilio portfilio portfilio"
-    "name . menu"
+    "name down menu"
     ". down menu";
     background: rgba(0,0,0,0.2);
   /* background: #3e3e3e
@@ -130,7 +128,6 @@ a {
 .menu > li:hover {
   left: -10px;
   opacity: 1;
-  color: #98ce9f;
 }
 .menu > li::before {
   content: '-   ';

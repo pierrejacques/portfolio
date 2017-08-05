@@ -1,7 +1,16 @@
-[
-  "testbk_01.png",
-  "testbk_02.png",
-  "testbk_03.png",
-  "testbk_04.png",
-  "testbk_05.png"
-]
+{
+  "alter": [
+    "linear-gradient(to bottom, #FF2121 0, #FF8BB5 100%)",
+    "linear-gradient(to bottom, #78A4FC 0, #FDB7B9 60%, #FF8BB5 100%)",
+    "linear-gradient(to bottom, #BA5AFF 0, #9592FF 50%, #8BF0FF 100%)",
+    "linear-gradient(to bottom, #FFCB5A 0, #BFDCA9 50%, #7AEEFF 100%)",
+    "linear-gradient(to bottom, #472D41 0, #6725DE 100%)"
+  ],
+  "url": [
+    "testbk_01.png",
+    "testbk_02.png",
+    "testbk_03.png",
+    "testbk_04.png",
+    "testbk_05.png"
+  ]
+}

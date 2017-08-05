@@ -1,7 +1,7 @@
 <template>
   <div class="slider">
     <div class="slider-ctrl">
-      <div v-for="(ctrl, idx) in urls" :class="{active: isActive(idx)}" class="ctrl-unit" @click="toSelect(idx)"></div>
+      <div v-for="(ctrl, idx) in data.srcs" :class="{active: isActive(idx)}" class="ctrl-unit" @click="toSelect(idx)"></div>
     </div>
     <div class="slider-img" id="slider1"></div>
     <div class="slider-img" id="slider2"></div>
@@ -11,15 +11,22 @@
 <script>
 import $ from 'jquery'
 import api from '@/common/api'
-const $imgs = {}
-const cache = []
+
+const doomyImg = new Image() // 用于加载图片
+const $imgs = {} // 用于存放两张交替显示的背景图片
+
 export default {
   name: 'slider',
   data () {
     return {
       currentActive: undefined,
       timer: undefined,
-      urls: [],
+      data: {
+        length: 0,
+        isLoaded: [], // 判断一个位置是否已经被一部替换
+        srcs: [], // img读取src的地方
+        imgUrls: [], // 暂存待加载的图片地址
+      },
       nowShow: true,
     }
   },
@@ -31,33 +38,47 @@ export default {
       if (!this.isActive(idx)) {
         this.currentActive = idx
         this.timeOut()
-        $imgs[Number(this.nowShow)].css('background-image', `url(${this.urls[idx]})`).addClass('show')
+        $imgs[Number(this.nowShow)].css('background-image', this.data.srcs[idx]).addClass('show')
         $imgs[Number(!this.nowShow)].removeClass('show')
         this.nowShow = !this.nowShow
       }
+    },
+    next(idx) {
+      return idx < this.data.length - 1 ? idx + 1 : 0
     },
     timeOut() {
       if (this.timer) {
         clearTimeout(this.timer);
       }
       this.timer = setTimeout(() => {
-        const nextIdx = this.currentActive < this.urls.length - 1 ? this.currentActive + 1 : 0
-        this.toSelect(nextIdx);
+        this.toSelect(this.next(this.currentActive))
       }, 3000);
     },
+    loadImgs(idx) {
+      if (idx < this.data.length) {
+        doomyImg.src = this.data.imgUrls[idx]
+        doomyImg.onload = () => {
+          let srcIdx = this.next(this.currentActive)
+          while (this.data.isLoaded[srcIdx]) { srcIdx = this.next(srcIdx) }
+          this.data.srcs[srcIdx] = `url(${doomyImg.src})`
+          this.data.isLoaded[srcIdx] = true
+          this.loadImgs(idx + 1)
+        }
+      }
+    }
   },
   created() {
     api.getJSON('cover')
     .then(
-      urls => {
-        this.urls = []
+      data => {
         const root = '../../../../../../static/data/cover/'
-        urls.forEach(url => {
-          this.urls.push(`${root}${url}`)
-          const doomyImg = document.createElement('img')
-          doomyImg.setAttribute('src', `${root}${url}`)
+        this.data.length = data.url.length
+        data.url.forEach(url => {
+          this.data.imgUrls.push(`${root}${url}`)
         })
+        this.data.srcs = data.alter
         this.toSelect(0)
+        this.loadImgs(0)
       },
       () => {}
     )
@@ -84,7 +105,6 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: black;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
