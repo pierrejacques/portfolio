@@ -64,8 +64,8 @@ a {
   grid-template-rows: 35% 20% auto 50px;
   grid-template-areas: "contact . lang"
     "portfilio portfilio portfilio"
-    "name down menu"
-    ". down menu";
+    "name . menu"
+    ". . menu";
     background: rgba(0,0,0,0.2);
   /* background: #3e3e3e
   linear-gradient(to right,
@@ -182,7 +182,7 @@ a {
       "portfilio portfilio"
       "name name"
       "menu menu"
-      "down down";
+      ". .";
   }
   .slider {
     /* display: none; */

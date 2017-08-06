@@ -4,7 +4,7 @@
       <div class="ball" v-for="(ball, idx) in balls"
            :class="{'active': idx === currentActive}"
            @click="toSelectBall(idx)"
-           :key="ball.key"
+           :data-key="ball.text"
       ></div>
       <h3 class="ball-note">{{balls[currentActive].text}}</h3>
     </div>
@@ -90,6 +90,10 @@
           </div>
         </dl>
       </section>
+<!--       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <rect x="50" y="10" rx="20" ry="20" width="150" height="100"
+  style="fill:red;stroke:black;stroke-width:5;fill-opacity:0.5"/>
+</svg> -->
     </div>
   </div>
 </template>
@@ -174,7 +178,7 @@ export default {
   height: 80px;
   border-radius: 50%;
   margin: 0 30px;
-  transition: 0.4s;
+  transition: 0.2s;
   transform: scale(0.2);
   background-image: linear-gradient(to bottom left, #FF8DBC, #FFF8D9);
   /* filter: blur(3px); */
@@ -182,26 +186,30 @@ export default {
   cursor: pointer;
 }
 .ball::before { /* TODO: 悬浮提示 */
-  content: attr(key);
+  content: attr(data-key);
   position: absolute;
   z-index: 1;
-  width: 100px;
-  height: 100px;
   color: black;
-  top: 0;
-  left: 0;
+  top: 130px;
+  left: -60px;
+  font-size: 2em;
+  text-align: center;
+  width: 200px;
+  opacity: 0;
 }
 .ball:not(.active):hover {
   transform: scale(0.3);
 }
 .ball:not(.active):hover::before {
-
+  opacity: 1;
 }
 .ball-note {
   position: relative;
-  line-height: 5em;
+  top: 20px;
   width: 80px;
+  line-height: 2em;
   text-align: center;
+  border-bottom: 1px solid gray;
 }
 .ball:first-of-type, .ball.active:first-of-type, .ball-note {
   margin-left: -40px;
@@ -212,7 +220,7 @@ export default {
   margin: 0 55px;
 /*   filter: blur(0); */
 }
-/* 内容 */ /* TODO: 排版显示 */ /* TODO: logo查找 */
+/* 内容 */ /* TODO: 排版显示 */
 * {
   font-weight: lighter;
 }
@@ -228,13 +236,17 @@ dd, dt {
   margin: 0;
   box-sizing: border-box;
   display: inline-block;
-  width: 49%;
 }
 dt {
   padding-right: 17px;
   text-align: right;
+  width: 40%;
 }
 dd {
   padding-left: 20px;
+  width: 57%;
+}
+.basic dt, .basic dd {
+  width: 49%;
 }
 </style>
