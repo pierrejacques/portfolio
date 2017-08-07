@@ -90,7 +90,7 @@ export default {
     },
   },
   created() {
-    api.getJSON(this.flag)
+    api.getJSON(this.flag) // TODO: 把一些图片的格式换成svg
     .then(data => {
       this.pics = data.pics
 			this.works = data.works

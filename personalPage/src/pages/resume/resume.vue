@@ -1,5 +1,10 @@
 <template lang="html">
   <div class="resume" id="resume" v-if="balls.length">
+    <div class="select-lang">
+      <a>中文</a>
+      |
+      <a>English</a>
+    </div>
     <div class="horiz-scroll" id="test">
       <div class="ball" v-for="(ball, idx) in balls"
            :class="{'active': idx === currentActive}"
@@ -165,6 +170,13 @@ export default {
   scroll-behavior: smooth;
   font-family:'msyhlc4dfe54171858c';
 }
+.select-lang {
+  position: absolute;
+  font-size: 12px;
+  top:10px;
+  left: 10px;
+}
+/* 滚动区域 */
 .horiz-scroll {
   margin-top: calc(50px + 10vh);
   height: 180px;
@@ -185,14 +197,14 @@ export default {
   opacity: 0.7;
   cursor: pointer;
 }
-.ball::before { /* TODO: 悬浮提示 */
+.ball::before {
   content: attr(data-key);
   position: absolute;
   z-index: 1;
   color: black;
   top: 130px;
   left: -60px;
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
   width: 200px;
   opacity: 0;
