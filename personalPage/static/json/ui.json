@@ -2,22 +2,19 @@
   "works": [
 		{
       "name": "默马专辑",
-      "icon": "moma_icon.jpg",
 			"id": "moma"
     },
     {
       "name": "MickeyIcons",
-      "icon": "test1.jpg",
       "id": "mickey"
     },
     {
       "name": "Recho",
-      "icon": "test1.jpg",
       "id": "recho"
     },
     {
       "name": "安防队专辑",
-      "icon": ""
+      "id": "aft"
     },
     {
       "name": "movee.js",
@@ -65,10 +62,14 @@
       "url": "moma_10.jpg",
       "note": "专辑效果图",
       "of": "moma"
-    },    {
-      "url": "moma_11.jpg",
-      "note": "专辑效果图",
-      "of": "moma"
-		}
+    },   
+		{
+      "url": "aft_01.jpg",
+      "of": "aft"
+    },		
+		{
+      "url": "aft_02.jpg",
+      "of": "aft"
+    }
   ]
 }

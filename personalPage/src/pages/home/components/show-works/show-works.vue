@@ -13,7 +13,6 @@
       <div class="img-box"
            v-for="(pic, idx) in pics"
            :class="{
-             'loading': !isLoaded[idx],
              'main': idx === currentPic,
              'pre': idx === currentPic - 1,
              'post': idx === currentPic + 1,
