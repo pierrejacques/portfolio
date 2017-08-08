@@ -3,7 +3,8 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 const rootAddress = 'static'
-const remoteAddress = 'http://121.196.192.102/static'
+//const remoteAddress = 'http://121.196.192.102/static'
+const remoteAddress = 'http://202.120.43.16:8081'
 const tryParse = str => {
   let data
   try {
