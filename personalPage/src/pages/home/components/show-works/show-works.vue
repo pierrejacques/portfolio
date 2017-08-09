@@ -13,15 +13,16 @@
       <div class="img-box"
            v-for="(pic, idx) in pics"
            :class="{
+						 'loading': !srcs[idx],
              'main': idx === currentPic,
              'pre': idx === currentPic - 1,
              'post': idx === currentPic + 1,
              'left-to-main': idx < currentPic,
              'right-to-main': idx > currentPic,
            }">
-         <img :src="imgSrc[idx]"
-              @load="loadedHandler(idx)"
-              @click=toSelectPic(idx)>
+			  <img onselectstart="return false"
+						 :src="srcs[idx]"
+             @click=toSelectPic(idx)>
       </div>
     </div>
     <div class="background"></div>
@@ -43,24 +44,26 @@ export default {
       currentPic: undefined,
       works: [],
       pics: [],
-      imgSrc: [],
+			srcs: [],
       ids: [], // 初始化后存放每个pic的id以便于查找
       isOpen: false,
-      isLoaded: [], // 存放每个图片是不是被加载
     }
   },
   methods: {
     isValid(idx) {
       return idx < this.pics.length && idx >= 0
     },
+		getImg(idx) {
+			if (!this.srcs[idx]) {
+				api.getUrl(this.flag, this.pics[idx].url, url => {
+					this.srcs.splice(idx, 1, url)
+				})
+			}
+		},
     requestImgs(idx) {
-      this.imgSrc[idx] = this.imgSrc[idx] || api.getUrl(this.flag, this.pics[idx].url)
-      if (this.isValid(idx - 1)) {
-        this.imgSrc[idx - 1] = this.imgSrc[idx - 1] || api.getUrl(this.flag, this.pics[idx - 1].url)
-      }
-      if (this.isValid(idx + 1)) {
-        this.imgSrc[idx + 1] = this.imgSrc[idx + 1] || api.getUrl(this.flag, this.pics[idx + 1].url)
-      }
+			this.getImg(idx)
+			if (this.isValid(idx - 1)) { this.getImg(idx - 1) }
+     	if (this.isValid(idx + 1)) { this.getImg(idx + 1) }
     },
     toSelectPic(idx) {
       if (idx === this.currentPic) {
@@ -79,13 +82,7 @@ export default {
     },
     toOpenBigView() {
       this.$store.state.isBigViewOpen = true
-      this.$store.state.bigUrl = this.imgSrc[this.currentPic]
-    },
-    loadedHandler(idx) {
-      if (this.imgSrc[idx]) {
-        this.isLoaded[idx] = true
-        console.log(idx);
-      }
+      this.$store.state.bigUrl = this.srcs[this.currentPic]
     },
   },
   created() {
@@ -96,6 +93,7 @@ export default {
       if (this.pics) {
         this.pics.forEach(pic => {
           this.ids.push(pic.of)
+					this.srcs.push('')
         })
         this.toSelectPic(0)
       }
@@ -111,6 +109,8 @@ export default {
   box-sizing: border-box;
   padding: 100px 50px;
   width: 100vw;
+	max-width: 1680px;
+	margin: auto;
   height: 45vw;
   grid-template-columns: 1fr 2fr 1fr ;
   grid-column-gap: 50px;
@@ -145,7 +145,7 @@ export default {
   font-family:'msyhlc4dfe54171858c';
   font-size: 1.2rem;
   height: 50px;
-  margin-top: calc(5vw - 20px);
+  margin-top: calc(7vw - 20px);
   border-bottom: 1px solid black;
 }
 /* slider */
@@ -239,7 +239,7 @@ img {
 .loading {
   background: white url('./loading.gif');
   background-repeat: no-repeat;
-  background-size: 50px;
+  background-size: 80px;
   background-position: center;
   box-shadow: 0 0 15px grey;
 }

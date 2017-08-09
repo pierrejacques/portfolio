@@ -1,12 +1,11 @@
 {
   "alter": [
-    "linear-gradient(to bottom, #FF2121 0, #FF8BB5 100%)",
-    "linear-gradient(to bottom, #78A4FC 0, #FDB7B9 60%, #FF8BB5 100%)",
-    "linear-gradient(to bottom, #BA5AFF 0, #9592FF 50%, #8BF0FF 100%)",
-    "linear-gradient(to bottom, #FFCB5A 0, #BFDCA9 50%, #7AEEFF 100%)",
-    "linear-gradient(to bottom, #472D41 0, #6725DE 100%)"
+    "linear-gradient(to bottom, #ff4619 0, #bd59cb 100%)",
+    "linear-gradient(to bottom, #3a7cff 0, #ff8084 60%, #ff5090 100%)",
+    "linear-gradient(to bottom, #c320ff 0, #736fff 50%, #35ffff 100%)",
+    "linear-gradient(to bottom, #d68e1a 0, #b7e0b3 50%, #329aaa 100%)",
+    "linear-gradient(to bottom, #6d303f 0, #4925de 100%)"
   ],
   "url": [
-  	"1.jpg"
   ]
 }

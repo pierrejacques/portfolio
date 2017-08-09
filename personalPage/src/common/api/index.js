@@ -3,8 +3,8 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 const rootAddress = 'static'
-//const remoteAddress = 'http://121.196.192.102/static'
-const remoteAddress = 'http://202.120.43.16:8081'
+const remoteBackup = 'http://121.196.192.102/static' // 发布的时候改掉
+const remoteUrl = 'http://202.120.43.16:8081'
 const tryParse = str => {
   let data
   try {
@@ -32,6 +32,27 @@ const get = url => {
 export default {
   getMenu: () => ({ then: get(`${rootAddress}/json/menu.json`) }),
   getJSON: category => ({ then: get(`${rootAddress}/json/${category}.json`) }),
-  getData: (category, url) => Vue.http.get(`${remoteAddress}/data/${category}/${url}`),
-  getUrl: (category, url) => `${remoteAddress}/data/${category}/${url}`,
+  getData: (category, url,) => Vue.http.get(`${remoteUrl}/data/${category}/${url}`),
+  getUrl: (category, url, handler) => {
+		const img = new Image
+		const priorUrl = `${remoteUrl}/data/${category}/${url}`
+		const bkUrl = `${remoteBackup}/data/${category}/${url}`
+		let isPrior = true;
+		img.onload = () => {
+			if (isPrior) {
+				handler(priorUrl)
+			} else {
+				handler(bkUrl)
+			}
+		}
+		img.onerror = () => {
+			if (isPrior) {
+				isPrior = false
+				img.src = bkUrl
+			} else {
+				handler(undefined)
+			}
+		}
+		img.src = priorUrl
+	},
 }
