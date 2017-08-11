@@ -1,6 +1,6 @@
 <template>
   <div class=home>
-		<main :class="{'blur': isBigViewOpen}">
+		<main :class="{'blur': isBigViewOpen || isBlur}">
 		  <cover :menu-list="menuList"></cover>
 		   <show-works title="sketch / modeling / product" flag="product" id="product"></show-works>
 		  <show-works title="UI / front-end / graphic" flag="ui" id="ui" direction="left"></show-works>
@@ -47,7 +47,10 @@ export default {
     },
     bigUrl() {
       return this.$store.state.bigUrl
-    }
+    },
+		isBlur() {
+			return this.$store.state.isBlur
+		}
   },
   created() {
     const domOperations = () => {
@@ -58,7 +61,7 @@ export default {
       }
       $(document).ready(() => {
         $(window).scroll((event) => {
-          this.isMenuHide = $(window).scrollTop() < 0.75 * $(window).height()
+          this.isMenuHide = $(window).scrollTop() < 0.9 * $(window).height()
         })
         $('[scroll-fire]').on('click', (e) => {
           e.preventDefault();
@@ -80,6 +83,10 @@ export default {
 <style scoped>
 	.menu-list.hide {
 		right: -300px;
+	}
+	main{
+		transition: 0.5s;
+		filter: blur(0);
 	}
   main.blur {
     filter: blur(10px);

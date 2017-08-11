@@ -1,30 +1,36 @@
 <template>
   <div class="cover">
-  <section class="cover-section screen-box">
-    <h-fullwidth class="big-title" content="PORTFILIO"></h-fullwidth>
-    <h2 class="name-title">Jin</br>Chenhao</h2>
-    <div class="select-lang">
-      <a>中文</a>
-      |
-      <a>English</a>
-    </div>
-    <div class="contact-list">
-			<img class="iconfont" src="../../../../common/assets/github.svg">
-      <a target="_blank" href="https://github.com/pierrejacques">Github</a>
-      <img class="iconfont" src="../../../../common/assets/email.svg">
-      <a target="_blank" href="mailto:pierrejacques@126.com">Email</a>
-    </div>
-    <ul class="menu">
-      <li v-for="item in menuList" :href="item.url" scroll-fire>
-        {{item.name}}
-      </li>
-      <li @click="routeResume">
-        resume
-      </li>
-    </ul>
-    <div class=btn-down></div>
+		<section class="cover-section screen-box">
+			<h-fullwidth class="big-title" content="PORTFILIO"></h-fullwidth>
+			<h2 class="name-title">Jin</br>Chenhao</h2>
+			<div class="select-lang">
+				<a>中文</a>
+				|
+				<a>English</a>
+			</div>
+			<div class="contact-list">
+				<img class="iconfont" src="../../../../common/assets/github.svg">
+				<a target="_blank" href="https://github.com/pierrejacques">Github</a>
+				<img class="iconfont" src="../../../../common/assets/email.svg">
+				<a target="_blank" href="mailto:pierrejacques@126.com">Email</a>
+			</div>
+			<ul class="menu">
+				<li v-for="item in menuList" :href="item.url" scroll-fire>
+					{{item.name}}
+				</li>
+				<li @click="routeResume">
+					resume
+				</li>
+			</ul>
+			<div class=btn-down href="#product" scroll-fire></div>
     </section>
-    <slider class="slider" :slider-num="sliderNum"></slider>
+    <div class="slider">
+			<div class="slider-img" id="slider1"></div>
+			<div class="slider-img" id="slider2"></div>
+		</div>
+		<div class="slider-ctrl">
+			<div v-for="(ctrl, idx) in data.srcs" :class="{active: isActive(idx)}" class="ctrl-unit" @click="toSelect(idx)"></div>
+		</div>
   </div>
 </template>
 
@@ -32,22 +38,90 @@
 import slider from './components/slider'
 import hFullwidth from './components/h-fullwidth'
 import Router from 'vue-router'
+import $ from 'jquery'
+import api from '@/common/api'
+
+const doomyImg = new Image
+const $imgs = {} // 用于存放两张交替显示的背景图片
+
 export default {
   name: 'cover',
 	props: ['menuList'],
   components: {
-    slider,
     hFullwidth,
   },
   data() {
     return {
-      sliderNum: undefined,
+			currentActive: undefined,
+      timer: undefined,
+      data: {
+        length: 0,
+        isLoaded: [], // 判断一个位置是否已经被一部替换
+        srcs: [], // img读取src的地方
+        imgUrls: [], // 暂存待加载的图片地址
+      },
+      nowShow: true,
     }
   },
   methods: {
     routeResume() {
       this.$router.push({ name: 'resume' })
+    },
+		isActive(idx) {
+      return idx === this.currentActive;
+    },
+    toSelect(idx) {
+      if (!this.isActive(idx)) {
+        this.currentActive = idx
+        this.timeOut()
+        $imgs[Number(this.nowShow)].css('background-image', this.data.srcs[idx]).addClass('show')
+        $imgs[Number(!this.nowShow)].removeClass('show')
+        this.nowShow = !this.nowShow
+      }
+    },
+    next(idx) {
+      return idx < this.data.length - 1 ? idx + 1 : 0
+    },
+    timeOut() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      this.timer = setTimeout(() => {
+        this.toSelect(this.next(this.currentActive))
+      }, 3000);
+    },
+    loadImgs(idx) {
+      if (idx < this.data.srcs.length) {
+        doomyImg.src = this.data.imgUrls[idx]
+        doomyImg.onload = () => {
+          let srcIdx = this.next(this.currentActive)
+          while (this.data.isLoaded[srcIdx]) { srcIdx = this.next(srcIdx) }
+          this.data.srcs[srcIdx] = `url(${doomyImg.src})`
+          this.data.isLoaded[srcIdx] = true
+          this.loadImgs(idx + 1)
+        }
+      }
     }
+  },
+	created() {
+    api.getJSON('cover')
+    .then(
+      data => {
+        const root = '../../../../../../static/data/cover/'
+        this.data.length = data.alter.length
+        data.url.forEach(url => {
+          this.data.imgUrls.push(`${root}${url}`)
+        })
+        this.data.srcs = data.alter
+        this.toSelect(0)
+        this.loadImgs(0)
+      },
+      () => {}
+    )
+  },
+  mounted() {
+    $imgs[0] = $('#slider1')
+    $imgs[1] = $('#slider2')
   },
 }
 </script>
@@ -60,21 +134,16 @@ a {
 }
 .cover-section { /* TODO: 背景的位置不太对 */ /* TODO: menu的热区错位 */ /* TODO: down的位置 */
   display: grid;
+	position: relative;
   grid-template-columns: 3fr 4fr 3fr;
   grid-template-rows: 35% 20% auto 50px;
   grid-template-areas: "contact . lang"
     "portfilio portfilio portfilio"
     "name . menu"
     ". . menu";
-    background: rgba(0,0,0,0.2);
-  /* background: #3e3e3e
-  linear-gradient(to right,
-    #4f4646 0,
-    #464242 32%,
-    #3e3e3e 80%); */
+  background: rgba(0,0,0,0.2);
   padding: 30px 60px;
   color: white;
-  font-family: 'Avenir Next', 'MicrosoftYaHei';
 }
 .big-title {
   grid-area: portfilio;
@@ -135,9 +204,9 @@ a {
   font-size: 0.7em;
 }
 .btn-down {
-  grid-area: down;
-  position: relative;
-  transform: scaleX(1.5);
+  position: absolute;
+	bottom: 30px; left: 50%;
+  transform: scale(2, 1.2);
   text-align: center;
   cursor: pointer;
 }
@@ -155,12 +224,11 @@ a {
   opacity: 0.5;
 }
 .btn-down:hover::before {
-  bottom: -10px;
+  bottom: -5px;
   opacity: 0.9;
 }
 /* stretch */
 .name-title, .menu {
-  transform: scaleX(1.05);
   transform-origin: left;
 }
 /* opacity reduction */
@@ -174,6 +242,53 @@ a {
 .big-title, .name-title, .menu > li:hover {
   text-shadow: 1px 0 0 black;
 }
+	
+/* slider */
+.slider {
+  position: absolute;
+  top: 1.5vw;
+  left: 1.5vw;
+  right: 1.5vw;
+  bottom: 1.5vw;
+  z-index: -1;
+}
+.slider-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  transition: 3s;
+  opacity: 0;
+}
+.slider-img.show {
+  opacity: 1;
+}
+.slider-ctrl {
+  z-index: 1;
+  position: absolute;
+  bottom: calc(1.5vw + 30px);
+  left: calc(1.5vw + 60px);
+}
+.ctrl-unit {
+  display: inline-block;
+  margin: 3.5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.3;
+  transition: 0.3s;
+}
+.ctrl-unit.active {
+  opacity: 0.7;
+}
+	
+/* 小屏 */	
 @media screen and (max-width: 768px) {
   .cover-section {
     grid-template-columns: 1fr 1fr;
@@ -193,5 +308,20 @@ a {
 	.menu {
     padding-left: 20px;
   }
+}
+	
+/* 大屏 */
+@media screen and (min-width: 1440px) {
+	.big-title { 
+		font-size: 35px;
+		text-shadow: none; 
+	}
+	.name-title {
+		font-size: 30px;
+		text-shadow: none;
+	}
+	.menu {
+		font-size: 20px;
+	}
 }
 </style>

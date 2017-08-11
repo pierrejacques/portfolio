@@ -12,7 +12,7 @@
 import $ from 'jquery'
 import api from '@/common/api'
 
-const doomyImg = new Image() // 用于加载图片
+const doomyImg = new Image
 const $imgs = {} // 用于存放两张交替显示的背景图片
 
 export default {
@@ -55,7 +55,7 @@ export default {
       }, 3000);
     },
     loadImgs(idx) {
-      if (idx < this.data.length) {
+      if (idx < this.data.srcs.length) {
         doomyImg.src = this.data.imgUrls[idx]
         doomyImg.onload = () => {
           let srcIdx = this.next(this.currentActive)
@@ -72,7 +72,7 @@ export default {
     .then(
       data => {
         const root = '../../../../../../static/data/cover/'
-        this.data.length = data.url.length
+        this.data.length = data.alter.length
         data.url.forEach(url => {
           this.data.imgUrls.push(`${root}${url}`)
         })
@@ -93,10 +93,10 @@ export default {
 <style scoped media="screen">
 .slider {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 1.5vw;
+  left: 1.5vw;
+  right: 1.5vw;
+  bottom: 1.5vw;
   z-index: -1;
 }
 .slider-img {

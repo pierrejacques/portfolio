@@ -11,17 +11,23 @@ export default {
 </script>
 
 <style>
+html::-webkit-scrollbar {
+	width: 0;
+}
+html::-webkit-scrollbar-thumb {
+	width: 10px;
+}
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 body {
   margin: 0;
 }
 .screen-box {
   box-sizing: border-box;
-  margin: 20px auto;
-  width: calc(100vw - 40px);
-  height: calc(100vh - 40px);
+  margin: 1.5vw;
+  width: 97vw;
+  height: calc(100vh - 3vw);
 }
 a, a:active {
   color: black;

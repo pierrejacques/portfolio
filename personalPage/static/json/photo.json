@@ -1,31 +1,6 @@
 {
   "works": [
-    {
-      "name": "JEEZ X 田笑",
-      "icon": "",
-      "id": "tx"
-    },
-    {
-      "name": "JEEZ X Fsquare",
-      "icon": "",
-      "id": "f2"
-    },
-    {
-      "name": "JEEZ X 钟媛&陆晨琪",
-      "icon": "",
-      "id": "zy_lcq"
-    },
-  	{
-  		"name": "JEEZ X 美术协会",
-  		"icon": "",
-      "id": "msxh"
-  	},
-    {
-      "name": "JEEZ X 5Guys",
-      "icon": "",
-      "id": "5g"
-    },
-    {
+		{
       "name": "人像",
       "icon": "",
       "id": "pt"
@@ -39,158 +14,38 @@
       "name": "静景",
       "icon": "",
       "id": "sc"
+    },
+		{
+      "name": "JEEZ X 田笑",
+      "icon": "",
+      "id": "tx"
+    },
+		{
+      "name": "JEEZ X 5Guys",
+      "icon": "",
+      "id": "5g"
+    },
+		{
+  		"name": "JEEZ X 美术协会",
+  		"icon": "",
+      "id": "msxh"
+  	},
+    {
+      "name": "JEEZ X 钟媛&陆晨琪",
+      "icon": "",
+      "id": "zy_lcq"
+    },
+  	{
+      "name": "JEEZ X Fsquare",
+      "icon": "",
+      "id": "f2"
     }
   ],
   "pics": [
-    {
-      "url": "tx_01.jpg",
-      "of": "tx"
-    },
-    {
-      "url": "tx_02.jpg",
-      "of": "tx"
-    },
-    {
-      "url": "tx_03.jpg",
-      "of": "tx"
-    },
-    {
-      "url": "tx_04.jpg",
-      "of": "tx"
-    },
-    {
-      "url": "tx_05.jpg",
-      "of": "tx"
-    },
-    {
-      "url": "f2_01.jpg",
-      "of": "f2"
-    },
-    {
-      "url": "f2_02.jpg",
-      "of": "f2"
-    },
-    {
-      "url": "f2_03.jpg",
-      "of": "f2"
-    },
-    {
-      "url": "f2_04.jpg",
-      "of": "f2"
-    },
-    {
-      "url": "f2_05.jpg",
-      "of": "f2"
-    },
-    {
-      "url": "zy_lcq_01.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_02.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_03.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_04.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_05.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_06.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_07.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_08.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_09.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_10.jpg",
-      "of": "zy_lcq"
-    },
-    {
-      "url": "zy_lcq_11.jpg",
+		 {
+      "url": "pt_02.jpg",
 
-      "of": "zy_lcq"
-    },
-    {
-      "url": "msxh_01.jpg",
-
-      "of": "msxh"
-    },
-    {
-      "url": "msxh_02.jpg",
-
-      "of": "msxh"
-    },
-    {
-      "url": "msxh_03.jpg",
-
-      "of": "msxh"
-    },
-    {
-      "url": "msxh_04.jpg",
-
-      "of": "msxh"
-    },
-    {
-      "url": "msxh_05.jpg",
-
-      "of": "msxh"
-    },
-    {
-      "url": "msxh_06.jpg",
-
-      "of": "msxh"
-    },
-    {
-      "url": "msxh_07.jpg",
-
-      "of": "msxh"
-    },
-    {
-      "url": "5g_01.jpg",
-
-      "of": "5g"
-    },
-    {
-      "url": "5g_02.jpg",
-
-      "of": "5g"
-    },
-    {
-      "url": "5g_03.JPG",
-
-      "of": "5g"
-    },
-    {
-      "url": "5g_04.jpg",
-
-      "of": "5g"
-    },
-    {
-      "url": "5g_05.jpg",
-
-      "of": "5g"
-    },
-    {
-      "url": "5g_06.jpg",
-
-      "of": "5g"
+      "of": "pt"
     },
     {
       "url": "pt_01.jpg",
@@ -198,19 +53,9 @@
       "of": "pt"
     },
     {
-      "url": "pt_02.jpg",
-
-      "of": "pt"
-    },
-    {
       "url": "pt_03.jpg",
 
       "of": "pt"
-    },
-    {
-      "url": "tr_01.jpg",
-
-      "of": "tr"
     },
     {
       "url": "tr_02.jpg",
@@ -311,6 +156,157 @@
       "url": "sc_11.jpg",
 
       "of": "sc"
-    }
+    },
+		{
+      "url": "tx_01.jpg",
+      "of": "tx"
+    },
+    {
+      "url": "tx_02.jpg",
+      "of": "tx"
+    },
+    {
+      "url": "tx_03.jpg",
+      "of": "tx"
+    },
+    {
+      "url": "tx_04.jpg",
+      "of": "tx"
+    },
+    {
+      "url": "tx_05.jpg",
+      "of": "tx"
+    },
+		{
+      "url": "5g_01.jpg",
+
+      "of": "5g"
+    },
+    {
+      "url": "5g_02.jpg",
+
+      "of": "5g"
+    },
+    {
+      "url": "5g_03.JPG",
+
+      "of": "5g"
+    },
+    {
+      "url": "5g_04.jpg",
+
+      "of": "5g"
+    },
+    {
+      "url": "5g_05.jpg",
+
+      "of": "5g"
+    },
+    {
+      "url": "5g_06.jpg",
+
+      "of": "5g"
+    },
+   
+		{
+      "url": "msxh_01.jpg",
+
+      "of": "msxh"
+    },
+    {
+      "url": "msxh_02.jpg",
+
+      "of": "msxh"
+    },
+    {
+      "url": "msxh_03.jpg",
+
+      "of": "msxh"
+    },
+    {
+      "url": "msxh_04.jpg",
+
+      "of": "msxh"
+    },
+    {
+      "url": "msxh_05.jpg",
+
+      "of": "msxh"
+    },
+    {
+      "url": "msxh_06.jpg",
+
+      "of": "msxh"
+    },
+    {
+      "url": "msxh_07.jpg",
+
+      "of": "msxh"
+    },
+    {
+      "url": "zy_lcq_01.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_02.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_03.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_04.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_05.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_06.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_07.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_08.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_09.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_10.jpg",
+      "of": "zy_lcq"
+    },
+    {
+      "url": "zy_lcq_11.jpg",
+
+      "of": "zy_lcq"
+    },
+		 {
+      "url": "f2_01.jpg",
+      "of": "f2"
+    },
+    {
+      "url": "f2_02.jpg",
+      "of": "f2"
+    },
+    {
+      "url": "f2_03.jpg",
+      "of": "f2"
+    },
+    {
+      "url": "f2_04.jpg",
+      "of": "f2"
+    },
+    {
+      "url": "f2_05.jpg",
+      "of": "f2"
+		}
   ]
 }

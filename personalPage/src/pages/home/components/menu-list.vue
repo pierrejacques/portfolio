@@ -4,7 +4,9 @@
       <li v-for="item in list" :href="item.url" scroll-fire>{{item.name}}</li>
     </ul>
     <button class="btn" @mouseenter="toShowList()" >
-
+			<div class="menu-btn-bar"></div>
+			<div class="menu-btn-bar"></div>
+			<div class="menu-btn-bar"></div>
     </button>
   </div>
 </template>
@@ -23,9 +25,11 @@ export default {
     },
     toShowList() {
       this.isOpen = true;
+			this.$store.state.isBlur = true;
     },
     toHideList() {
       this.isOpen = false;
+			this.$store.state.isBlur = false;
     },
   },
   created() {
@@ -36,21 +40,21 @@ export default {
 <style scoped lang="css">
 .menu-list {
 	position: fixed;
-	right: 50px;
-	bottom: 50px;
-	width: 300px;
+	right: 1.5vw;
+	top: 30px;
+	width: 400px;
 	opacity: 1;
-	transition: 0.5s;
+	transition: 0.3s;
 }
 .list {
   visibility: hidden;
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   list-style: none;
   text-align: right;
   font-weight: lighter;
-  padding-bottom: 50px;
+  padding-top: 30px;
 }
 .list > li {
   position: relative;
@@ -59,34 +63,44 @@ export default {
   overflow: hidden;
   margin: 15px 0;
   padding: 5px 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+	font-size: 20px;
   opacity: 0;
   height: 0;
   transition: 0.2s;
   cursor: pointer;
-  background: black;
-	color: white;
+	transform-origin: right;
+	transform: rotate(-45deg);
 }
 .list.shown {
   visibility: visible;
 }
 .list.shown > li {
-  height: 2em;
+  height: 4em;
   opacity: 1;
 }
 .list.shown > li:hover {
-  right: 15px;
 }
 .btn {
 	opacity: 0.5;
   position: absolute;
   right: 0;
-	bottom: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+	top: 0;
+  width: 40px;
+	background: transparent;
   border: none;
-  background: blue;
   outline: none;
+}
+.menu-btn-bar {
+	width: 100%;
+	height: 3px;
+	margin-bottom: 6px;
+	background: black;
+	transition: 0.3s;
+}
+.shown + .btn > .menu-btn-bar {
+	transform: rotate(-45deg);
+	margin-bottom: 15px;
+	height: 1px;
+	background: gray;
 }
 </style>
