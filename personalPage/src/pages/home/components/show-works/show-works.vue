@@ -6,7 +6,7 @@
           :class="{active: work.id === ids[currentPic]}"
           @click="toSelectWork(work.id)">
         {{work.name}}
-        {{work.note}} <!-- TODO: alter JSON note for each work, not each pic -->
+        {{work.note}}
       </li>
     </ul>
     <div class="img-slider">
@@ -228,7 +228,7 @@ img {
   transform: translate(-100%, -50%);
 }
 
-/* loading效果 */ /* TODO: loading的效果不对 */
+/* loading效果 */
 @keyframes imgLoader {
  0% { background: #FF2121; }
  25% { background: #FF8BB5; }

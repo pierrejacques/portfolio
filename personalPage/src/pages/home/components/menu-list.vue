@@ -2,6 +2,7 @@
   <div class="menu-list">
     <ul class="list" :class="{shown: isListOpen()}" @mouseleave="toHideList(false)">
       <li v-for="item in list" :href="item.url" scroll-fire>{{item.name}}</li>
+      <li @click="$router.push({ name: 'resume' })">resume</li>
     </ul>
     <button class="btn" @mouseenter="toShowList()" >
 			<div class="menu-btn-bar"></div>
@@ -53,7 +54,6 @@ export default {
   right: 0;
   list-style: none;
   text-align: right;
-  font-weight: lighter;
   padding-top: 30px;
 }
 .list > li {
@@ -64,6 +64,7 @@ export default {
   margin: 15px 0;
   padding: 5px 20px;
 	font-size: 20px;
+  font-weight: 300;
   opacity: 0;
   height: 0;
   transition: 0.2s;
@@ -78,8 +79,9 @@ export default {
   height: 4em;
   opacity: 1;
 }
-.list.shown > li:hover {
-}
+/* .list.shown > li:hover {
+  transform: translate(-10px, 0) rotate(-45deg);
+} */
 .btn {
 	opacity: 0.5;
   position: absolute;
@@ -95,7 +97,7 @@ export default {
 	height: 3px;
 	margin-bottom: 6px;
 	background: black;
-	transition: 0.3s;
+	transition: 0.2s;
 }
 .shown + .btn > .menu-btn-bar {
 	transform: rotate(-45deg);

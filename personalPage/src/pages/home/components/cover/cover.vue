@@ -132,7 +132,7 @@ export default {
 a {
   color: white;
 }
-.cover-section { /* TODO: 背景的位置不太对 */ /* TODO: menu的热区错位 */ /* TODO: down的位置 */
+.cover-section {
   display: grid;
 	position: relative;
   grid-template-columns: 3fr 4fr 3fr;
@@ -242,7 +242,7 @@ a {
 .big-title, .name-title, .menu > li:hover {
   text-shadow: 1px 0 0 black;
 }
-	
+
 /* slider */
 .slider {
   position: absolute;
@@ -287,8 +287,8 @@ a {
 .ctrl-unit.active {
   opacity: 0.7;
 }
-	
-/* 小屏 */	
+
+/* 小屏 */
 @media screen and (max-width: 768px) {
   .cover-section {
     grid-template-columns: 1fr 1fr;
@@ -309,12 +309,12 @@ a {
     padding-left: 20px;
   }
 }
-	
+
 /* 大屏 */
 @media screen and (min-width: 1440px) {
-	.big-title { 
+	.big-title {
 		font-size: 35px;
-		text-shadow: none; 
+		text-shadow: none;
 	}
 	.name-title {
 		font-size: 30px;
