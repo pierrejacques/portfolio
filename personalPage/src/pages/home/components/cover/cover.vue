@@ -1,7 +1,7 @@
 <template>
   <div class="cover">
 		<section class="cover-section screen-box">
-			<h-fullwidth class="big-title" content="PORTFILIO"></h-fullwidth>
+			<h-fullwidth class="big-title" content="PORTFOLIO"></h-fullwidth>
 			<h2 class="name-title">Jin</br>Chenhao</h2>
 			<div class="select-lang">
 				<a>中文</a>
@@ -138,7 +138,7 @@ a {
   grid-template-columns: 3fr 4fr 3fr;
   grid-template-rows: 35% 20% auto 50px;
   grid-template-areas: "contact . lang"
-    "portfilio portfilio portfilio"
+    "portfolio portfolio portfolio"
     "name . menu"
     ". . menu";
   background: rgba(0,0,0,0.2);
@@ -146,7 +146,7 @@ a {
   color: white;
 }
 .big-title {
-  grid-area: portfilio;
+  grid-area: portfolio;
   font-size: 30px;
   vertical-align: bottom;
   font-weight: lighter;
@@ -294,7 +294,7 @@ a {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 25% 10% 13% auto 30px;
     grid-template-areas: "contact lang"
-      "portfilio portfilio"
+      "portfolio portfolio"
       "name name"
       "menu menu"
       ". .";

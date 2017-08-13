@@ -3,8 +3,9 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 const rootAddress = 'static'
-const remoteBackup = 'http://121.196.192.102/static' // 发布的时候改掉
-const remoteUrl = 'http://202.120.43.16:8081'
+const remoteBackup = 'http://121.196.192.102/static/data' // 发布的时候改掉, 不改也可以
+// const remoteBackup = 'static/data' // 发布的时候改成这个, 不改也可以
+const remoteUrl = 'http://202.120.43.16:8081/static/jch_data'
 const tryParse = str => {
   let data
   try {
@@ -32,11 +33,11 @@ const get = url => {
 export default {
   getMenu: () => ({ then: get(`${rootAddress}/json/menu.json`) }),
   getJSON: category => ({ then: get(`${rootAddress}/json/${category}.json`) }),
-  getData: (category, url,) => Vue.http.get(`${remoteUrl}/data/${category}/${url}`),
+  getData: (category, url,) => Vue.http.get(`${remoteUrl}/${category}/${url}`),
   getUrl: (category, url, handler) => {
 		const img = new Image
-		const priorUrl = `${remoteUrl}/data/${category}/${url}`
-		const bkUrl = `${remoteBackup}/data/${category}/${url}`
+		const priorUrl = `${remoteUrl}/${category}/${url}`
+		const bkUrl = `${remoteBackup}/${category}/${url}`
 		let isPrior = true;
 		img.onload = () => {
 			if (isPrior) {

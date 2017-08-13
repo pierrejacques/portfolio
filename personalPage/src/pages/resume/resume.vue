@@ -95,10 +95,6 @@
           </div>
         </dl>
       </section>
-<!--       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <rect x="50" y="10" rx="20" ry="20" width="150" height="100"
-  style="fill:red;stroke:black;stroke-width:5;fill-opacity:0.5"/>
-</svg> -->
     </div>
   </div>
 </template>

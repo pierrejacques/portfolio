@@ -85,7 +85,7 @@ export default {
 		right: -300px;
 	}
 	main{
-		transition: 0.5s;
+		transition: 0.2s;
 		filter: blur(0);
 	}
   main.blur {
