@@ -11,7 +11,6 @@
            @click="toSelectBall(idx)"
            :data-key="ball.text"
       ></div>
-      <h3 class="ball-note">{{balls[currentActive].text}}</h3>
     </div>
     <div class="resume-detail">
       <section class="basic" v-if="balls[currentActive].key === 'basic'">
@@ -126,7 +125,7 @@ export default {
           firstBall = $('.ball').eq(0)
         })
         scrollCatcher(delta => {
-          this.toSelectBall(this.currentActive + delta)
+          this.toSelectBall(this.currentActive - delta)
         })
       }
     })
@@ -138,18 +137,18 @@ export default {
     toSelectBall(idx) {
       if (this.isValid(idx)) {
         this.currentActive = idx
-        let marginLeft
+        let marginTop
         const width = parseInt(firstBall.css('width'))
         const sMargin = 30
         const bMargin = 55
         if (this.currentActive === 0) {
-          marginLeft = width / 2
+          marginTop = width / 2
         } else {
-          marginLeft = this.currentActive*width
+          marginTop = this.currentActive*width
             + sMargin*2*(this.currentActive - 1)
             + sMargin + bMargin + width/2
         }
-        firstBall.css('margin-left', `-${marginLeft}px`)
+        firstBall.css('margin-top', `-${marginTop}px`)
       }
     },
     format(stamp) {
@@ -161,32 +160,55 @@ export default {
 
 <style lang="css">
 .resume {
+  position: relative;
   overflow: hidden;
   width: 100vw;
-  scroll-behavior: smooth;
+  height: 100vh;
   font-family:'msyhlc4dfe54171858c';
 }
+.resume::before, .resume::after {
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  content: '';
+  width: 100vw;
+  height: 40vh;
+  left: 0;
+}
+.resume::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), transparent);
+}
+.resume::after {
+  bottom: 0;
+  background: linear-gradient(to top,rgba(255, 255, 255, 0.75), transparent);
+}
 .select-lang {
+  z-index: 10;
   position: absolute;
   font-size: 12px;
-  top:10px;
-  left: 10px;
+  top: 30px;
+  right: 30px;
 }
+
+
+
 /* 滚动区域 */
 .horiz-scroll {
-  margin-top: calc(50px + 10vh);
-  height: 180px;
-  width: 10000px;
-  padding-left: 50vw;
+  position: relative;
+  margin-left: 15vw;
+  height: 10000px;
+  width: 180px;
+  padding-top: 40vh;
 }
 .ball {
-  display: inline-block;
+  display: block;
   position: relative;
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin: 0 30px;
-  transition: 0.2s;
+  margin: 30px 0;
+  transition: 0.25s;
   transform: scale(0.2);
   background-image: linear-gradient(to bottom left, #FF8DBC, #FFF8D9);
   /* filter: blur(3px); */
@@ -198,36 +220,35 @@ export default {
   position: absolute;
   z-index: 1;
   color: black;
-  top: 130px;
-  left: -60px;
+  top: 5px;
+  left: 150px;
   font-size: 3em;
-  text-align: center;
+  text-align: left;
   width: 200px;
   opacity: 0;
 }
 .ball:not(.active):hover {
   transform: scale(0.3);
 }
-.ball:not(.active):hover::before {
+.ball:not(.active):hover::before, .ball.active::before {
   opacity: 1;
 }
-.ball-note {
-  position: relative;
-  top: 20px;
-  width: 80px;
-  line-height: 2em;
-  text-align: center;
-  border-bottom: 1px solid gray;
+.ball.active::before {
+  transform: scale(0.4);
+  left: 50px;
 }
-.ball:first-of-type, .ball.active:first-of-type, .ball-note {
-  margin-left: -40px;
+.ball:first-of-type, .ball.active:first-of-type {
+  margin-top: -40px;
 }
 .ball.active {
   transform: scale(1.5);
   opacity: 1;
-  margin: 0 55px;
+  margin: 55px 0;
 /*   filter: blur(0); */
 }
+
+
+
 /* 内容 */ /* TODO: 排版显示 */
 * {
   font-weight: lighter;
