@@ -2,7 +2,7 @@
   <div class=home>
 		<main :class="{'blur': isBigViewOpen || isBlur}">
 		  <cover :menu-list="menuList"></cover>
-		   <show-works title="sketch / modeling / product" flag="product" id="product"></show-works>
+		  <show-works title="sketch / modeling / product" flag="product" id="product"></show-works>
 		  <show-works title="UI / front-end / graphic" flag="ui" id="ui" direction="left"></show-works>
 		  <show-works title="photography" flag="photo" id="photo"></show-works>
 		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+// TODO: 音乐先去掉
 import $ from 'jquery'
 import api from '@/common/api'
 import menuList from './components/menu-list'
@@ -90,6 +91,7 @@ export default {
 	}
   main.blur {
     filter: blur(10px);
+    /* TODO：打开的时候要屏蔽 */
   }
   .big-view {
     display: flex;

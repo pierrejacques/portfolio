@@ -67,14 +67,18 @@ export default {
     },
     toSelectPic(idx) {
       if (idx === this.currentPic) {
-        this.pics[idx].pageUrl ? this.toPage(this.pics[idx].pageUrl) : this.toOpenBigView();
+        this.toOpenBigView()
+        if (this.pics[idx].pageUrl) {
+          this.toPage(this.pics[idx].pageUrl)
+        }
       } else if (this.isValid(idx)) {
         this.currentPic = idx
         this.requestImgs(idx)
       }
     },
     toPage (url) {
-      console.log('clicked')
+      window.open(url, '_blank')
+      // window.location.href = url
     },
     toSelectWork(id) {
       const idx = this.ids.indexOf(id)

@@ -65,6 +65,7 @@ export default {
   padding: 5px 20px;
 	font-size: 20px;
   font-weight: 300;
+  text-shadow: 0 0 8px white, 0 0 15px white;
   opacity: 0;
   height: 0;
   transition: 0.2s;
@@ -91,6 +92,7 @@ export default {
 	background: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 .menu-btn-bar {
 	width: 100%;
