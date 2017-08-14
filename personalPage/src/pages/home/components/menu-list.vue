@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="menu-list">
-    <ul class="list" :class="{shown: isListOpen()}" @mouseleave="toHideList(false)">
+    <ul class="list" :class="{shown: isListOpen()}" @click="toCloseList()">
       <li v-for="item in list" :href="item.url" scroll-fire>{{item.name}}</li>
       <li @click="$router.push({ name: 'resume' })">resume</li>
     </ul>
-    <button class="btn" @mouseenter="toShowList()" >
+    <button class="btn" @click="toggleList()" >
 			<div class="menu-btn-bar"></div>
 			<div class="menu-btn-bar"></div>
 			<div class="menu-btn-bar"></div>
@@ -24,14 +24,14 @@ export default {
     isListOpen() {
       return this.isOpen
     },
-    toShowList() {
-      this.isOpen = true;
-			this.$store.state.isBlur = true;
+    toggleList() {
+      this.isOpen = !this.isOpen;
+			this.$store.state.isBlur = !this.$store.state.isBlur;
     },
-    toHideList() {
+    toCloseList() {
       this.isOpen = false;
-			this.$store.state.isBlur = false;
-    },
+      this.$store.state.isBlur = false;
+    }
   },
   created() {
   }

@@ -22,7 +22,7 @@
            }">
 			  <img onselectstart="return false"
 						 :src="srcs[idx]"
-             @click=toSelectPic(idx)>
+             @click="toSelectPic(idx)">
       </div>
     </div>
     <div class="background"></div>
@@ -67,11 +67,14 @@ export default {
     },
     toSelectPic(idx) {
       if (idx === this.currentPic) {
-        this.toOpenBigView()
+        this.pics[idx].pageUrl ? this.toPage(this.pics[idx].pageUrl) : this.toOpenBigView();
       } else if (this.isValid(idx)) {
         this.currentPic = idx
         this.requestImgs(idx)
       }
+    },
+    toPage (url) {
+      console.log('clicked')
     },
     toSelectWork(id) {
       const idx = this.ids.indexOf(id)

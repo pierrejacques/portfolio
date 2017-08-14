@@ -5,21 +5,25 @@
 			"id": "moma"
     },
     {
-      "name": "MickeyIcons",
-      "id": "mickey"
-    },
-    {
-      "name": "Recho",
-      "id": "recho"
-    },
-    {
       "name": "安防队专辑",
       "id": "aft"
     },
     {
+      "name": "个人主页(旧)",
+      "id": "pg"
+    },
+    {
       "name": "movee.js",
-      "icon": ""
-    }
+      "id": "mv"
+    },
+    {
+      "name": "苏航个人主页",
+      "id": "hs"
+    },
+    {
+      "name": "Recho",
+      "id": "rch"
+    },
   ],
   "pics": [
     {
@@ -62,10 +66,30 @@
       "url": "moma_10.jpg",
       "note": "专辑效果图",
       "of": "moma"
-    },   
+    },
 		{
       "url": "aft_01.jpg",
       "of": "aft"
+    },
+		{
+      "url": "black.jpg",
+      "of": "pg",
+      "pageUrl": "http://121.196.192.102/site"
+    },
+		{
+      "url": "movee.jpg",
+      "of": "mv",
+      "pageUrl": "http://121.196.192.102/movee"
+    },
+		{
+      "url": "hangsu.jpg",
+      "of": "hs",
+      "pageUrl": "http://121.196.192.102/hang-su"
+    },
+		{
+      "url": "recho.jpg",
+      "of": "rch",
+      "pageUrl": "http://121.196.192.102/#/recho"
     }
   ]
 }
