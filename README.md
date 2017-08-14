@@ -1,5 +1,5 @@
-# portfilio
-my personal portfilio website
+# portfolio
+my personal portfolio website
 
 It's not a pure front-end / webapp project as the sketch file for designing is included. 
 To initiate the project, you should first have npm (or cnpm for mainland China users) installed.
