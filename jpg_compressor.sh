@@ -1,13 +1,8 @@
 #!/bin/sh
 
-for file in *.JPG
-do
-	echo "working on $file"
-	guetzli --quality 90 $file compressed/$file
-done
-
+mkdir compressed
 for file in *.jpg
 do
 	echo "working on $file"
-	guetzli --quality 90 $file compressed/$file
+	guetzli --quality 94 $file compressed/$file
 done
