@@ -1,5 +1,7 @@
 <template lang="html">
 	<div class="wrapper">
+		<div class="slider-img" id="slider1"></div>
+		<div class="slider-img" id="slider2"></div>
 		<div class="resume" id="resume" v-if="balls.length">
 			<div class="select-lang">
 				<a>中文</a>
@@ -7,7 +9,7 @@
 				<a>English</a>
 			</div>
 			<div class="horiz-scroll" id="test">
-				<div class="ball" v-for="(ball, idx) in balls"
+				<div class="ball ball-3d" v-for="(ball, idx) in balls"
 						 :class="{'active': idx === currentActive}"
 						 @click="toSelectBall(idx)"
 						 :data-key="ball.text"
@@ -60,32 +62,34 @@
 					</dl>
 				</section>
 				<section class="design" v-if="balls[currentActive].key === 'design'">
-					<div class="design-soft" v-for="item in content.design.softs">
-						<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
+					<div class="content-box">{{content.design.note}}</div>
+					<div class="content-box">
+						<div class="design-soft" v-for="item in content.design.softs">
+							<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
+						</div>
 					</div>
-					<p>{{content.design.note}}</p>
 				</section>
 				<section class="programming" v-if="balls[currentActive].key === 'programming'">
-					<p>{{content.programming.note}}
-					<h6 class="subtitle">熟悉语言</h6>
-					<div class="prog-langs" v-for="item in content.programming.langs">
-						<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
+					<div class="content-box">{{content.programming.note}}</div>
+					<div class="content-box">
+						<div class="prog-langs" v-for="item in content.programming.langs">
+							<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
+						</div>
 					</div>
-					<h6 class="subtitle">熟悉工具/框架</h6>
-					<div class="prog-tools" v-for="item in content.programming.tools">
-						<i :class="item.icon" class="iconfont"  :style="`color:${item.color}`"></i><br/>{{item.name}}
+					<div class="content-box">
+						<div class="prog-tools" v-for="item in content.programming.tools">
+							<i :class="item.icon" class="iconfont"  :style="`color:${item.color}`"></i><br/>{{item.name}}
+						</div>
 					</div>
-					<h6 class="subtitle">项目经历</h6>
-					<dl>
+					<div class="content-box">
 						<div class="prog-projects" v-for="item in content.programming.projects">
 							{{item.name}} <span class="text-align-right">{{item.note}}</span>
 						</div>
-					</dl>
+					</div>
 				</section>
 				<section class="research" v-if="balls[currentActive].key === 'research'">
-					<p>{{content.research.note}}</p>
-					<h6 class="subtitle">研究项目</h6>
-					<dl>
+					<div class="content-box">{{content.research.note}}</div>
+					<dl class="content-box">
 						<div v-for="item in content.research.projects">
 							<dt>{{item.name}}</dt><dd>{{item.note}}</dd>
 						</div>
@@ -103,6 +107,8 @@ import scrollCatcher from '@/common/utils/scrollCatcher'
 import api from '@/common/api'
 
 let $firstBall
+const doomyImg = new Image
+const $imgs = {} // 用于存放两张交替显示的背景图片
 
 export default {
   name: 'Resume',
@@ -111,6 +117,10 @@ export default {
       currentActive: 0,
       balls: [],
       content: {},
+			length: 0,
+			isLoaded: [], // 判断一个位置是否已经被一部替换
+			srcs: [], // img读取src的地方
+			imgUrls: [], // 暂存待加载的图片地址
     }
   },
   created() {
@@ -127,6 +137,24 @@ export default {
         })
       }
     })
+		api.getJSON('cover')
+    .then(
+      data => {
+        const root = '../../../../static/data/cover/'
+        this.data.length = data.alter.length
+        data.url.forEach(url => {
+          this.data.imgUrls.push(`${root}${url}`)
+        })
+        this.data.srcs = data.alter
+        this.toSelect(0)
+        this.loadImgs(0)
+      },
+      () => {}
+    )
+  },
+	mounted() {
+    $imgs[0] = $('#slider1')
+    $imgs[1] = $('#slider2')
   },
   methods: {
     isValid(idx) {
@@ -151,6 +179,38 @@ export default {
     },
     format(stamp) {
       return moment(parseInt(stamp)).format('YYYY.MM')
+    },
+		toSelect(idx) {
+      if (!this.isActive(idx)) {
+        this.currentActive = idx
+        this.timeOut()
+        $imgs[Number(this.nowShow)].css('background-image', this.data.srcs[idx]).addClass('show')
+        $imgs[Number(!this.nowShow)].removeClass('show')
+        this.nowShow = !this.nowShow
+      }
+    },
+    next(idx) {
+      return idx < this.data.length - 1 ? idx + 1 : 0
+    },
+    timeOut() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      this.timer = setTimeout(() => {
+        this.toSelect(this.next(this.currentActive))
+      }, 3000);
+    },
+    loadImgs(idx) {
+      if (idx < this.data.srcs.length) {
+        doomyImg.src = this.data.imgUrls[idx]
+        doomyImg.onload = () => {
+          let srcIdx = this.next(this.currentActive)
+          while (this.data.isLoaded[srcIdx]) { srcIdx = this.next(srcIdx) }
+          this.data.srcs[srcIdx] = `url(${doomyImg.src})`
+          this.data.isLoaded[srcIdx] = true
+          this.loadImgs(idx + 1)
+        }
+      }
     }
   },
 }
@@ -158,19 +218,18 @@ export default {
 
 <style lang="css">
 .wrapper {
-	background: #434343;
+	background: #eee;
 }
 .resume {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   grid-column-gap: 150px;
   position: relative;
   overflow: hidden;
- 	max-width: 1366px;
+ 	max-width: 1200px;
 	margin: auto;
   height: 100vh;
-  font-family:'msyhlc4dfe54171858c';
-	background: white;
+	background: #fcfcfc;
 	box-shadow: 0 0 20px rgba(50, 50, 50, 0.3);
 }
 .resume::before, .resume::after {
@@ -194,16 +253,14 @@ export default {
   z-index: 10;
   position: absolute;
   font-size: 12px;
-  top: 30px;
-  right: 30px;
+  top: 10px;
+  right: 20px;
 }
-
-
 
 /* 滚动区域 */
 .horiz-scroll {
   position: relative;
-  margin-left: 7vw;
+  margin-left: 8vw;
   height: 100vh;
   padding-top: 45vh; /* 中线位置 */
 }
@@ -240,8 +297,8 @@ export default {
   opacity: 1;
 }
 .ball.active::before {
-  transform: scale(0.4);
-  left: 50px;
+  transform: scale(0.3);
+  left: 30px;
 }
 .ball:first-of-type, .ball.active:first-of-type {
   margin-top: -40px;
@@ -253,8 +310,6 @@ export default {
 /*   filter: blur(0); */
 }
 
-
-
 /* 内容 */ /* TODO: 排版显示 */
 * {
   font-weight: lighter;
@@ -264,13 +319,31 @@ export default {
 	z-index: 2;
 	padding-top: 45vh; /* 中线位置 */
 	padding-right: 5vw;
+	font-size: 14px;
 }
 .resume-detail section {
 	transform: translate(0, -50%);
 }
+.text-align-right {
+	float: right;
+}
+.iconfont {
+	font-size: 24px;
+	text-align: center;
+}
+.content-box {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 22px 50px 17px 80px;
+	margin: 10px 0 0 0px;
+	/* border: 1px solid black; */
+	box-shadow: 0 3px 5px #ddd;
+	background: white;
+}
+/* dl dt dd */
 dl > div {
   width: 100%;
-  height: 40px;
+  height: 36px;
 }
 dd, dt {
   margin: 0;
@@ -286,34 +359,61 @@ dd {
   width: 70%;
 }
 
+/* 专项的规定 */
 .basic dt {
   width: 10%;
+	margin-left: 10%;
 }
-
-.text-align-right {
-	float: right;
-}
-
 .prog-projects {
-	width: 600px;
+	padding-left: 20px;
+	height: 32px;
 }
-
-.subtitle {
-	font-size: 1rem;
-}
-	.subtitle::before {
-		content: '-';
-	}
-
 .design-soft, .prog-langs, .prog-tools {
 	display: inline-block;
-	width: 100px; height: 100px;
+	width: 70px;
+	margin: 10px 5px;
 	text-align: center;
 	line-height: 25px;
+	font-size: 12px;
 }
 
-.iconfont {
-	font-size: 30px;
-	text-align: center;
+/* ball-3d */
+.ball-3d {
+  position: relative;
+	border-radius: 50%;
+	background: radial-gradient(circle 141px at 21% 21%, #eee 0, #ddd 14%, #666 53%, #aaa 71%);
+}
+
+.ball-3d::after {
+	content: '';
+	z-index: -1;
+	position: absolute;
+	width: 60%;
+	height: 20%;
+	background: #151515;
+	border-radius: 50%;
+	bottom: -7px;
+	right: 45%;
+	transform: translate(50%, 0);
+	filter: blur(10px);
+}
+
+/* 背景色 */
+
+.slider-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  transition: 3s;
+  opacity: 0;
+}
+.slider-img.show {
+  opacity: 1;
 }
 </style>

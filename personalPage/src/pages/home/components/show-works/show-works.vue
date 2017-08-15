@@ -21,9 +21,7 @@
            }">
 			  <img :src="srcs[idx]"
              @click="toSelectPic(idx)"/>
-				<a class="page-url" :href="pic.pageUrl" target="_blank" v-if="pic.pageUrl && idx === currentPic">
-					<span class="iconfont icon-routo"></span>
-					more details
+				<a class="page-url iconfont icon-routo" :href="pic.pageUrl" target="_blank" v-if="pic.pageUrl && idx === currentPic">
 				</a>
       </div>
     </div>
@@ -240,23 +238,23 @@ img {
 	display: inline-block;
 	position: absolute;
 	z-index: 1;
-	bottom: 23%;
-	right: -10px;
+	bottom: 20%;
+	right: 55px;
+  line-height: 25px;
+  width: 25px;
+  padding: 10px;
+  border-radius: 50%;
 	font-weight: normal;
 	cursor: pointer;
 	pointer-events: all;
-	padding: 7px 20px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 	background: rgba(255, 255, 255, 0.8);
 	transition: 0.3s;
 }
-
 .page-url:hover {
 	background: white;
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-	text-decoration: underline;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3)
 }
-.iconfont { opacity: 0.6; }
 .page-url:hover .iconfont { opacity: 1; }
 
 /* loading效果 */
