@@ -140,7 +140,7 @@ export default {
         let marginTop
         const width = parseInt(firstBall.css('width'))
         const sMargin = 30
-        const bMargin = 55
+        const bMargin = 60
         if (this.currentActive === 0) {
           marginTop = width / 2
         } else {
@@ -160,6 +160,9 @@ export default {
 
 <style lang="css">
 .resume {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 150px;
   position: relative;
   overflow: hidden;
   width: 100vw;
@@ -196,9 +199,8 @@ export default {
 /* 滚动区域 */
 .horiz-scroll {
   position: relative;
-  margin-left: 15vw;
-  height: 10000px;
-  width: 180px;
+  margin-left: 10vw;
+  height: 100vh;
   padding-top: 40vh;
 }
 .ball {
@@ -254,8 +256,9 @@ export default {
   font-weight: lighter;
 }
 .resume-detail {
-  width: 800px;
-  margin: auto;
+}
+.resume-detail section {
+
 }
 dl > div {
   width: 100%;
@@ -268,14 +271,13 @@ dd, dt {
 }
 dt {
   padding-right: 17px;
-  text-align: right;
-  width: 40%;
+  width: 20%;
 }
 dd {
   padding-left: 20px;
-  width: 57%;
+  width: 70%;
 }
-.basic dt, .basic dd {
-  width: 49%;
+.basic dt {
+  width: 10%;
 }
 </style>

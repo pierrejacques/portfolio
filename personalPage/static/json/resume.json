@@ -52,16 +52,16 @@
         "text": "上海"
       },
       {
-        "item": "爱好",
-        "text": "吃屎"
+        "item": "TEL",
+        "text": "18717899218"
       },
       {
-        "item": "特长",
-        "text": "拉屎"
+        "item": "E-mail",
+        "text": "pierrejacques@126.com"
       },
       {
-        "item": "联系方式",
-        "text": "拉屎"
+        "item": "github",
+        "text": "pierrejacques"
       }
     ],
     "edu": [
@@ -179,31 +179,38 @@
       "softs": [
         {
           "name": "Adobe Photoshop",
-          "icon": ""
+          "icon": "icon-ps",
+          "color": "#2e2777"
         },
     		{
           "name": "Adobe Illustrator",
-          "icon": ""
+          "icon": "icon-ai",
+          "color": "#ffb345"
         },
     		{
           "name": "Adobe Lightroom",
-          "icon": ""
+          "icon": "icon-lr",
+          "color": "#151f27"
         },
     		{
           "name": "Sketch",
-          "icon": ""
+          "icon": "icon-sketch",
+          "color": "#ffae00"
         },
     		{
           "name": "Axure RP",
-          "icon": ""
+          "icon": "icon-axure",
+          "color": "#af35cc"
         },
     		{
           "name": "Rhinoceros",
-          "icon": ""
+          "icon": "icon-rhino",
+          "color": "#cdcdcd"
         },
     		{
           "name": "Keyshot",
-          "icon": ""
+          "icon": "icon-keyshot",
+          "color": "#00a3ff"
         }
       ]
     },
@@ -226,65 +233,70 @@
       "langs": [
   			{
   				"name": "ES6",
-  				"icon": ""
+  				"icon": "icon-es6",
+          "color": "#f0db4f"
   			},
   			{
   				"name": "CSS3",
-  				"icon": ""
+  				"icon": "icon-css3",
+          "color": "#2aa9e0"
   			},
   			{
   				"name": "HTML5",
-  				"icon": ""
-  			},
-  			{
-  				"name": "MongoDB",
-  				"icon": ""
+  				"icon": "icon-h5",
+          "color": "#f1652a"
   			},
   			{
   				"name": "Matlab",
-  				"icon": ""
-  			},
-  			{
-  				"name": "C",
-  				"icon": ""
+  				"icon": "icon-matlab",
+          "color": "#cc570a"
   			},
   			{
   				"name": "Arduino",
-  				"icon": ""
+  				"icon": "icon-arduino",
+          "color": "#e23337"
   			}
   		],
   		"tools": [
   			{
   				"name": "git",
-  				"icon": ""
+  				"icon": "icon-git",
+          "color": "#f05036"
   			},
   			{
   				"name": "npm",
-  				"icon": ""
+  				"icon": "icon-npm",
+          "color": "#cc3534"
   			},
   			{
   				"name": "webpack",
-  				"icon": ""
+  				"icon": "icon-webpack",
+          "color": "#8ed6fb"
   			},
   			{
   				"name": "jquery.js",
-  				"icon": ""
+  				"icon": "icon-jquery",
+          "color": "#1168ae"
   			},
   			{
   				"name": "angular.js",
-  				"icon": ""
+  				"icon": "icon-angular",
+          "color": "#e23337"
   			},
   			{
   				"name": "Vue.js",
-  				"icon": ""
+  				"icon": "icon-vue",
+          "color": "#41b883"
   			},
   			{
   				"name": "d3.js",
-  				"icon": ""
+  				"icon": "icon-d3",
+          "color": "#f68b47"
   			},
   			{
   				"name": "materialize.css",
-  				"icon": ""
+  				"icon": "icon-materialize",
+          "color": "#f6a1ac"
   			}
   		],
       "projects": [

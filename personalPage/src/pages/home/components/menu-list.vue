@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="menu-list">
-    <ul class="list" :class="{shown: isListOpen()}" @mouseleave="toHideList(false)">
+    <ul class="list" :class="{shown: isListOpen()}" @click="toCloseList()">
       <li v-for="item in list" :href="item.url" scroll-fire>{{item.name}}</li>
       <li @click="$router.push({ name: 'resume' })">resume</li>
     </ul>
-    <button class="btn" @mouseenter="toShowList()" >
+    <button class="btn" @click="toggleList()" >
 			<div class="menu-btn-bar"></div>
 			<div class="menu-btn-bar"></div>
 			<div class="menu-btn-bar"></div>
@@ -24,14 +24,14 @@ export default {
     isListOpen() {
       return this.isOpen
     },
-    toShowList() {
-      this.isOpen = true;
-			this.$store.state.isBlur = true;
+    toggleList() {
+      this.isOpen = !this.isOpen;
+			this.$store.state.isBlur = !this.$store.state.isBlur;
     },
-    toHideList() {
+    toCloseList() {
       this.isOpen = false;
-			this.$store.state.isBlur = false;
-    },
+      this.$store.state.isBlur = false;
+    }
   },
   created() {
   }
@@ -65,6 +65,7 @@ export default {
   padding: 5px 20px;
 	font-size: 20px;
   font-weight: 300;
+  text-shadow: 0 0 8px white, 0 0 15px white;
   opacity: 0;
   height: 0;
   transition: 0.2s;
@@ -91,6 +92,10 @@ export default {
 	background: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+.btn:hover > .menu-btn-bar {
+  margin-bottom: 15px;
 }
 .menu-btn-bar {
 	width: 100%;
@@ -102,7 +107,7 @@ export default {
 .shown + .btn > .menu-btn-bar {
 	transform: rotate(-45deg);
 	margin-bottom: 15px;
-	height: 1px;
+	height: 2px;
 	background: gray;
 }
 </style>
