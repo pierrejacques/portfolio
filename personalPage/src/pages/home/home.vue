@@ -12,6 +12,7 @@
 		</main>
     <div class="big-view" v-show="isBigViewOpen">
       <img class="big-img" :src="bigUrl" @click="toCloseBigView">
+			<a v-if="pageUrl" class="page-url" target="_blank" :href="pageUrl"><span class="iconfont icon-routo"></span>more details</a>
     </div>
 		<menu-list :list="menuList" class="menu-list" :class="{hide: isMenuHide || isBigViewOpen}"></menu-list>
   </div>
@@ -50,6 +51,9 @@ export default {
     },
 		isBlur() {
 			return this.$store.state.isBlur
+		},
+		pageUrl() {
+			return this.$store.state.pageUrl
 		}
   },
   created() {
@@ -108,4 +112,30 @@ export default {
     cursor: zoom-out;
     box-shadow: 0 5px 10px gray;
   }
+	.page-url {
+		display: inline-block;
+		position: absolute;
+		z-index: 1;
+		bottom: 10%;
+		right: 0;
+		font-size: 1.5em;
+		font-weight: normal;
+		cursor: pointer;
+		pointer-events: all;
+		line-height: 20px;
+		padding: 7px 20px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+		background: rgba(255, 255, 255, 0.8);
+		transition: 0.3s;
+	}
+
+	.page-url:hover {
+		background: white;
+		box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+	}
+	.iconfont { opacity: 0.6; margin-right: 1em; }
+	.page-url:hover .iconfont { opacity: 1; }
+
+
+
 </style>
