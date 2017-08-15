@@ -178,17 +178,17 @@
       "note": "",
       "softs": [
         {
-          "name": "Adobe Photoshop",
+          "name": "Photoshop",
           "icon": "icon-ps",
           "color": "#2e2777"
         },
     		{
-          "name": "Adobe Illustrator",
+          "name": "Illustrator",
           "icon": "icon-ai",
           "color": "#ffb345"
         },
     		{
-          "name": "Adobe Lightroom",
+          "name": "Lightroom",
           "icon": "icon-lr",
           "color": "#151f27"
         },

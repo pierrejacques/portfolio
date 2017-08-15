@@ -1,101 +1,99 @@
 <template lang="html">
-  <div class="resume" id="resume" v-if="balls.length">
-    <div class="select-lang">
-      <a>中文</a>
-      |
-      <a>English</a>
-    </div>
-    <div class="horiz-scroll" id="test">
-      <div class="ball" v-for="(ball, idx) in balls"
-           :class="{'active': idx === currentActive}"
-           @click="toSelectBall(idx)"
-           :data-key="ball.text"
-      ></div>
-    </div>
-    <div class="resume-detail">
-      <section class="basic" v-if="balls[currentActive].key === 'basic'">
-        <dl>
-          <div v-for="item in content.basic">
-            <dt>{{item.item}}</dt>
-            <dd>{{item.text}}</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="edu" v-if="balls[currentActive].key === 'edu'">
-        <dl>
-          <div v-for="item in content.edu">
-            <dt>{{format(item.from)}} - {{format(item.to)}}</dt>
-            <dd>{{item.at}}</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="leader" v-if="balls[currentActive].key === 'leader'">
-        <dl>
-          <div v-for="item in content.leader">
-            <dt>{{format(item.from)}}
-              <span v-show="item.to">- {{format(item.to)}}</span>
-              </dt>
-            <dd><span v-if="item.at">{{item.at}} · </span>{{item.as}}</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="intern" v-if="balls[currentActive].key === 'intern'">
-        <dl>
-          <div v-for="item in content.intern">
-            <dt>{{format(item.from)}} - {{format(item.to)}}
-            </dt>
-            <dd>{{item.at}} · {{item.as}}</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="perform" v-if="balls[currentActive].key === 'perform'">
-        <dl>
-          <div v-for="item in content.perform">
-            <dt>{{format(item.from)}}
-              <span v-if="item.to"> - {{format(item.to)}}</span>
-            </dt>
-            <dd>{{item.at}} · {{item.as}}</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="design" v-if="balls[currentActive].key === 'design'">
-        <div class="design-soft" v-for="item in content.design.softs">
-          <img :src="item.icon">
-          <i>{{item.name}}</i>
-        </div>
-        <p>{{content.design.note}}</p>
-      </section>
-      <section class="programming" v-if="balls[currentActive].key === 'programming'">
-        <p>{{content.programming.note}}
-        <h6>熟悉语言</h6>
-        <div class="prog-langs" v-for="item in content.programming.langs">
-          <img :src="item.icon">
-          <i>{{item.name}}</i>
-        </div>
-        <h6>熟悉工具/框架</h6>
-        <div class="prog-tools" v-for="item in content.programming.tools">
-          <img :src="item.icon">
-          <i>{{item.name}}</i>
-        </div>
-        <h6>项目经历</h6>
-        <dl>
-          <div class="prog-projects" v-for="item in content.programming.projects">
-            <dt>{{item.name}}</dt>
-            <dd>{{item.note}}</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="research" v-if="balls[currentActive].key === 'research'">
-        <p>{{content.research.note}}</p>
-        <h6>研究项目</h6>
-        <dl>
-          <div v-for="item in content.research.projects">
-            <dt>{{item.name}}</dt><dd>{{item.note}}</dd>
-          </div>
-        </dl>
-      </section>
-    </div>
-  </div>
+	<div class="wrapper">
+		<div class="resume" id="resume" v-if="balls.length">
+			<div class="select-lang">
+				<a>中文</a>
+				|
+				<a>English</a>
+			</div>
+			<div class="horiz-scroll" id="test">
+				<div class="ball" v-for="(ball, idx) in balls"
+						 :class="{'active': idx === currentActive}"
+						 @click="toSelectBall(idx)"
+						 :data-key="ball.text"
+				></div>
+			</div>
+			<div class="resume-detail">
+				<section class="basic" v-if="balls[currentActive].key === 'basic'">
+					<dl>
+						<div v-for="item in content.basic">
+							<dt>{{item.item}}</dt>
+							<dd>{{item.text}}</dd>
+						</div>
+					</dl>
+				</section>
+				<section class="edu" v-if="balls[currentActive].key === 'edu'">
+					<dl>
+						<div v-for="item in content.edu">
+							<dt>{{format(item.from)}} - {{format(item.to)}}</dt>
+							<dd>{{item.at}}</dd>
+						</div>
+					</dl>
+				</section>
+				<section class="leader" v-if="balls[currentActive].key === 'leader'">
+					<dl>
+						<div v-for="item in content.leader">
+							<dt>{{format(item.from)}}
+								<span v-show="item.to">- {{format(item.to)}}</span>
+								</dt>
+							<dd><span v-if="item.at">{{item.at}} · </span>{{item.as}}</dd>
+						</div>
+					</dl>
+				</section>
+				<section class="intern" v-if="balls[currentActive].key === 'intern'">
+					<dl>
+						<div v-for="item in content.intern">
+							<dt>{{format(item.from)}} - {{format(item.to)}}
+							</dt>
+							<dd>{{item.at}} · {{item.as}}</dd>
+						</div>
+					</dl>
+				</section>
+				<section class="perform" v-if="balls[currentActive].key === 'perform'">
+					<dl>
+						<div v-for="item in content.perform">
+							<dt>{{format(item.from)}}
+								<span v-if="item.to"> - {{format(item.to)}}</span>
+							</dt>
+							<dd>{{item.at}} · {{item.as}}</dd>
+						</div>
+					</dl>
+				</section>
+				<section class="design" v-if="balls[currentActive].key === 'design'">
+					<div class="design-soft" v-for="item in content.design.softs">
+						<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
+					</div>
+					<p>{{content.design.note}}</p>
+				</section>
+				<section class="programming" v-if="balls[currentActive].key === 'programming'">
+					<p>{{content.programming.note}}
+					<h6 class="subtitle">熟悉语言</h6>
+					<div class="prog-langs" v-for="item in content.programming.langs">
+						<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
+					</div>
+					<h6 class="subtitle">熟悉工具/框架</h6>
+					<div class="prog-tools" v-for="item in content.programming.tools">
+						<i :class="item.icon" class="iconfont"  :style="`color:${item.color}`"></i><br/>{{item.name}}
+					</div>
+					<h6 class="subtitle">项目经历</h6>
+					<dl>
+						<div class="prog-projects" v-for="item in content.programming.projects">
+							{{item.name}} <span class="text-align-right">{{item.note}}</span>
+						</div>
+					</dl>
+				</section>
+				<section class="research" v-if="balls[currentActive].key === 'research'">
+					<p>{{content.research.note}}</p>
+					<h6 class="subtitle">研究项目</h6>
+					<dl>
+						<div v-for="item in content.research.projects">
+							<dt>{{item.name}}</dt><dd>{{item.note}}</dd>
+						</div>
+					</dl>
+				</section>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -104,7 +102,7 @@ import moment from 'moment'
 import scrollCatcher from '@/common/utils/scrollCatcher'
 import api from '@/common/api'
 
-let firstBall
+let $firstBall
 
 export default {
   name: 'Resume',
@@ -122,7 +120,7 @@ export default {
         this.balls = data.catalog
         this.content = data.content
         $(document).ready(() => {
-          firstBall = $('.ball').eq(0)
+          $firstBall = $('.ball').eq(0)
         })
         scrollCatcher(delta => {
           this.toSelectBall(this.currentActive - delta)
@@ -138,9 +136,9 @@ export default {
       if (this.isValid(idx)) {
         this.currentActive = idx
         let marginTop
-        const width = parseInt(firstBall.css('width'))
-        const sMargin = 30
-        const bMargin = 60
+        const width = parseInt($firstBall.css('width'))
+        const sMargin = 15
+        const bMargin = 40
         if (this.currentActive === 0) {
           marginTop = width / 2
         } else {
@@ -148,7 +146,7 @@ export default {
             + sMargin*2*(this.currentActive - 1)
             + sMargin + bMargin + width/2
         }
-        firstBall.css('margin-top', `-${marginTop}px`)
+        $firstBall.css('margin-top', `-${marginTop}px`)
       }
     },
     format(stamp) {
@@ -159,15 +157,21 @@ export default {
 </script>
 
 <style lang="css">
+.wrapper {
+	background: #434343;
+}
 .resume {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   grid-column-gap: 150px;
   position: relative;
   overflow: hidden;
-  width: 100vw;
+ 	max-width: 1366px;
+	margin: auto;
   height: 100vh;
   font-family:'msyhlc4dfe54171858c';
+	background: white;
+	box-shadow: 0 0 20px rgba(50, 50, 50, 0.3);
 }
 .resume::before, .resume::after {
   pointer-events: none;
@@ -199,9 +203,9 @@ export default {
 /* 滚动区域 */
 .horiz-scroll {
   position: relative;
-  margin-left: 10vw;
+  margin-left: 7vw;
   height: 100vh;
-  padding-top: 40vh;
+  padding-top: 45vh; /* 中线位置 */
 }
 .ball {
   display: block;
@@ -256,13 +260,17 @@ export default {
   font-weight: lighter;
 }
 .resume-detail {
+	position: relative;
+	z-index: 2;
+	padding-top: 45vh; /* 中线位置 */
+	padding-right: 5vw;
 }
 .resume-detail section {
-
+	transform: translate(0, -50%);
 }
 dl > div {
   width: 100%;
-  height: 28px;
+  height: 40px;
 }
 dd, dt {
   margin: 0;
@@ -271,13 +279,41 @@ dd, dt {
 }
 dt {
   padding-right: 17px;
-  width: 20%;
+  width: 25%;
 }
 dd {
   padding-left: 20px;
   width: 70%;
 }
+
 .basic dt {
   width: 10%;
+}
+
+.text-align-right {
+	float: right;
+}
+
+.prog-projects {
+	width: 600px;
+}
+
+.subtitle {
+	font-size: 1rem;
+}
+	.subtitle::before {
+		content: '-';
+	}
+
+.design-soft, .prog-langs, .prog-tools {
+	display: inline-block;
+	width: 100px; height: 100px;
+	text-align: center;
+	line-height: 25px;
+}
+
+.iconfont {
+	font-size: 30px;
+	text-align: center;
 }
 </style>
