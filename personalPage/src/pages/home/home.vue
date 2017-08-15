@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// TODO: 音乐先去掉
 import $ from 'jquery'
 import api from '@/common/api'
 import menuList from './components/menu-list'

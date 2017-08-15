@@ -93,7 +93,7 @@ export default {
     },
   },
   created() {
-    api.getJSON(this.flag) // TODO: 把一些图片的格式换成svg
+    api.getJSON(this.flag)
     .then(data => {
       this.pics = data.pics
 			this.works = data.works
@@ -110,6 +110,9 @@ export default {
 </script>
 
 <style scoped lang="css">
+* {
+  font-weight: 300;
+}
 /* gridding */
 .show-works {
   display: grid;
@@ -137,7 +140,7 @@ export default {
 }
 .work-menu li {
   cursor: pointer;
-  font-family:'msyhlc4dfe54171858c';
+  /* font-family:'msyhlc4dfe54171858c'; */
   letter-spacing: .2em;
   line-height: 1.5em;
   opacity: 0.4;
@@ -148,8 +151,7 @@ export default {
 }
 .title {
   grid-area: title;
-  font-family: 'Quicksand', sans-serif;
-  font-family:'msyhlc4dfe54171858c';
+/*   font-family: 'Quicksand', sans-serif; */
   font-size: 1.2rem;
   height: 50px;
   margin-top: calc(7vw - 20px);

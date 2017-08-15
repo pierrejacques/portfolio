@@ -94,6 +94,9 @@ export default {
   outline: none;
   cursor: pointer;
 }
+.btn:hover > .menu-btn-bar {
+  margin-bottom: 15px;
+}
 .menu-btn-bar {
 	width: 100%;
 	height: 3px;
@@ -104,7 +107,7 @@ export default {
 .shown + .btn > .menu-btn-bar {
 	transform: rotate(-45deg);
 	margin-bottom: 15px;
-	height: 1px;
+	height: 2px;
 	background: gray;
 }
 </style>
