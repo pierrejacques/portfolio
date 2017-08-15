@@ -13,6 +13,7 @@ const store = new vuex.Store({
     isBigViewOpen: false,
     bigUrl: undefined,
 		isBlur: false,
+		pageUrl: undefined
   },
 })
 

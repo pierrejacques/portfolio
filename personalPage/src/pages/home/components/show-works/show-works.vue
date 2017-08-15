@@ -6,7 +6,6 @@
           :class="{active: work.id === ids[currentPic]}"
           @click="toSelectWork(work.id)">
         {{work.name}}
-        {{work.note}}
       </li>
     </ul>
     <div class="img-slider">
@@ -20,9 +19,12 @@
              'left-to-main': idx < currentPic,
              'right-to-main': idx > currentPic,
            }">
-			  <img onselectstart="return false"
-						 :src="srcs[idx]"
-             @click="toSelectPic(idx)">
+			  <img :src="srcs[idx]"
+             @click="toSelectPic(idx)"/>
+				<a class="page-url" :href="pic.pageUrl" target="_blank" v-if="pic.pageUrl && idx === currentPic">
+					<span class="iconfont icon-routo"></span>
+					more details
+				</a>
       </div>
     </div>
     <div class="background"></div>
@@ -68,17 +70,10 @@ export default {
     toSelectPic(idx) {
       if (idx === this.currentPic) {
         this.toOpenBigView()
-        if (this.pics[idx].pageUrl) {
-          this.toPage(this.pics[idx].pageUrl)
-        }
       } else if (this.isValid(idx)) {
         this.currentPic = idx
         this.requestImgs(idx)
       }
-    },
-    toPage (url) {
-      window.open(url, '_blank')
-      // window.location.href = url
     },
     toSelectWork(id) {
       const idx = this.ids.indexOf(id)
@@ -87,9 +82,14 @@ export default {
         this.requestImgs(idx)
       }
     },
+		toPage (url) {
+			console.log(11)
+			window.open(url)
+		},
     toOpenBigView() {
       this.$store.state.isBigViewOpen = true
       this.$store.state.bigUrl = this.srcs[this.currentPic]
+			this.$store.state.pageUrl = this.pics[this.currentPic].pageUrl
     },
   },
   created() {
@@ -143,7 +143,7 @@ export default {
   /* font-family:'msyhlc4dfe54171858c'; */
   letter-spacing: .2em;
   line-height: 1.5em;
-  opacity: 0.4;
+  opacity: 0.6;
   /* font-family: 'Raleway'; */
 }
 .work-menu .active, .work-menu li:hover {
@@ -236,6 +236,28 @@ img {
   left: 100%;
   transform: translate(-100%, -50%);
 }
+.page-url {
+	display: inline-block;
+	position: absolute;
+	z-index: 1;
+	bottom: 23%;
+	right: -10px;
+	font-weight: normal;
+	cursor: pointer;
+	pointer-events: all;
+	padding: 7px 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	background: rgba(255, 255, 255, 0.8);
+	transition: 0.3s;
+}
+
+.page-url:hover {
+	background: white;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+	text-decoration: underline;
+}
+.iconfont { opacity: 0.6; }
+.page-url:hover .iconfont { opacity: 1; }
 
 /* loading效果 */
 @keyframes imgLoader {
@@ -260,6 +282,8 @@ img {
 }
 .loading img {
   opacity: 0;
+	width: 50%;
+  height: 100%;
 }
 /* reverse */
 .reverse {
