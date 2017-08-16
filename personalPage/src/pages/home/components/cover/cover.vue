@@ -3,11 +3,13 @@
 		<section class="cover-section screen-box">
 			<h-fullwidth class="big-title" content="PORTFOLIO"></h-fullwidth>
 			<h2 class="name-title">Jin</br>Chenhao</h2>
+<!--
 			<div class="select-lang">
 				<a>中文</a>
 				|
 				<a>English</a>
 			</div>
+-->
 			<div class="contact-list">
 				<img class="iconfont" src="../../../../common/assets/github.svg">
 				<a target="_blank" href="https://github.com/pierrejacques">Github</a>

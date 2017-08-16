@@ -33,4 +33,23 @@ a, a:active {
   color: black;
   text-decoration: none;
 }
+	
+/* pageUrl */
+ .page-url {
+	display: inline-block;
+	position: absolute;
+	z-index: 1;
+	border-radius: 50%;
+	font-weight: normal;
+	cursor: pointer;
+	pointer-events: all;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	background: rgba(255, 255, 255, 0.8);
+	transition: 0.3s;
+}
+.page-url:hover {
+	background: white;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3)
+}
+.page-url:hover .iconfont { opacity: 1; }
 </style>

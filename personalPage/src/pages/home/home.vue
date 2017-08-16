@@ -10,9 +10,9 @@
 		  <!-- <show-works title="resume" flag="resume" id="resume"></show-works> -->
 <!--       <resume></resume> -->
 		</main>
-    <div class="big-view" v-show="isBigViewOpen">
-      <img class="big-img" :src="bigUrl" @click="toCloseBigView">
-			<a v-if="pageUrl" class="page-url iconfont icon-routo" target="_blank" :href="pageUrl"></a>
+    <div class="big-view" v-show="isBigViewOpen" @click="toCloseBigView">
+      <img class="big-img" :src="bigUrl" >
+			<a v-if="pageUrl" class="page-url iconfont icon-routo" target="_blank" :href="pageUrl" @click.stop></a>
     </div>
 		<menu-list :list="menuList" class="menu-list" :class="{hide: isMenuHide || isBigViewOpen}"></menu-list>
   </div>
@@ -113,29 +113,13 @@ export default {
     box-shadow: 0 5px 10px gray;
   }
   .page-url {
-  	display: inline-block;
-  	position: absolute;
-  	z-index: 1;
   	bottom: 50px;
   	right: 50px;
     line-height: 30px;
     width: 30px;
     padding: 15px;
-    border-radius: 50%;
-  	font-weight: normal;
     font-size: 1.5em;
-  	cursor: pointer;
-  	pointer-events: all;
-  	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-  	background: rgba(255, 255, 255, 0.8);
-  	transition: 0.3s;
   }
-  .page-url:hover {
-  	background: white;
-  	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3)
-  }
-  .page-url:hover .iconfont { opacity: 1; }
-
 
 
 </style>

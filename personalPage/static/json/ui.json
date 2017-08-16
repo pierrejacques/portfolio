@@ -1,13 +1,5 @@
 {
   "works": [
-		{
-      "name": "默马专辑",
-			"id": "moma"
-    },
-    {
-      "name": "安防队专辑",
-      "id": "aft"
-    },
     {
       "name": "个人主页(旧)",
       "id": "pg"
@@ -17,16 +9,44 @@
       "id": "mv"
     },
     {
-      "name": "苏航个人主页",
+      "name": "摄影师苏航的主页",
       "id": "hs"
     },
     {
       "name": "Recho",
       "id": "rch"
+    },
+		{
+      "name": "默马专辑",
+			"id": "moma"
+    },
+    {
+      "name": "安防队专辑",
+      "id": "aft"
     }
   ],
   "pics": [
-    {
+		{
+      "url": "black.jpg",
+      "of": "pg",
+      "pageUrl": "http://121.196.192.102/site"
+    },
+		{
+      "url": "movee.jpg",
+      "of": "mv",
+      "pageUrl": "http://121.196.192.102/movee"
+    },
+		{
+      "url": "hangsu.jpg",
+      "of": "hs",
+      "pageUrl": "http://121.196.192.102/hang-su"
+    },
+		{
+      "url": "recho.jpg",
+      "of": "rch",
+      "pageUrl": "http://121.196.192.102/#/recho"
+    },
+		{
       "url": "moma_1.jpg",
       "note": "专辑效果图",
       "of": "moma"
@@ -70,26 +90,6 @@
 		{
       "url": "aft_01.jpg",
       "of": "aft"
-    },
-		{
-      "url": "black.jpg",
-      "of": "pg",
-      "pageUrl": "http://121.196.192.102/site"
-    },
-		{
-      "url": "movee.jpg",
-      "of": "mv",
-      "pageUrl": "http://121.196.192.102/movee"
-    },
-		{
-      "url": "hangsu.jpg",
-      "of": "hs",
-      "pageUrl": "http://121.196.192.102/hang-su"
-    },
-		{
-      "url": "recho.jpg",
-      "of": "rch",
-      "pageUrl": "http://121.196.192.102/#/recho"
     }
   ]
 }

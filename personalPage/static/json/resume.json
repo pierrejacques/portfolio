@@ -51,6 +51,10 @@
         "item": "现居",
         "text": "上海"
       },
+			{
+				"item": "爱好",
+				"text": "音乐、历史、游泳"
+			},
       {
         "item": "TEL",
         "text": "18717899218"
@@ -58,10 +62,6 @@
       {
         "item": "E-mail",
         "text": "pierrejacques@126.com"
-      },
-      {
-        "item": "github",
-        "text": "pierrejacques"
       }
     ],
     "edu": [
@@ -175,7 +175,7 @@
   		}
   	],
     "design": {
-      "note": "",
+      "note": "自幼接受系统的绘画训练，有不错的手绘功底。<br/>熟练使用基本的设计建模、平面设计、原型开发软件。了解Google Material Design设计原则。<br/>现于上海交大交互设计实验室参与美学计算相关的研究，主要聚焦于行为或神经层面的美学研究以及机器审美和设计自动化",
       "softs": [
         {
           "name": "Photoshop",
@@ -205,7 +205,7 @@
     		{
           "name": "Rhinoceros",
           "icon": "icon-rhino",
-          "color": "#cdcdcd"
+          "color": "#888"
         },
     		{
           "name": "Keyshot",
@@ -215,7 +215,7 @@
       ]
     },
     "programming": {
-  		"note": "",
+  		"note": "自高中参加NOI竞赛从Pascal开始接触算法和编程(上海市二等奖)<br/>本科接受系统的算法学习，熟悉常用的排序、优化、动态规划算法，熟悉神经网络、决策树等常用的机器学习|数据挖掘算法，略微了解一定图像处理算法<br/>研究生阶段开始接触前端编程，关注ES6和CSS3的前沿发展，有一定项目开发经历，对如何写出可维护的代码略有心得",
   		"ables": [
   			{
   				"name": "前端开发",
@@ -254,7 +254,7 @@
   			{
   				"name": "Arduino",
   				"icon": "icon-arduino",
-          "color": "#e23337"
+          "color": "#37b2b7"
   			}
   		],
   		"tools": [
@@ -300,10 +300,6 @@
   			}
   		],
       "projects": [
-        {
-          "name": "uxpa比赛项目·打听",
-          "note": "基于angular/ionic"
-        },
   			{
           "name": "平安科技zeus/vms漏洞防范平台",
           "note": "基于angular/webpack/npm"
@@ -315,18 +311,22 @@
   			{
           "name": "交大Recho音频技术分享网",
           "note": "基于vue-cli"
-        }
+        },
+				{
+					"name": "摄影师苏航的个人主页",
+					"note": "基于vue-cli"
+				}
       ]
     },
     "research": {
-      "note": "",
+      "note": "研究生阶段主要从事两项研究：眼动行为与美感的关系，和网页图像特征提取与机器审美<br/>前者已取得不错的理论成果，论文待发表<br/>后者基于大量的网页页面，通过图像特征提取算法，试图让机器获得自动评价一个页面的排版的能力，先验尝试已取得一定效果，现仍在实验阶段",
       "projects": [
         {
           "name": "美感与眼动一致性",
           "note": ""
         },
   			{
-          "name": "计算机美感",
+          "name": "机器版式审美",
           "note": ""
         }
       ]
