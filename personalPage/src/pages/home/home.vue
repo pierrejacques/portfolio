@@ -2,7 +2,7 @@
   <div class=home>
 		<main :class="{'blur': isBigViewOpen || isBlur}">
 		  <cover :menu-list="menuList"></cover>
-		  <show-works title="sketch / modeling / product" flag="product" id="product"></show-works>
+		  <show-works title="product / modeling /sketch" flag="product" id="product"></show-works>
 		  <show-works title="UI / front-end / graphic" flag="ui" id="ui" direction="left"></show-works>
 		  <show-works title="photography" flag="photo" id="photo"></show-works>
 		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->

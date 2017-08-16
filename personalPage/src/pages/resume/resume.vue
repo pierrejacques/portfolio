@@ -206,8 +206,10 @@ export default {
 
 <style lang="css">
 .wrapper {
-	background: #eee;
 	background: rgba(255, 255, 255, 0.6);
+	height: 100vh;
+	min-height: 700px;
+	overflow: hidden;
 }
 .resume {
   display: grid;
@@ -249,7 +251,7 @@ export default {
 /* 滚动区域 */
 .horiz-scroll {
   position: relative;
-  margin-left: 6vw;
+  margin-left: 7vw;
   height: 100vh;
   padding-top: 45vh; /* 中线位置 */
 }
@@ -323,8 +325,7 @@ export default {
 	font-size: 24px;
 	text-align: center;
 }
-	
-	
+
 .content-box {
 	position: relative;
 	box-sizing: border-box;
@@ -347,7 +348,7 @@ export default {
 	color: white;
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
-	
+
 .note {
 	line-height: 2em;
 	margin: -5px 0 5px 15px;
@@ -411,7 +412,7 @@ dd {
 
 .ball-3d::after {
 	content: '';
-	z-index: -1;
+	z-index: -10;
 	position: absolute;
 	width: 60%;
 	height: 20%;
@@ -429,8 +430,8 @@ dd {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+	height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
