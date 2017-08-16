@@ -11,10 +11,8 @@
 			</div>
 -->
 			<div class="contact-list">
-				<img class="iconfont" src="../../../../common/assets/github.svg">
-				<a target="_blank" href="https://github.com/pierrejacques">Github</a>
-				<img class="iconfont" src="../../../../common/assets/email.svg">
-				<a target="_blank" href="mailto:pierrejacques@126.com">Email</a>
+				<a target="_blank" href="https://github.com/pierrejacques"><i class="iconfont icon-github"></i> Github</a>
+				<a target="_blank" href="mailto:pierrejacques@126.com"><i class="iconfont icon-email"></i> Email</a>
 			</div>
 			<ul class="menu">
 				<li v-for="item in menuList" :href="item.url" scroll-fire>
@@ -136,19 +134,25 @@ a {
 }
 .cover-section {
   display: grid;
-	position: relative;
+  display: -ms-grid;
   grid-template-columns: 3fr 4fr 3fr;
   grid-template-rows: 35% 20% auto 50px;
   grid-template-areas: "contact . lang"
     "portfolio portfolio portfolio"
     "name . menu"
     ". . menu";
+	-ms-grid-columns: 3fr 4fr 3fr;
+  -ms-grid-rows: 35% 20% auto 50px;
+	position: relative;
   background: rgba(0,0,0,0.2);
   padding: 30px 60px;
   color: white;
 }
 .big-title {
   grid-area: portfolio;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 2;
   font-size: 30px;
   vertical-align: bottom;
   font-weight: lighter;
@@ -157,6 +161,8 @@ a {
 }
 .name-title {
   grid-area: name;
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
   font-size: 24px;
   text-align: left;
   font-weight: lighter;
@@ -164,6 +170,8 @@ a {
 .select-lang {
   position: relative;
   grid-area: lang;
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
   font-size: 12px;
   font-weight: lighter;
   text-align: right;
@@ -171,19 +179,21 @@ a {
 }
 .contact-list {
   grid-area: contact;
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
   font-size: 12px;
   font-weight: lighter;
   text-align: left;
   text-indent: -30px;
 }
-.contact-list .iconfont {
-	height: 20px;
-	filter: invert();
-	vertical-align: -0.5em;
-	margin: 0 5px 0 15px;
-}
+	.contact-list a {
+		margin: 10px;
+	}
 .menu {
   grid-area: menu;
+  -ms-grid-column: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-row: 3;
   font-weight: lighter;
   list-style: none;
   line-height: 1.8em;
@@ -296,6 +306,13 @@ a {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 25% 10% 13% auto 30px;
     grid-template-areas: "contact lang"
+      "portfolio portfolio"
+      "name name"
+      "menu menu"
+      ". ."; 
+		-ms-grid-columns: 1fr 1fr;
+    -ms-grid-rows: 25% 10% 13% auto 30px;
+    -ms-grid-areas: "contact lang"
       "portfolio portfolio"
       "name name"
       "menu menu"

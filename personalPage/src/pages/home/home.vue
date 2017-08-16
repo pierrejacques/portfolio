@@ -9,6 +9,7 @@
 		  <!-- <show-works title="aesthetics research" flag="research" id="research"></show-works> -->
 		  <!-- <show-works title="resume" flag="resume" id="resume"></show-works> -->
 <!--       <resume></resume> -->
+			<footer>*this site is grid-based, which means it may not perform the correct layout on browsers that's released before Mar 2017</footer>
 		</main>
     <div class="big-view" v-show="isBigViewOpen" @click="toCloseBigView">
       <img class="big-img" :src="bigUrl" >
@@ -120,6 +121,14 @@ export default {
     padding: 15px;
     font-size: 1.5em;
   }
-
+	
+	footer {
+		z-index: 1;
+		background: white;
+		color: silver;
+		text-align: center;
+		padding: 30px;
+	}
+/* TODO: 响应式开发 */
 
 </style>

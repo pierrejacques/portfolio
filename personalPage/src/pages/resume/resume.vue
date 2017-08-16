@@ -15,7 +15,9 @@
 						 :class="{'active': idx === currentActive}"
 						 @click="toSelectBall(idx)"
 						 :data-key="ball.text"
-				></div>
+				>
+					<img v-if="ball.img && idx === currentActive" :src="ball.img">
+				</div>
 			</div>
 			<div class="resume-detail">
 				<section class="basic" v-if="balls[currentActive].key === 'basic'">
@@ -144,6 +146,7 @@ export default {
     .then(data => {
       if (data.catalog) {
         this.balls = data.catalog
+				console.log(this.balls)
         this.content = data.content
         $(document).ready(() => {
           $firstBall = $('.ball').eq(0)
@@ -213,8 +216,10 @@ export default {
 }
 .resume {
   display: grid;
+  display: -ms-grid;
   grid-template-columns: 1fr 3fr;
-  grid-column-gap: 150px;
+  grid-column-gap: 150px;  
+	-ms-grid-columns: 1fr 150px 3fr;
   position: relative;
   overflow: hidden;
  	width: 1300px;
@@ -250,6 +255,7 @@ export default {
 
 /* 滚动区域 */
 .horiz-scroll {
+	-ms-grid-column: 1;
   position: relative;
   margin-left: 7vw;
   height: 100vh;
@@ -303,12 +309,19 @@ export default {
 .ball:first-of-type, .ball.active:first-of-type {
   margin-top: -40px;
 }
+.ball img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	margin: auto;
+}
 
 /* 内容 */ /* TODO: 排版显示 */
 * {
   font-weight: lighter;
 }
 .resume-detail {
+	-ms-grid-column: 3;
 	position: relative;
 	z-index: 2;
 	padding-top: 45vh; /* 中线位置 */
@@ -436,10 +449,11 @@ dd {
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
-  transition: 3s;
+  transition: opacity 3s;
   opacity: 0;
 }
 .slider-img.show {
   opacity: 1;
 }
+/* 头图开发 */
 </style>

@@ -2,7 +2,8 @@
   "catalog": [
     {
       "text": "基本信息",
-      "key": "basic"
+      "key": "basic",
+			"img": "./static/data/resume/head.png"
     },
     {
       "text": "教育经历",

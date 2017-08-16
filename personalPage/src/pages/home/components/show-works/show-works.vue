@@ -114,6 +114,7 @@ export default {
 /* gridding */
 .show-works {
   display: grid;
+  display: -ms-grid;
   box-sizing: border-box;
   padding: 100px 50px;
   width: 100vw;
@@ -125,6 +126,8 @@ export default {
   grid-template-rows: 1fr 3fr ;
   grid-row-gap: 20px;
   grid-template-areas: "slider slider title" "slider slider list";
+	-ms-grid-columns: 1fr 50px 2fr 50px 1fr;
+	-ms-grid-rows: 1fr 20px 3fr;
   perspective: 400px;
 }
 .show-works.reverse {
@@ -132,10 +135,13 @@ export default {
 }
 .work-menu {
   grid-area: list;
+	-ms-grid-column: 5;
+	-ms-grid-row: 3;
   position: relative;
   list-style-type: none;
   left: -20px;
 }
+.reverse .work-menu { -ms-grid-column: 1;}
 .work-menu li {
   cursor: pointer;
   /* font-family:'msyhlc4dfe54171858c'; */
@@ -149,17 +155,27 @@ export default {
 }
 .title {
   grid-area: title;
+	-ms-grid-column: 5;
+	-ms-grid-row: 1;
 /*   font-family: 'Quicksand', sans-serif; */
   font-size: 1.2rem;
   height: 50px;
   margin-top: calc(7vw - 20px);
   border-bottom: 1px solid black;
 }
+.reverse .title { -ms-grid-column: 1;}
 /* slider */
 .img-slider {
   position: relative;
   height: 100%;
   grid-area: slider;
+	-ms-grid-column: 1;
+	-ms-grid-row: 1;
+	-ms-grid-column-span: 3;
+	-ms-grid-row-span: 3;
+}
+.reverse .img-slider { 
+	-ms-grid-column: 3;
 }
 .img-box {
   position: absolute;
