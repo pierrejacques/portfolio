@@ -1,0 +1,102 @@
+﻿{
+  "works": [
+    {
+      "name": "HEXAMP",
+      "id": "hx"
+    },
+    {
+      "name": "AnaPuzzle",
+      "id": "ana"
+    },
+    {
+      "name": "Quadrum",
+      "id": "jw"
+    },
+    {
+      "name": "Urban Cursor",
+      "id": "uc"
+    },
+    {
+      "name": "Modeling",
+      "id": "md"
+    },
+    {
+      "name": "Sketch",
+      "id": "sk"
+    }
+  ],
+  "pics": [
+    {
+      "url": "hx_01.jpg",
+      "of": "hx"
+    },
+		{
+      "url": "hx_02.jpg",
+      "of": "hx"
+    },
+		{
+      "url": "hx_03.jpg",
+      "of": "hx"
+    },
+    {
+      "url": "ana_01.jpg",
+      "of": "ana"
+    },
+		{
+      "url": "jw_01.jpg",
+      "of": "jw"
+    },
+		{
+      "url": "jw_02.jpg",
+      "of": "jw"
+    },
+		{
+      "url": "uc_01.jpg",
+      "of": "uc"
+    },
+		{
+      "url": "md_01.jpg",
+      "of": "md"
+    },
+		{
+      "url": "md_02.jpg",
+      "of": "md"
+    },
+		{
+      "url": "sk_01.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_02.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_03.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_04.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_05.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_06.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_07.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_08.jpg",
+      "of": "sk"
+    },
+		{
+      "url": "sk_09.jpg",
+      "of": "sk"
+    }
+  ]
+}

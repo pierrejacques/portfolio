@@ -219,7 +219,7 @@ export default {
   display: grid;
   display: -ms-grid;
   grid-template-columns: 1fr 3fr;
-  grid-column-gap: 150px;  
+  grid-column-gap: 150px;
 	-ms-grid-columns: 1fr 150px 3fr;
   position: relative;
   overflow: hidden;
@@ -357,7 +357,7 @@ export default {
 	padding: 22px 30px 17px 80px;
 	margin: 10px 0 0 0px;
 	/* border: 1px solid black; */
-	box-shadow: 2px 1px 5px #bbb;
+	box-shadow: 2px 1px 5px #DDE1EA;
 	background: rgba(255, 255, 255, 0.35);
 }
 .content-title {
