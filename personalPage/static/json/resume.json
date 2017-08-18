@@ -7,31 +7,38 @@
     },
     {
       "text": "教育经历",
-      "key": "edu"
+      "key": "edu",
+			"icon": "icon-edu"
     },
     {
       "text": "活动经历",
-      "key": "leader"
+      "key": "leader",
+			"icon": "icon-activity"
     },
     {
       "text": "实习经历",
-      "key": "intern"
+      "key": "intern",
+			"icon": "icon-intern"
     },
     {
       "text": "演出经历",
-      "key": "perform"
+      "key": "perform",
+			"icon": "icon-show"
     },
     {
       "text": "设计",
-      "key": "design"
+      "key": "design",
+			"icon": "icon-design"
     },
     {
       "text": "编程",
-      "key": "programming"
+      "key": "programming",
+			"icon": "icon-code"
     },
     {
       "text": "科研",
-      "key": "research"
+      "key": "research",
+			"icon": "icon-research"
     }
   ],
   "content": {

@@ -17,6 +17,7 @@
 						 :data-key="ball.text"
 				>
 					<img v-if="ball.img && idx === currentActive" :src="ball.img">
+					<i v-if="ball.icon && idx === currentActive" :class="ball.icon" class="iconfont icon"></i>
 				</div>
 			</div>
 			<div class="resume-detail">
@@ -257,7 +258,7 @@ export default {
 .horiz-scroll {
 	-ms-grid-column: 1;
   position: relative;
-  margin-left: 7vw;
+  margin-left: 6vw;
   height: 100vh;
   padding-top: 45vh; /* 中线位置 */
 }
@@ -298,12 +299,13 @@ export default {
 	transform: scale(0.3);
 }
 
-.ball:not(.active):hover::before, .ball.active::before {
+.ball:not(.active):hover::before {
   opacity: 1;
 	transform: scale(1.5);
 }
-.ball.active::before {
-  left: 30px;
+.ball.active::before, .ball.active:hover::before {
+	opacity: 1;
+  left: 35px;
 	transform: scale(0.3);
 }
 .ball:first-of-type, .ball.active:first-of-type {
@@ -314,6 +316,15 @@ export default {
 	height: 100%;
 	border-radius: 50%;
 	margin: auto;
+}
+.ball .icon {
+	position: absolute;
+	display: inline-block;
+	width: 100%; line-height: 80px;
+	text-align: center;
+	z-index: 10;
+	font-size: 16px;
+	opacity: 0.5;
 }
 
 /* 内容 */ /* TODO: 排版显示 */
@@ -346,7 +357,7 @@ export default {
 	padding: 22px 30px 17px 80px;
 	margin: 10px 0 0 0px;
 	/* border: 1px solid black; */
-	box-shadow: 3px 1px 5px #ccc;
+	box-shadow: 2px 1px 5px #bbb;
 	background: rgba(255, 255, 255, 0.35);
 }
 .content-title {
