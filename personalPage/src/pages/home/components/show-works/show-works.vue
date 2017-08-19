@@ -287,6 +287,7 @@ img {
   .show-works, .show-works.reverse {
     height: calc(300px + 50vw);
     padding: 0 30px;
+    margin-bottom: 100px;
     width: 100vw;
     grid-template-rows: 100px 60vw auto;
     grid-row-gap: 0;
@@ -294,9 +295,14 @@ img {
     grid-template-areas: "title" "slider" "list";
   }
   .title {
+    width: 70%;
     border-bottom: none;
     padding-top: 20px;
     border-top: 1px solid black;
+  }
+  .reverse .title {
+    margin-left: 30%;
+    margin-right: 0;
   }
   .work-menu li {
     display: inline-block;
