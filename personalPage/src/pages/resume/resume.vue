@@ -342,7 +342,7 @@ export default {
 	opacity: 0.5;
 }
 
-/* 内容 */ /* TODO: 排版显示 */
+/* 内容 */
 * {
   font-weight: lighter;
 }
