@@ -7,10 +7,7 @@
 		  <show-works title="photography" flag="photo" id="photo"></show-works>
 		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->
 		  <!-- <show-works title="aesthetics research" flag="research" id="research"></show-works> -->
-		  <!-- <show-works title="resume" flag="resume" id="resume"></show-works> -->
-<!--       <resume></resume> -->
-			<footer>*this site is grid-based, which means it may not perform the correct layout on browsers that's released before Mar 2017</footer>
-		</main>
+			</main>
     <div class="big-view" v-show="isBigViewOpen" @click="toCloseBigView">
       <img class="big-img" :src="bigUrl" >
 			<a v-if="pageUrl" class="page-url iconfont icon-routo" target="_blank" :href="pageUrl" @click.stop></a>
@@ -77,7 +74,7 @@ export default {
       })
     }
     domOperations()
-    api.getMenu().then(data => {
+    api.getMenu(this.$store.state.isEnglish).then(data => {
       this.menuList = data
     })
   },
@@ -121,7 +118,7 @@ export default {
     padding: 15px;
     font-size: 1.5em;
   }
-	
+
 	footer {
 		z-index: 1;
 		background: white;

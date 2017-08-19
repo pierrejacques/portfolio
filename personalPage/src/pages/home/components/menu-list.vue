@@ -2,7 +2,7 @@
   <div class="menu-list">
     <ul class="list" :class="{shown: isListOpen()}" @click="toCloseList()">
       <li v-for="item in list" :href="item.url" scroll-fire>{{item.name}}</li>
-      <li @click="$router.push({ name: 'resume' })">resume</li>
+      <li @click="routeResume">resume</li>
     </ul>
     <button class="btn" @click="toggleList()" >
 			<div class="menu-btn-bar"></div>
@@ -21,6 +21,9 @@ export default {
     }
   },
   methods: {
+    routeResume() {
+			this.$store.state.isEnglish ? this.$router.push({ name: 'resumeEn' }) : this.$router.push({ name: 'resumeZh' })
+		},
     isListOpen() {
       return this.isOpen
     },

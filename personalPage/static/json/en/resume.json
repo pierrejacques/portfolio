@@ -1,0 +1,343 @@
+﻿{
+  "catalog": [
+    {
+      "text": "Basics",
+      "key": "basic",
+			"img": "./static/data/resume/head.png"
+    },
+    {
+      "text": "Education",
+      "key": "edu",
+			"icon": "icon-edu"
+    },
+    {
+      "text": "Leadership",
+      "key": "leader",
+			"icon": "icon-activity"
+    },
+    {
+      "text": "Internship",
+      "key": "intern",
+			"icon": "icon-intern"
+    },
+    {
+      "text": "Performance",
+      "key": "perform",
+			"icon": "icon-show"
+    },
+    {
+      "text": "Design",
+      "key": "design",
+			"icon": "icon-design"
+    },
+    {
+      "text": "Programming",
+      "key": "programming",
+			"icon": "icon-code"
+    },
+    {
+      "text": "Research",
+      "key": "research",
+			"icon": "icon-research"
+    }
+  ],
+  "content": {
+    "basic": [
+      {
+        "item": "name",
+        "text": "Jin Chenhao"
+      },
+      {
+        "item": "born",
+        "text": "1992-12"
+      },
+      {
+        "item": "hometown",
+        "text": "Shanghai，Jinshan District"
+      },
+      {
+        "item": "residence",
+        "text": "Shanghai"
+      },
+			{
+				"item": "hobby",
+				"text": "Music，History，Swimming"
+			},
+      {
+        "item": "TEL",
+        "text": "18717899218"
+      },
+      {
+        "item": "E-mail",
+        "text": "pierrejacques@126.com"
+      }
+    ],
+    "edu": [
+      {
+  			"from": "1220198400000",
+  			"to": "1309449600000",
+        "as": "High School",
+        "at": "Shanghai Jian Ping High School"
+      },
+  		{
+  			"from": "1314806400000",
+  			"to": "1435680000000",
+        "as": "Bachelor Major",
+        "at": "Applied Math, Shanghai Jiao Tong University"
+      },
+  		{
+  			"from": "1362067200000",
+  			"to": "1435680000000",
+        "as": "Bachelor Minor",
+        "at": "Industrial Design, Shanghai Jiao Tong University"
+      },
+  		{
+  			"from": "1441036800000",
+  			"to": "1519833600000",
+        "as": "Master",
+        "at": "Industrial Design Engineering, Shanghai Jiao Tong University"
+      }
+    ],
+    "leader": [
+      {
+  			"from": "1314806400000",
+  			"to": "1346428800000",
+        "as": "Class Monitor"
+      },
+  		{
+  			"from": "1346428800000",
+  			"to": "1409500800000",
+  			"at": "SJTU Band Union",
+        "as": "Chief"
+      },
+  		{
+  			"from": "1346428800000",
+  			"to": "1377964800000",
+  			"at": "SJTU Art Center",
+        "as": "leader of Performance Department"
+      },
+  		{
+  			"from": "1335801600000",
+  			"at": "SJTU Shi Yan Talk Show",
+        "as": "General Director"
+      },
+  		{
+  			"from": "1367337600000",
+  			"at": "SJTU 2nd Oasis Music Festival",
+        "as": "Deputy Director"
+      },
+  		{
+  			"from": "1354291200000",
+  			"to": "1385827200000",
+  			"at": "SJTU Soulrocker Show",
+        "as": "Planner"
+      },
+  		{
+  			"from": "1335801600000",
+  			"to": "1367337600000",
+  			"at": "SJTU Graduate Rock Show",
+        "as": "Planner"
+      }
+    ],
+    "intern": [
+      {
+  			"from": "1490976000000",
+  			"to": "1417363200000",
+  			"at": "Huawei Shanghai Institute, UI Design Department",
+        "as": "UI Designer"
+      },
+      {
+  			"from": "1493568000000",
+  			"to": "1506787200000",
+  			"at": "Ping An Technology, Information Security Department",
+        "as": "Web Dev"
+      }
+    ],
+  	"perform": [
+  		{
+  			"from": "1333209600000",
+  			"at": "SJTU 17th Campus Singer Contest",
+        "as": "Top 10 Singers"
+      },
+  		{
+  			"from": "1388505600000",
+  			"to": "1433088000000",
+  			"at": "An Fang Team Album",
+        "as": "Producer"
+  		},
+  		{
+  			"from": "1435680000000",
+  			"at": "An Fang Team Tour Show",
+        "as": "Player"
+  		},
+  		{
+  			"from": "1451577600000",
+  			"at": "2015 Xiao He Music Portrait Plan",
+        "as": "Player"
+  		},
+  		{
+  			"from": "1467302400000",
+  			"to": "1469980800000",
+  			"at": "Chen Xiaoxion Tour Show",
+        "as": "Player"
+  		}
+  	],
+    "design": {
+      "note": "Having a good sketch ability.<br/>Being familiar with normal design-related softwares.<br/>Understanding concepts such as the Google Material Design Guidelines.<br/>Currently focusing on aesthetics computing in IXD(Interaction and Experience Design) lab in Shanghai Jiao Tong University.",
+      "softs": [
+        {
+          "name": "Photoshop",
+          "icon": "icon-ps",
+          "color": "#2e2777"
+        },
+    		{
+          "name": "Illustrator",
+          "icon": "icon-ai",
+          "color": "#ffb345"
+        },
+    		{
+          "name": "Lightroom",
+          "icon": "icon-lr",
+          "color": "#151f27"
+        },
+    		{
+          "name": "Sketch",
+          "icon": "icon-sketch",
+          "color": "#ffae00"
+        },
+    		{
+          "name": "Axure RP",
+          "icon": "icon-axure",
+          "color": "#af35cc"
+        },
+    		{
+          "name": "Rhinoceros",
+          "icon": "icon-rhino",
+          "color": "#888"
+        },
+    		{
+          "name": "Keyshot",
+          "icon": "icon-keyshot",
+          "color": "#00a3ff"
+        }
+      ]
+    },
+    "programming": {
+  		"note": "Systematically trained on algorithms during undergraduate studies. <br/>Being familiar with optimizing algorithms, dynamic programming, Machine Learning & Data Mining algorithms.<br/>Good at Front-end programming and Keeping focus on the frontier development of EcmaScript and CSS. <br/>Having a few project experiences and knowing how to produce maintainable codes.",
+  		"ables": [
+  			{
+  				"name": "Front-end Dev",
+  				"icon": ""
+  			},
+  			{
+  				"name": "Data Mining & Machine Learning",
+  				"icon": ""
+  			},
+  			{
+  				"name": "SCM programming",
+  				"icon": ""
+  			}
+  		],
+      "langs": [
+  			{
+  				"name": "ES6",
+  				"icon": "icon-es6",
+          "color": "#f0db4f"
+  			},
+  			{
+  				"name": "CSS3",
+  				"icon": "icon-css3",
+          "color": "#2aa9e0"
+  			},
+  			{
+  				"name": "HTML5",
+  				"icon": "icon-h5",
+          "color": "#f1652a"
+  			},
+  			{
+  				"name": "Matlab",
+  				"icon": "icon-matlab",
+          "color": "#cc570a"
+  			},
+  			{
+  				"name": "Arduino",
+  				"icon": "icon-arduino",
+          "color": "#37b2b7"
+  			}
+  		],
+  		"tools": [
+  			{
+  				"name": "git",
+  				"icon": "icon-git",
+          "color": "#f05036"
+  			},
+  			{
+  				"name": "npm",
+  				"icon": "icon-npm",
+          "color": "#cc3534"
+  			},
+  			{
+  				"name": "webpack",
+  				"icon": "icon-webpack",
+          "color": "#8ed6fb"
+  			},
+  			{
+  				"name": "jquery.js",
+  				"icon": "icon-jquery",
+          "color": "#1168ae"
+  			},
+  			{
+  				"name": "angular.js",
+  				"icon": "icon-angular",
+          "color": "#e23337"
+  			},
+  			{
+  				"name": "Vue.js",
+  				"icon": "icon-vue",
+          "color": "#41b883"
+  			},
+  			{
+  				"name": "d3.js",
+  				"icon": "icon-d3",
+          "color": "#f68b47"
+  			},
+  			{
+  				"name": "materialize.css",
+  				"icon": "icon-materialize",
+          "color": "#f6a1ac"
+  			}
+  		],
+      "projects": [
+  			{
+          "name": "Ping An Technology zeus/vms platform",
+          "note": "Based on angular/webpack/npm"
+        },
+  			{
+          "name": "Personal Page",
+          "note": "Based on vue-cli"
+        },
+  			{
+          "name": "SJTU Recho Music Technology Website",
+          "note": "Based on vue-cli"
+        },
+				{
+					"name": "Personal Page of Photographer Su Hang",
+					"note": "Based on vue-cli"
+				}
+      ]
+    },
+    "research": {
+      "note": "Worked on two issues during postgraduate period: aesthetics and eye-path consistency & machine aesthetics on layouts.<br/>The former one has reached good results to publish and the latter one is still in progress.<br/>I love those topics",
+      "projects": [
+        {
+          "name": "aesthetics and eye-path consistency",
+          "note": ""
+        },
+  			{
+          "name": "Machine aesthetics on webpage layouts",
+          "note": ""
+        }
+      ]
+    }
+  }
+}

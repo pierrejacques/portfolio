@@ -35,12 +35,12 @@ import api from '@/common/api'
 export default {
   name: 'show-works',
   props: [
-    'title',
     'flag',
     'direction',
   ],
   data() {
     return {
+      title: '',
       currentPic: undefined,
       works: [],
       pics: [],
@@ -91,8 +91,9 @@ export default {
     },
   },
   created() {
-    api.getJSON(this.flag)
+    api.getJSON(this.flag, this.$store.state.isEnglish)
     .then(data => {
+      this.title = data.title
       this.pics = data.pics
 			this.works = data.works
       if (this.pics) {
@@ -174,7 +175,7 @@ export default {
 	-ms-grid-column-span: 3;
 	-ms-grid-row-span: 3;
 }
-.reverse .img-slider { 
+.reverse .img-slider {
 	-ms-grid-column: 3;
 }
 .img-box {

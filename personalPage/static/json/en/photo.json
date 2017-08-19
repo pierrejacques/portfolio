@@ -1,23 +1,23 @@
 {
-  "title": "摄影",
+  "title": "photography",
   "works": [
 		{
-      "name": "人像",
+      "name": "Portrait",
       "icon": "",
       "id": "pt"
     },
     {
-      "name": "旅行 & 人文",
+      "name": "Travel",
       "icon": "",
       "id": "tr"
     },
   	{
-      "name": "静景",
+      "name": "Scene",
       "icon": "",
       "id": "sc"
     },
 		{
-      "name": "JEEZ X 田笑",
+      "name": "JEEZ X Tian",
       "icon": "",
       "id": "tx"
     },
@@ -27,12 +27,12 @@
       "id": "5g"
     },
 		{
-  		"name": "JEEZ X 美术协会",
+  		"name": "JEEZ X ArtStudio",
   		"icon": "",
       "id": "msxh"
   	},
     {
-      "name": "JEEZ X 钟媛&陆晨琪",
+      "name": "JEEZ X Zhong&Lu",
       "icon": "",
       "id": "zy_lcq"
     },

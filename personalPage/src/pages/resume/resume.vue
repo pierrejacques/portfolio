@@ -3,13 +3,11 @@
 		<div class="slider-img" id="slider1"></div>
 		<div class="slider-img" id="slider2"></div>
 		<div class="resume" id="resume" v-if="balls.length">
-<!--
-			<div class="select-lang">
-				<a>中文</a>
+		<div class="select-lang">
+				<a href="#" @click.prevent="$router.push({ name: 'resumeZh' })">中文</a>
 				|
-				<a>English</a>
+				<a href="#" @click.prevent="$router.push({ name: 'resumeEn' })">English</a>
 			</div>
--->
 			<div class="horiz-scroll" id="test">
 				<div class="ball ball-3d" v-for="(ball, idx) in balls"
 						 :class="{'active': idx === currentActive}"
@@ -68,11 +66,11 @@
 				</section>
 				<section class="design" v-if="balls[currentActive].key === 'design'">
 					<div class="content-box">
-						<h6 class="content-title">自述</h6>
+						<h6 class="content-title">{{isEnglish ? 'note' : '自述'}}</h6>
 						<p class="note" v-html="content.design.note"></p>
 					</div>
 					<div class="content-box">
-						<h6 class="content-title">熟悉软件</h6>
+						<h6 class="content-title">{{isEnglish ? 'softwares' : '熟悉软件'}}</h6>
 						<div class="design-soft" v-for="item in content.design.softs">
 							<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
 						</div>
@@ -80,23 +78,23 @@
 				</section>
 				<section class="programming" v-if="balls[currentActive].key === 'programming'">
 					<div class="content-box">
-						<h6 class="content-title">自述</h6>
+						<h6 class="content-title">{{isEnglish ? 'note' : '自述'}}</h6>
 						<p class="note" v-html="content.programming.note"></p>
 					</div>
 					<div class="content-box">
-						<h6 class="content-title">熟悉语言</h6>
+						<h6 class="content-title">{{isEnglish ? 'languages': '熟悉语言'}}</h6>
 						<div class="prog-langs" v-for="item in content.programming.langs">
 							<i :class="item.icon" class="iconfont" :style="`color:${item.color}`"></i><br/>{{item.name}}
 						</div>
 					</div>
 					<div class="content-box">
-						<h6 class="content-title">熟悉框架</h6>
+						<h6 class="content-title">{{isEnglish ? 'familiar frameworks' : '熟悉框架'}}</h6>
 						<div class="prog-tools" v-for="item in content.programming.tools">
 							<i :class="item.icon" class="iconfont"  :style="`color:${item.color}`"></i><br/>{{item.name}}
 						</div>
 					</div>
 					<div class="content-box">
-						<h6 class="content-title">项目经历</h6>
+						<h6 class="content-title">{{isEnglish ? 'projects' : '项目经历'}}</h6>
 						<div class="prog-projects" v-for="item in content.programming.projects">
 							{{item.name}} <span class="text-align-right">{{item.note}}</span>
 						</div>
@@ -104,18 +102,18 @@
 				</section>
 				<section class="research" v-if="balls[currentActive].key === 'research'">
 					<div class="content-box">
-						<h6 class="content-title">自述</h6>
+						<h6 class="content-title">{{isEnglish ? 'note' : '自述'}}</h6>
 						<p class="note" v-html="content.research.note"></p>
 					</div>
 					<dl class="content-box">
-						<h6 class="content-title">项目</h6>
+						<h6 class="content-title">{{isEnglish ? 'projects' : '项目'}}</h6>
 						<div v-for="item in content.research.projects">
 							<dt>{{item.name}}</dt><dd>{{item.note}}</dd>
 						</div>
 					</dl>
 				</section>
 			</div>
-			<a class="page-url iconfont icon-routo" href="../"></a>
+			<a class="page-url iconfont icon-routo" href="#" @click.prevent="routeHome()"></a>
 		</div>
 	</div>
 </template>
@@ -143,11 +141,10 @@ export default {
     }
   },
   created() {
-    api.getJSON('resume')
+    api.getJSON('resume', this.isEnglish)
     .then(data => {
       if (data.catalog) {
         this.balls = data.catalog
-				console.log(this.balls)
         this.content = data.content
         $(document).ready(() => {
           $firstBall = $('.ball').eq(0)
@@ -171,7 +168,15 @@ export default {
       () => {}
     )
   },
+	computed: {
+		isEnglish() {
+			return this.$store.state.isEnglish
+		}
+	},
   methods: {
+		routeHome() {
+			this.isEnglish ? this.$router.push({ name: 'homeEn' }) : this.$router.push({ name: 'homeZh' })
+		},
     isValid(idx) {
       return idx >= 0 && idx < this.balls.length
     },
@@ -210,7 +215,7 @@ export default {
 
 <style lang="css" scoped>
 .wrapper {
-	background: rgba(255, 255, 255, 0.6);
+	background: rgba(255, 255, 255, 0.5);
 	height: 100vh;
 	min-height: 700px;
 	overflow: hidden;
@@ -223,7 +228,7 @@ export default {
 	-ms-grid-columns: 1fr 150px 3fr;
   position: relative;
   overflow: hidden;
- 	width: 1300px;
+ 	width: 1280px;
 	height: 100vh;
 	margin: auto;
 	background: rgba(255, 255, 255, 0.1);
@@ -271,7 +276,7 @@ export default {
   margin: 30px 0;
   transition: 0.25s;
   transform: scale(0.2);
-  background-image: linear-gradient(to bottom left, #FF8DBC, #FFF8D9);
+  /* background-image: linear-gradient(to bottom left, #FF8DBC, #FFF8D9); */
   /* filter: blur(3px); */
   opacity: 0.7;
   cursor: pointer;
@@ -323,7 +328,7 @@ export default {
 	width: 100%; line-height: 80px;
 	text-align: center;
 	z-index: 10;
-	font-size: 16px;
+	font-size: 12px;
 	opacity: 0.5;
 }
 
@@ -354,7 +359,7 @@ export default {
 	position: relative;
 	box-sizing: border-box;
 	width: 100%;
-	padding: 22px 30px 17px 80px;
+	padding: 15px 30px 13px 80px;
 	margin: 10px 0 0 0px;
 	/* border: 1px solid black; */
 	box-shadow: 2px 1px 5px #DDE1EA;
@@ -374,7 +379,7 @@ export default {
 }
 
 .note {
-	line-height: 2em;
+	line-height: 1.6em;
 	margin: -5px 0 5px 15px;
 }
 /* dl dt dd */
@@ -431,22 +436,24 @@ dd {
 .ball-3d {
   position: relative;
 	border-radius: 50%;
-	background: radial-gradient(circle 141px at 21% 21%, #eee 0, #ddd 14%, #666 53%, #aaa 71%);
+	/* background: radial-gradient(circle 141px at 21% 21%, #eee 0, #ddd 14%, #888 53%, #bbb 71%); */
+	background: rgba(255, 255, 255, 0.4);
+	/* background: radial-gradient(circle 141px at 50% 50%, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0) 71%); */
 }
 
-.ball-3d::after {
+/* .ball-3d::after {
 	content: '';
 	z-index: -10;
 	position: absolute;
 	width: 60%;
 	height: 20%;
-	background: #151515;
+	background: #666;
 	border-radius: 50%;
 	bottom: -7px;
 	right: 45%;
 	transform: translate(50%, 0);
 	filter: blur(10px);
-}
+} */
 
 /* 背景色 */
 

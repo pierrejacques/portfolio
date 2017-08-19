@@ -1,8 +1,8 @@
-{
-  "title": "UI / 前端 / 平面",
+﻿{
+  "title": "UI / front-end / graphic",
   "works": [
     {
-      "name": "个人主页(旧)",
+      "name": "Personal Site",
       "id": "pg"
     },
     {
@@ -10,7 +10,7 @@
       "id": "mv"
     },
     {
-      "name": "摄影师苏航的主页",
+      "name": "Su Hang‘s website",
       "id": "hs"
     },
     {
@@ -18,11 +18,11 @@
       "id": "rch"
     },
 		{
-      "name": "默马专辑",
+      "name": "Moma Album",
 			"id": "moma"
     },
     {
-      "name": "安防队专辑",
+      "name": "AnfangTeam Album",
       "id": "aft"
     }
   ],
@@ -49,43 +49,43 @@
     },
 		{
       "url": "moma_1.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_2.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_3.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_4.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_5.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_6.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_7.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_8.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_9.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },    {
       "url": "moma_10.jpg",
-      "note": "专辑效果图",
+      "note": "Album Renderings",
       "of": "moma"
     },
 		{

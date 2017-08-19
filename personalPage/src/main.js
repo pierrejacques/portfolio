@@ -10,6 +10,7 @@ Vue.config.productionTip = false
 Vue.use(vuex)
 const store = new vuex.Store({
   state: {
+    isEnglish: false,
     isBigViewOpen: false,
     bigUrl: undefined,
 		isBlur: false,

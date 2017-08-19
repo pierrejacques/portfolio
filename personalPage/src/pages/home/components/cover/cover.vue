@@ -2,14 +2,13 @@
   <div class="cover">
 		<section class="cover-section screen-box">
 			<h-fullwidth class="big-title" content="PORTFOLIO"></h-fullwidth>
-			<h2 class="name-title">Jin</br>Chenhao</h2>
-<!--
-			<div class="select-lang">
-				<a>中文</a>
-				|
-				<a>English</a>
-			</div>
--->
+			<h2 v-if="$store.state.isEnglish" class="name-title">Jin</br>Chenhao</h2>
+			<h2 v-else class="name-title">金辰浩</h2>
+      <div class="select-lang">
+        <a @click.prevent = "$router.push({ name: 'homeZh'})" href="#">中文</a>
+        |
+        <a @click.prevent = "$router.push({ name: 'homeEn'})" href="#">English</a>
+      </div>
 			<div class="contact-list">
 				<a target="_blank" href="https://github.com/pierrejacques"><i class="iconfont icon-github"></i> Github</a>
 				<a target="_blank" href="mailto:pierrejacques@126.com"><i class="iconfont icon-email"></i> Email</a>
@@ -65,7 +64,7 @@ export default {
   },
   methods: {
     routeResume() {
-      this.$router.push({ name: 'resume' })
+      this.$store.state.isEnglish ? this.$router.push({ name: 'resumeEn' }) : this.$router.push({ name: 'resumeZh' })
     },
 		isActive(idx) {
       return idx === this.currentActive;
@@ -119,6 +118,9 @@ export default {
       () => {}
     )
   },
+  beforeDestroy() {
+    clearTimeout(this.timer)
+  },
   mounted() {
     $imgs[0] = $('#slider1')
     $imgs[1] = $('#slider2')
@@ -163,7 +165,7 @@ a {
   grid-area: name;
   -ms-grid-column: 1;
   -ms-grid-row: 3;
-  font-size: 24px;
+  font-size: 20px;
   text-align: left;
   font-weight: lighter;
 }
@@ -251,7 +253,8 @@ a {
   opacity: 0.7;
 }
 /* text-shadow */
-.big-title, .name-title, .menu > li:hover {
+.big-title,
+.menu > li:hover {
   text-shadow: 1px 0 0 black;
 }
 
@@ -309,7 +312,7 @@ a {
       "portfolio portfolio"
       "name name"
       "menu menu"
-      ". ."; 
+      ". .";
 		-ms-grid-columns: 1fr 1fr;
     -ms-grid-rows: 25% 10% 13% auto 30px;
     -ms-grid-areas: "contact lang"
