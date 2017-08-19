@@ -260,13 +260,6 @@ img {
 }
 
 /* loading效果 */
-@keyframes imgLoader {
- 0% { background: #FF2121; }
- 25% { background: #FF8BB5; }
- 50% { background:  #78A4FC; }
- 75% { background: #8BF0FF; }
- 100% { background:  #FF2121; }
-}
 .loading {
   background: white url('./loading.gif');
   background-repeat: no-repeat;
@@ -290,4 +283,29 @@ img {
   text-align: right;
 }
 /* TODO: grid适度 */
+@media screen and (max-width: 1000px) {
+  .show-works, .show-works.reverse {
+    height: calc(300px + 50vw);
+    padding: 0 30px;
+    width: 100vw;
+    grid-template-rows: 100px 60vw auto;
+    grid-row-gap: 0;
+    grid-template-columns: auto;
+    grid-template-areas: "title" "slider" "list";
+  }
+  .title {
+    border-bottom: none;
+    padding-top: 20px;
+    border-top: 1px solid black;
+  }
+  .work-menu li {
+    display: inline-block;
+    width: 160px;
+    margin: 5px 20px;
+    white-space: nowrap;
+  }
+  li.active::before {
+    content: '·';
+  }
+}
 </style>

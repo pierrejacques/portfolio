@@ -3,7 +3,7 @@
     <div class="mask" v-if="isListOpen()" @click="toCloseList()"></div>
     <ul class="list" :class="{shown: isListOpen()}" @click.stop="toCloseList()">
       <li v-for="item in list" :href="item.url" scroll-fire>{{item.name}}</li>
-      <li @click="routeResume">resume</li>
+      <li @click="routeResume">{{isEnglish ? 'resume' : '简历'}}</li>
     </ul>
     <button class="btn" @click="toggleList()" >
 			<div class="menu-btn-bar"></div>
@@ -21,9 +21,14 @@ export default {
       isOpen: false,
     }
   },
+  computed: {
+    isEnglish() {
+      return this.$store.state.isEnglish
+    },
+  },
   methods: {
     routeResume() {
-			this.$store.state.isEnglish ? this.$router.push({ name: 'resumeEn' }) : this.$router.push({ name: 'resumeZh' })
+			this.isEnglish ? this.$router.push({ name: 'resumeEn' }) : this.$router.push({ name: 'resumeZh' })
 		},
     isListOpen() {
       return this.isOpen

@@ -3,11 +3,6 @@
 		<div class="slider-img" id="slider1"></div>
 		<div class="slider-img" id="slider2"></div>
 		<div class="resume" id="resume" v-if="balls.length">
-		<div class="select-lang">
-				<a href="#" @click.prevent="routeZh()">中文</a>
-				|
-				<a href="#" @click.prevent="routeEn()">English</a>
-			</div>
 			<div class="horiz-scroll" id="test">
 				<div class="ball ball-3d" v-for="(ball, idx) in balls"
 						 :class="{'active': idx === currentActive}"
@@ -113,7 +108,16 @@
 					</dl>
 				</section>
 			</div>
-			<a class="page-url iconfont icon-routo" href="#" @click.prevent="routeHome()"></a>
+
+			<div class="select-lang">
+				<a href="#" @click.prevent="routeZh()">中文</a>
+				|
+				<a href="#" @click.prevent="routeEn()">English</a>
+			</div>
+			<div class="functional">
+				<a class="page-url iconfont icon-download" title="download pdf" href="#" @click.prevent="download()"></a>
+				<a class="page-url iconfont icon-routo" title="to portfolio" href="#" @click.prevent="routeHome()"></a>
+			</div>
 		</div>
 	</div>
 </template>
@@ -174,6 +178,11 @@ export default {
 		},
 	},
   methods: {
+		download() {
+			window.open(this.isEnglish ?
+				'/static/data/resume/Jin_Chenhao_Resume.pdf'
+				: '/static/data/resume/金辰浩简历.pdf')
+		},
 		routeHome() {
 			this.isEnglish ? this.$router.push({ name: 'homeEn' }) : this.$router.push({ name: 'homeZh' })
 		},
@@ -225,21 +234,19 @@ export default {
 
 <style lang="css" scoped>
 .wrapper {
-	background: rgba(255, 255, 255, 0.5);
+	background: rgba(255, 255, 255, 0.4);
 	height: 100vh;
 	min-height: 700px;
 	overflow: hidden;
 }
 .resume {
-  display: grid;
-  display: -ms-grid;
-  grid-template-columns: 1fr 3fr;
-  grid-column-gap: 150px;
-	-ms-grid-columns: 1fr 150px 3fr;
+	display: flex;
   position: relative;
   overflow: hidden;
- 	width: 1280px;
-	height: 100vh;
+ 	max-width: 1280px;
+	min-width: 950px;
+	width: 100vw;
+	height: 100%;
 	margin: auto;
 	background: rgba(255, 255, 255, 0.1);
 	box-shadow: 0 0 20px rgba(50, 50, 50, 0.3);
@@ -271,10 +278,10 @@ export default {
 
 /* 滚动区域 */
 .horiz-scroll {
-	-ms-grid-column: 1;
+	width: 360px;
+	height: 100%;
   position: relative;
-  margin-left: 6vw;
-  height: 100vh;
+  padding-left: 7%;
   padding-top: 45vh; /* 中线位置 */
 }
 .ball {
@@ -286,7 +293,7 @@ export default {
   margin: 30px 0;
   transition: 0.25s;
   transform: scale(0.2);
-  /* background-image: linear-gradient(to bottom left, #FF8DBC, #FFF8D9); */
+  background: rgba(255, 255, 255, 0.6);
   /* filter: blur(3px); */
   opacity: 0.7;
   cursor: pointer;
@@ -295,6 +302,7 @@ export default {
 	transform: scale(1.5);
 	opacity: 1;
 	margin: 55px 0;
+	background: rgba(255, 255, 255, 0.4);
 	/*   filter: blur(0); */
 }
 .ball:not(.active):hover {
@@ -331,6 +339,8 @@ export default {
 	height: 100%;
 	border-radius: 50%;
 	margin: auto;
+	opacity: 0.9;
+	filter: hue-rotate(-10deg);
 }
 .ball .icon {
 	position: absolute;
@@ -347,10 +357,11 @@ export default {
   font-weight: lighter;
 }
 .resume-detail {
-	-ms-grid-column: 3;
+	flex-grow: 1;
+	height: 100%;
 	position: relative;
 	z-index: 2;
-	padding-top: 45vh; /* 中线位置 */
+	padding-top: 45vh;
 	padding-right: 5vw;
 	font-size: 15px;
 }
@@ -394,8 +405,8 @@ export default {
 }
 /* dl dt dd */
 dl {
-		margin-left: 5vw;
-	}
+		margin-left: 4%;
+}
 dl > div {
   width: 100%;
   height: 36px;
@@ -404,10 +415,12 @@ dd, dt {
   margin: 0;
   box-sizing: border-box;
   display: inline-block;
+	white-space: nowrap;
 }
 dt {
   padding-right: 17px;
   width: 25%;
+	white-space: nowrap;
 }
 dd {
   padding-left: 20px;
@@ -415,9 +428,11 @@ dd {
 }
 
 /* 专项的规定 */
-.basic dt {
-  width: 10%;
+.basic dl {
 	margin-left: 10%;
+}
+.basic dt {
+  width: 50px;
 }
 .prog-projects {
 	padding-left: 20px;
@@ -426,45 +441,35 @@ dd {
 .design-soft, .prog-langs, .prog-tools {
 	display: inline-block;
 	width: 70px;
-	margin: 10px 5px;
+	margin: 5px;
 	text-align: center;
 	line-height: 25px;
 	font-size: 12px;
 }
 
-/* page-url */
-.page-url {
+/* functional */
+.functional {
 	z-index: 2;
+	position: absolute;
 	bottom: 30px;
 	right: 30px;
+}
+.page-url {
+	position: relative;
   line-height: 25px;
   width: 25px;
   padding: 10px;
 	font-size: 15px;
+	margin-left: 7px;
+	opacity: 0.8;
 }
-/* ball-3d */
-.ball-3d {
-  position: relative;
-	border-radius: 50%;
-	/* background: radial-gradient(circle 141px at 21% 21%, #eee 0, #ddd 14%, #888 53%, #bbb 71%); */
-	background: rgba(255, 255, 255, 0.4);
-	/* background: radial-gradient(circle 141px at 50% 50%, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0) 71%); */
+.page-url:hover {
+	opacity: 1;
 }
-
-/* .ball-3d::after {
-	content: '';
-	z-index: -10;
-	position: absolute;
-	width: 60%;
-	height: 20%;
-	background: #666;
-	border-radius: 50%;
-	bottom: -7px;
-	right: 45%;
-	transform: translate(50%, 0);
-	filter: blur(10px);
-} */
-
+.icon-download {
+	background: black;
+	color: white;
+}
 /* 背景色 */
 
 .slider-img {

@@ -33,7 +33,7 @@ a, a:active {
   color: black;
   text-decoration: none;
 }
-	
+
 /* pageUrl */
  .page-url {
 	display: inline-block;
