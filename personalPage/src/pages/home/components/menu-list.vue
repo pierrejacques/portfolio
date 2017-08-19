@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="menu-list">
-    <ul class="list" :class="{shown: isListOpen()}" @click="toCloseList()">
+    <div class="mask" v-if="isListOpen()" @click="toCloseList()"></div>
+    <ul class="list" :class="{shown: isListOpen()}" @click.stop="toCloseList()">
       <li v-for="item in list" :href="item.url" scroll-fire>{{item.name}}</li>
       <li @click="routeResume">resume</li>
     </ul>
@@ -49,6 +50,10 @@ export default {
 	width: 400px;
 	opacity: 1;
 	transition: 0.2s;
+}
+.mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
 }
 .list {
   visibility: hidden;

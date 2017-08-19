@@ -2,12 +2,12 @@
   <div class="cover">
 		<section class="cover-section screen-box">
 			<h-fullwidth class="big-title" content="PORTFOLIO"></h-fullwidth>
-			<h2 v-if="$store.state.isEnglish" class="name-title">Jin</br>Chenhao</h2>
+			<h2 v-if="isEnglish" class="name-title">Jin</br>Chenhao</h2>
 			<h2 v-else class="name-title">金辰浩</h2>
       <div class="select-lang">
-        <a @click.prevent = "$router.push({ name: 'homeZh'})" href="#">中文</a>
+        <a @click.prevent = "routeZh()" href="#">中文</a>
         |
-        <a @click.prevent = "$router.push({ name: 'homeEn'})" href="#">English</a>
+        <a @click.prevent = "routeEn()" href="#">English</a>
       </div>
 			<div class="contact-list">
 				<a target="_blank" href="https://github.com/pierrejacques"><i class="iconfont icon-github"></i> Github</a>
@@ -63,8 +63,18 @@ export default {
     }
   },
   methods: {
+    routeEn() {
+      if (!this.isEnglish) {
+        this.$router.push({ name: 'homeEn' })
+      }
+    },
+    routeZh() {
+      if (this.isEnglish) {
+        this.$router.push({ name: 'homeZh' })
+      }
+    },
     routeResume() {
-      this.$store.state.isEnglish ? this.$router.push({ name: 'resumeEn' }) : this.$router.push({ name: 'resumeZh' })
+      this.isEnglish ? this.$router.push({ name: 'resumeEn' }) : this.$router.push({ name: 'resumeZh' })
     },
 		isActive(idx) {
       return idx === this.currentActive;
@@ -101,6 +111,11 @@ export default {
         }
       }
     }
+  },
+  computed: {
+    isEnglish() {
+      return this.$store.state.isEnglish
+    },
   },
 	created() {
     api.getJSON('cover')

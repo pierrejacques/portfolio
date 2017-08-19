@@ -4,9 +4,9 @@
 		<div class="slider-img" id="slider2"></div>
 		<div class="resume" id="resume" v-if="balls.length">
 		<div class="select-lang">
-				<a href="#" @click.prevent="$router.push({ name: 'resumeZh' })">中文</a>
+				<a href="#" @click.prevent="routeZh()">中文</a>
 				|
-				<a href="#" @click.prevent="$router.push({ name: 'resumeEn' })">English</a>
+				<a href="#" @click.prevent="routeEn()">English</a>
 			</div>
 			<div class="horiz-scroll" id="test">
 				<div class="ball ball-3d" v-for="(ball, idx) in balls"
@@ -88,7 +88,7 @@
 						</div>
 					</div>
 					<div class="content-box">
-						<h6 class="content-title">{{isEnglish ? 'familiar frameworks' : '熟悉框架'}}</h6>
+						<h6 class="content-title">{{isEnglish ? 'frameworks' : '熟悉框架'}}</h6>
 						<div class="prog-tools" v-for="item in content.programming.tools">
 							<i :class="item.icon" class="iconfont"  :style="`color:${item.color}`"></i><br/>{{item.name}}
 						</div>
@@ -171,11 +171,21 @@ export default {
 	computed: {
 		isEnglish() {
 			return this.$store.state.isEnglish
-		}
+		},
 	},
   methods: {
 		routeHome() {
 			this.isEnglish ? this.$router.push({ name: 'homeEn' }) : this.$router.push({ name: 'homeZh' })
+		},
+		routeZh() {
+			if (this.isEnglish) {
+				this.$router.push({ name: 'resumeZh' })
+			}
+		},
+		routeEn() {
+			if (!this.isEnglish) {
+				this.$router.push({ name: 'resumeEn' })
+			}
 		},
     isValid(idx) {
       return idx >= 0 && idx < this.balls.length

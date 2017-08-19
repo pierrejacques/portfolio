@@ -31,8 +31,8 @@ const get = url => {
 }
 
 export default {
-  getMenu: (isEnglish = false) => isEnglish ? { then: get(`${rootAddress}/json/en/menu.json`) } : { then: get(`${rootAddress}/json/menu.json`) },
-  getJSON: (category, isEnglish = false) => isEnglish ? { then: get(`${rootAddress}/json/en/${category}.json`) } : { then: get(`${rootAddress}/json/${category}.json`) },
+  getMenu: (isEnglish = false) => isEnglish ? { then: get(`${rootAddress}/json/en/menu.json`) } : { then: get(`${rootAddress}/json/zh/menu.json`) },
+  getJSON: (category, isEnglish = false) => isEnglish ? { then: get(`${rootAddress}/json/en/${category}.json`) } : { then: get(`${rootAddress}/json/zh/${category}.json`) },
   getData: (category, url,) => Vue.http.get(`${remoteUrl}/${category}/${url}`),
   getUrl: (category, url, handler) => {
 		const img = new Image

@@ -11,6 +11,7 @@ export default {
 	},
 	created() {
 		this.$store.state.isEnglish = true
+    document.title = "Jin Chenhao's Resume"
 	}
 }
 </script>

@@ -11,6 +11,7 @@ export default {
 	},
 	created() {
 		this.$store.state.isEnglish = false
+    document.title = '金辰浩的简历'
 	}
 }
 </script>

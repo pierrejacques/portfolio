@@ -11,6 +11,7 @@ export default {
   },
   created () {
     this.$store.state.isEnglish = false
+    document.title = "金辰浩的个人主页"
   }
 }
 </script>
