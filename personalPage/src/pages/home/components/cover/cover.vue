@@ -18,7 +18,7 @@
 					{{item.name}}
 				</li>
 				<li @click="routeResume">
-					resume
+					{{isEnglish ? 'resume' : '简历'}}
 				</li>
 			</ul>
 			<div class=btn-down href="#product" scroll-fire></div>
@@ -222,6 +222,7 @@ a {
   left: 0;
   transition: 0.3s;
   text-indent: -1em;
+  white-space: nowrap;
 }
 .menu > li:hover {
   left: -10px;

@@ -46,6 +46,7 @@ a, a:active {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 	background: rgba(255, 255, 255, 0.8);
 	transition: 0.3s;
+	text-align: center;
 }
 .page-url:hover {
 	background: white;

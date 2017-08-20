@@ -285,7 +285,7 @@ img {
 /* TODO: grid适度 */
 @media screen and (max-width: 1000px) {
   .show-works, .show-works.reverse {
-    height: calc(300px + 50vw);
+    height: calc(360px + 50vw);
     padding: 0 30px;
     margin-bottom: 100px;
     width: 100vw;
@@ -306,7 +306,7 @@ img {
   }
   .work-menu li {
     display: inline-block;
-    width: 160px;
+    width: 150px;
     margin: 5px 20px;
     white-space: nowrap;
   }
