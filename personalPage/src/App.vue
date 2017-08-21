@@ -23,12 +23,6 @@ html::-webkit-scrollbar-thumb {
 body {
   margin: 0;
 }
-.screen-box {
-  box-sizing: border-box;
-  margin: 1.5vw;
-  width: 97vw;
-  height: calc(100vh - 3vw);
-}
 a, a:active {
   color: black;
   text-decoration: none;

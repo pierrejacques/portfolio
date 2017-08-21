@@ -1,40 +1,39 @@
 <template>
   <div class="cover">
-		<section class="cover-section screen-box">
-			<h-fullwidth class="big-title" content="PORTFOLIO"></h-fullwidth>
-			<h2 v-if="isEnglish" class="name-title">Jin</br>Chenhao</h2>
-			<h2 v-else class="name-title">金辰浩</h2>
-      <div class="select-lang">
-        <a @click.prevent = "routeZh()" href="#">中文</a>
-        |
-        <a @click.prevent = "routeEn()" href="#">English</a>
-      </div>
-			<div class="contact-list">
-				<a target="_blank" href="https://github.com/pierrejacques"><i class="iconfont icon-github"></i> Github</a>
-				<a target="_blank" href="mailto:pierrejacques@126.com"><i class="iconfont icon-email"></i> Email</a>
-			</div>
-			<ul class="menu">
-				<li v-for="item in menuList" :href="item.url" scroll-fire>
-					{{item.name}}
-				</li>
-				<li @click="routeResume">
-					{{isEnglish ? 'resume' : '简历'}}
-				</li>
-			</ul>
-			<div class=btn-down href="#product" scroll-fire></div>
-    </section>
-    <div class="slider">
-			<div class="slider-img" id="slider1"></div>
-			<div class="slider-img" id="slider2"></div>
-		</div>
+    <!-- normal flow -->
+		<h-fullwidth class="big-title" content="PORTFOLIO"></h-fullwidth>
+		<h2 v-if="isEnglish" class="name-title">Jin <br class="name-br" />Chenhao</h2>
+		<h2 v-else class="name-title">金辰浩</h2>
+		<ul class="menu">
+			<li v-for="item in menuList" :href="item.url" scroll-fire>
+				{{item.name}}
+			</li>
+			<li @click="routeResume">
+				{{isEnglish ? 'resume' : '简历'}}
+			</li>
+		</ul>
+
+    <!-- absolute flow-->
+    <div class=btn-down href="#product" scroll-fire></div>
+    <div class="select-lang">
+      <a @click.prevent = "routeZh()" href="#">中文</a>
+      |
+      <a @click.prevent = "routeEn()" href="#">English</a>
+    </div>
+    <div class="contact-list">
+      <a target="_blank" href="https://github.com/pierrejacques"><i class="iconfont icon-github"></i> Github</a>
+      <a target="_blank" href="mailto:pierrejacques@126.com"><i class="iconfont icon-email"></i> Email</a>
+    </div>
+		<div class="slider-img" id="slider1"></div>
+		<div class="slider-img" id="slider2"></div>
 		<div class="slider-ctrl">
 			<div v-for="(ctrl, idx) in data.srcs" :class="{active: isActive(idx)}" class="ctrl-unit" @click="toSelect(idx)"></div>
 		</div>
+
   </div>
 </template>
 
 <script>
-import slider from './components/slider'
 import hFullwidth from './components/h-fullwidth'
 import Router from 'vue-router'
 import $ from 'jquery'
@@ -149,27 +148,21 @@ export default {
 a {
   color: white;
 }
-.cover-section {
-  display: grid;
-  display: -ms-grid;
-  grid-template-columns: 3fr 4fr 3fr;
-  grid-template-rows: 35% 20% auto 50px;
-  grid-template-areas: "contact . lang"
-    "portfolio portfolio portfolio"
-    "name . menu"
-    ". . menu";
-	-ms-grid-columns: 3fr 4fr 3fr;
-  -ms-grid-rows: 35% 20% auto 50px;
+
+.cover {
 	position: relative;
+  box-sizing: border-box;
+  width: 97vw;
+  height: calc(100vh - 3vw);
+  min-height: 500px;
   background: rgba(0,0,0,0.2);
+  margin: 1.5vw;
   padding: 30px 60px;
   color: white;
 }
+/* layout-normal-flow */
 .big-title {
-  grid-area: portfolio;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  -ms-grid-row: 2;
+  margin: 30vh 0 50px;
   font-size: 30px;
   vertical-align: bottom;
   font-weight: lighter;
@@ -177,40 +170,16 @@ a {
   width: 100%;
 }
 .name-title {
-  grid-area: name;
-  -ms-grid-column: 1;
-  -ms-grid-row: 3;
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  margin-right: calc(40% - 60px);
   font-size: 20px;
   text-align: left;
   font-weight: lighter;
 }
-.select-lang {
-  position: relative;
-  grid-area: lang;
-  -ms-grid-column: 3;
-  -ms-grid-row: 1;
-  font-size: 12px;
-  font-weight: lighter;
-  text-align: right;
-  width: calc( 100% + 30px );
-}
-.contact-list {
-  grid-area: contact;
-  -ms-grid-column: 1;
-  -ms-grid-row: 1;
-  font-size: 12px;
-  font-weight: lighter;
-  text-align: left;
-  text-indent: -30px;
-}
-	.contact-list a {
-		margin: 10px;
-	}
 .menu {
-  grid-area: menu;
-  -ms-grid-column: 3;
-  -ms-grid-row-span: 2;
-  -ms-grid-row: 3;
+  display: inline-block;
   font-weight: lighter;
   list-style: none;
   line-height: 1.8em;
@@ -233,6 +202,29 @@ a {
   white-space: pre;
   font-size: 0.7em;
 }
+
+/* layout-absolute-flow */
+.select-lang {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 12px;
+  font-weight: lighter;
+  text-align: right;
+  width: calc( 100% + 30px );
+}
+.contact-list {
+  position: absolute;
+  top: 20px;
+  left: 45px;
+  font-size: 12px;
+  font-weight: lighter;
+  text-align: left;
+  text-indent: -30px;
+}
+.contact-list a {
+	margin: 10px;
+}
 .btn-down {
   position: absolute;
 	bottom: 30px; left: 50%;
@@ -249,7 +241,7 @@ a {
   height: 20px;
   border-bottom: 1px solid white;
   border-right: 1px solid white;
-  transform: rotate(45deg);
+  transform: rotate(45deg) translate(-50%, 0);
   transition: 0.3s;
   opacity: 0.5;
 }
@@ -257,10 +249,7 @@ a {
   bottom: -5px;
   opacity: 0.9;
 }
-/* stretch */
-.name-title, .menu {
-  transform-origin: left;
-}
+
 /* opacity reduction */
 .menu > li {
   opacity: 0.8;
@@ -275,14 +264,6 @@ a {
 }
 
 /* slider */
-.slider {
-  position: absolute;
-  top: 1.5vw;
-  left: 1.5vw;
-  right: 1.5vw;
-  bottom: 1.5vw;
-  z-index: -1;
-}
 .slider-img {
   position: absolute;
   top: 0;
@@ -302,8 +283,8 @@ a {
 .slider-ctrl {
   z-index: 1;
   position: absolute;
-  bottom: calc(1.5vw + 30px);
-  left: calc(1.5vw + 60px);
+  bottom: 30px;
+  left: 60px;
 }
 .ctrl-unit {
   display: inline-block;
@@ -321,32 +302,30 @@ a {
 
 /* 小屏 */
 @media screen and (max-width: 768px) {
-  .cover-section {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 25% 10% 13% auto 30px;
-    grid-template-areas: "contact lang"
-      "portfolio portfolio"
-      "name name"
-      "menu menu"
-      ". .";
-		-ms-grid-columns: 1fr 1fr;
-    -ms-grid-rows: 25% 10% 13% auto 30px;
-    -ms-grid-areas: "contact lang"
-      "portfolio portfolio"
-      "name name"
-      "menu menu"
-      ". .";
+  .big-title {
+    margin: 20vh 0 40px;
   }
-  .slider {
-    /* display: none; */
+  .name-title, .menu {
+    display: block;
+  }
+  .name-br {
+    display: none;
   }
   .name-title {
+    white-space: nowrap;
     font-size: 16px;
+    margin-bottom: 50px;
   }
 	.menu {
-    padding-left: 20px;
+	  position: relative;
+    padding-left: 0;
+    left: -7px;
+  }
+  .slider-ctrl {
+    display: none;
   }
 }
+
 
 /* 大屏 */
 @media screen and (min-width: 1440px) {

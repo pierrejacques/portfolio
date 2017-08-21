@@ -145,11 +145,9 @@ export default {
 .reverse .work-menu { -ms-grid-column: 1;}
 .work-menu li {
   cursor: pointer;
-  /* font-family:'msyhlc4dfe54171858c'; */
   letter-spacing: .2em;
   line-height: 1.5em;
   opacity: 0.6;
-  /* font-family: 'Raleway'; */
 }
 .work-menu .active, .work-menu li:hover {
   opacity: 1;
@@ -158,7 +156,7 @@ export default {
   grid-area: title;
 	-ms-grid-column: 5;
 	-ms-grid-row: 1;
-/*   font-family: 'Quicksand', sans-serif; */
+  white-space: nowrap;
   font-size: 1.2rem;
   height: 50px;
   margin-top: calc(7vw - 20px);
@@ -285,9 +283,9 @@ img {
 /* TODO: grid适度 */
 @media screen and (max-width: 1000px) {
   .show-works, .show-works.reverse {
-    height: calc(360px + 50vw);
+    height: calc(350px + 50vw);
     padding: 0 30px;
-    margin-bottom: 100px;
+    margin: 100px 0;
     width: 100vw;
     grid-template-rows: 100px 60vw auto;
     grid-row-gap: 0;
@@ -297,18 +295,23 @@ img {
   .title {
     width: 70%;
     border-bottom: none;
-    padding-top: 20px;
+    padding: 10px 0 0;
     border-top: 1px solid black;
   }
   .reverse .title {
+    text-align: right;
     margin-left: 30%;
     margin-right: 0;
   }
+  .work-menu {
+    text-align: justify;
+  }
   .work-menu li {
     display: inline-block;
-    width: 150px;
-    margin: 5px 20px;
-    white-space: nowrap;
+    margin: 5px 18px;
+  }
+  .reverse {
+    text-align: left;
   }
   li.active::before {
     content: '·';

@@ -51,7 +51,8 @@ export default {
 .menu-list {
 	position: fixed;
 	right: 1.5vw;
-	top: 30px;
+	top: 1.5vw;
+  margin-top: 10px;
 	width: 400px;
 	opacity: 1;
 	transition: 0.2s;
@@ -96,7 +97,7 @@ export default {
 /* .list.shown > li:hover {
   transform: translate(-10px, 0) rotate(-45deg);
 } */
-.btn {
+.btn, .btn:active {
 	opacity: 0.5;
   position: absolute;
   right: 0;
@@ -107,7 +108,7 @@ export default {
   outline: none;
   cursor: pointer;
 }
-.btn:hover > .menu-btn-bar {
+.btn:hover .menu-btn-bar {
   margin-bottom: 15px;
 }
 .menu-btn-bar {
@@ -122,5 +123,13 @@ export default {
 	margin-bottom: 15px;
 	height: 2px;
 	background: gray;
+}
+@media screen and (max-width: 768px) {
+  .btn:hover .menu-btn-bar {
+    margin-bottom: 6px;
+  }
+  .shown + .btn > .menu-btn-bar {
+  	margin-bottom: 15px;
+  }
 }
 </style>
