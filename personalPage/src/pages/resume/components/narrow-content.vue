@@ -161,10 +161,10 @@ export default {
   text-align: left;
 	position: relative;
 	box-sizing: border-box;
-	width: calc(100% - 60px);
-	padding: 15px 30px 13px 80px;
-	margin: 10px 30px;
-	/* border: 1px solid black; */
+	width: calc(100% - 50px);
+	padding: 15px 20px 13px 50px;
+	margin: 10px 0 10px 30px;
+	font-size: 12px;
 	box-shadow: 2px 1px 5px rgba(58, 67, 88, 0.1);
 	background: rgba(255, 255, 255, 0.35);
 }
@@ -189,6 +189,9 @@ export default {
 dl {
   display: inline-block;
   text-align: left;
+	font-size: 12px;
+	margin: 20px 30px;
+	overflow-x: scroll;
 }
 dl > div {
   width: 100%;
@@ -202,7 +205,7 @@ dd, dt {
 }
 dt {
   padding-right: 17px;
-  width: 25%;
+  width: 28%;
 	white-space: nowrap;
 }
 dd {
