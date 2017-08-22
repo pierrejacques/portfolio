@@ -162,7 +162,7 @@ a {
 }
 /* layout-normal-flow */
 .big-title {
-  margin: 30vh 0 50px;
+  margin: 30vh 0 13vh;
   font-size: 30px;
   vertical-align: bottom;
   font-weight: lighter;
