@@ -256,6 +256,10 @@ img {
   width: 25px;
   padding: 10px;
 }
+/* render 性能优化 */
+.img-slider:hover .img-box {
+  will-change: transform3d;
+}
 
 /* loading效果 */
 .loading {
