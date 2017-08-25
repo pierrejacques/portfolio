@@ -147,10 +147,15 @@ export default {
   cursor: pointer;
   letter-spacing: .2em;
   line-height: 1.5em;
-  opacity: 0.6;
+  opacity: 0.5;
+  padding: 1px 10px;
+  border: 1px solid transparent;
 }
 .work-menu .active, .work-menu li:hover {
   opacity: 1;
+}
+.work-menu .active {
+  border-color: inherit;
 }
 .title {
   grid-area: title;
@@ -257,8 +262,9 @@ img {
   padding: 10px;
 }
 /* render 性能优化 */
-.img-slider:hover .img-box {
-  will-change: transform3d;
+.img-slider:hover .img-box,
+.work-menu:hover + .img-slider > .img-box {
+  will-change: transform;
 }
 
 /* loading效果 */
@@ -317,8 +323,8 @@ img {
   .reverse {
     text-align: left;
   }
-  li.active::before {
-    content: '·';
-  }
+/*   li.active::before {
+  content: '·';
+} */
 }
 </style>

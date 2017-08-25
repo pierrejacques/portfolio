@@ -50,6 +50,7 @@ export default {
 <style scoped lang="css">
 .menu-list {
 	position: fixed;
+  z-index: 1;
 	right: 1.5vw;
 	top: 1.5vw;
   margin-top: 10px;

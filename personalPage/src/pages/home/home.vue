@@ -1,5 +1,6 @@
 <template>
   <div class=home>
+    <menu-list :list="menuList" class="menu-list" :class="{hide: isMenuHide || isBigViewOpen}"></menu-list>
 		<main :class="{'blur': isBigViewOpen || isBlur}">
 		  <cover :menu-list="menuList"></cover>
 		  <show-works title="product / modeling /sketch" flag="product" id="product"></show-works>
@@ -7,12 +8,11 @@
 		  <show-works title="photography" flag="photo" id="photo"></show-works>
 		  <!-- <show-works title="musical / audio works" flag="music" id="music"></show-works> -->
 		  <!-- <show-works title="aesthetics research" flag="research" id="research"></show-works> -->
-			</main>
+		</main>
     <div class="big-view" v-show="isBigViewOpen" @click="toCloseBigView">
       <img class="big-img" :src="bigUrl" >
 			<a v-if="pageUrl" class="page-url iconfont icon-routo" target="_blank" :href="pageUrl" @click.stop></a>
     </div>
-		<menu-list :list="menuList" class="menu-list" :class="{hide: isMenuHide || isBigViewOpen}"></menu-list>
   </div>
 </template>
 
@@ -86,6 +86,9 @@ export default {
 	.menu-list.hide {
 		right: -300px;
 	}
+  .menu-list:hover + main {
+    will-change: scroll-position;
+  }
 	main{
 		transition: 0.2s;
 		filter: blur(0);
