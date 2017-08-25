@@ -264,7 +264,7 @@ img {
 /* render 性能优化 */
 .img-slider:hover .img-box,
 .work-menu:hover + .img-slider > .img-box {
-  will-change: transform;
+  will-change: opacity;
 }
 
 /* loading效果 */
