@@ -148,14 +148,19 @@ export default {
   letter-spacing: .2em;
   line-height: 1.5em;
   opacity: 0.5;
-  padding: 1px 10px;
+  padding: 1px 7px;
   border: 1px solid transparent;
+  white-space: nowrap;
+  transition: 0.3s;
 }
 .work-menu .active, .work-menu li:hover {
   opacity: 1;
 }
-.work-menu .active {
-  border-color: inherit;
+.show-works:not(.reverse) .work-menu .active {
+  border-left-color: gray;
+}
+.reverse .work-menu .active {
+  border-right-color: gray;
 }
 .title {
   grid-area: title;

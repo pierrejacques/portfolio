@@ -102,12 +102,12 @@
 						<h6 class="content-title">{{isEnglish ? 'note' : '自述'}}</h6>
 						<p class="note" v-html="content.research.note"></p>
 					</div>
-					<dl class="content-box">
+					<div class="content-box">
 						<h6 class="content-title">{{isEnglish ? 'projects' : '项目'}}</h6>
-						<div v-for="item in content.research.projects">
-							<dt>{{item.name}}</dt><dd>{{item.note}}</dd>
+						<div class="research-projects" v-for="item in content.research.projects">
+							{{item.name}}<span class="text-align-right">{{item.note}}</span>
 						</div>
-					</dl>
+					</div>
 				</section>
 		</div>
 </template>
@@ -190,18 +190,18 @@ dl {
   display: inline-block;
   text-align: left;
 	font-size: 12px;
-	margin: 20px 30px;
-	overflow-x: scroll;
+	margin: auto;
+	overflow: auto;
 }
 dl > div {
-  width: 100%;
+	width: 100%;
   height: 32px;
 }
 dd, dt {
+	vertical-align: top;
   margin: 0;
   box-sizing: border-box;
   display: inline-block;
-	white-space: nowrap;
 }
 dt {
   padding-right: 17px;
@@ -211,6 +211,7 @@ dt {
 dd {
   padding-left: 20px;
   width: 70%;
+	white-space: nowrap;
 }
 
 /* 专项的规定 */
@@ -220,7 +221,7 @@ dd {
 .basic dt {
   width: 50px;
 }
-.prog-projects {
+.prog-projects, .research-projects {
 	padding-left: 20px;
 	height: 32px;
 }
