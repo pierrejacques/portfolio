@@ -2,8 +2,7 @@
   <div class="recho">
     <h1>RECHO demo</h1>
     <div class="iphone-7">
-      <div class="iphone-toolbar">
-      </div>
+      <div class="iphone-toolbar"></div>
       <recho-demo></recho-demo>
     </div>
   </div>
@@ -15,6 +14,9 @@ export default {
   name: 'recho',
   components: {
     rechoDemo,
+  },
+  created() {
+    document.title = "Recho demo"
   }
 }
 </script>
@@ -26,12 +28,17 @@ export default {
   }
   .iphone-7 {
     display: inline-block;
+    position: relative;
     width: 375px;
     height: 667px;
     margin: 20px;
-    box-shadow: 0px 5px 10px gray;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px silver;
   }
   .iphone-toolbar {
+    position: absolute;
+    z-index: 2;
+    top:0;
     width: 100%;
     height: 22px;
     background: white;

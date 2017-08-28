@@ -12,27 +12,39 @@ export default new Router({
     {
       path: '/',
       name: 'homeZh',
-      component: HomeZh,
+      components: {
+        default: HomeZh,
+      }
     },
     {
       path: '/resume',
       name: 'resumeZh',
-      component: ResumeZh,
+      components: {
+        default: ResumeZh
+      },
     },
     {
       path: '/en',
       name: 'homeEn',
-      component: HomeEn,
+      components: {
+        default: HomeEn
+      },
     },
     {
       path: '/en/resume',
       name: 'resumeEn',
-      component: ResumeEn,
+      components: {
+        default: ResumeEn
+      },
     },
     {
       path: '/recho',
       name: 'recho',
-      component: Recho,
+      components: {
+        default: Recho
+      },
+      children: [
+      ],
     },
   ]
 })

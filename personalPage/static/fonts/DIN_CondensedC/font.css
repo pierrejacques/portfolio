@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'DINCondensedC';
+  src: url('DINCondensedC.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT DIN Condensed Cyrillic';
+  src: url('PT DIN Condensed Cyrillic.eot');
+  src: url('PT DIN Condensed Cyrillic.woff2') format('woff2'),
+       url('PT DIN Condensed Cyrillic.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
