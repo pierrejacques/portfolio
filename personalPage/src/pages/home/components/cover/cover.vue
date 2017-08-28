@@ -183,7 +183,7 @@ a {
   font-weight: lighter;
   list-style: none;
   line-height: 1.8em;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 .menu > li {
@@ -338,7 +338,7 @@ a {
 		text-shadow: none;
 	}
 	.menu {
-		font-size: 20px;
+		font-size: 24px;
 	}
 }
 </style>

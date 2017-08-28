@@ -5,6 +5,7 @@ import HomeEn from '@/pages/home/homeEn'
 import ResumeZh from '@/pages/resume/resumeZh'
 import ResumeEn from '@/pages/resume/resumeEn'
 import Recho from '@/pages/recho/recho'
+import RechoHome from '@/pages/recho/pages/home/recho-home.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -12,38 +13,32 @@ export default new Router({
     {
       path: '/',
       name: 'homeZh',
-      components: {
-        default: HomeZh,
-      }
+      component: HomeZh,
     },
     {
       path: '/resume',
       name: 'resumeZh',
-      components: {
-        default: ResumeZh
-      },
+      component: ResumeZh,
     },
     {
       path: '/en',
       name: 'homeEn',
-      components: {
-        default: HomeEn
-      },
+      component: HomeEn,
     },
     {
       path: '/en/resume',
       name: 'resumeEn',
-      components: {
-        default: ResumeEn
-      },
+      component: ResumeEn,
     },
     {
       path: '/recho',
-      name: 'recho',
-      components: {
-        default: Recho
-      },
+      component: Recho,
       children: [
+				{
+					path: '',
+					name: 'recho-home',
+					component: RechoHome,
+				},
       ],
     },
   ]
