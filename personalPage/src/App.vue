@@ -27,7 +27,12 @@ a, a:active {
   color: black;
   text-decoration: none;
 }
-
+button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 /* pageUrl */
  .page-url {
 	display: inline-block;

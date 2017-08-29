@@ -1,63 +1,94 @@
 <template lang="html">
   <div class="recho">
-    <h1>RECHO demo</h1>
+    <img class="recho-logo" src="/static/recho/logo.svg">
     <div class="iphone-7">
-      <div class="iphone-toolbar"></div>
+      <div class="iphone-toolbar">
+        <img src="/static/recho/head-bar.svg">
+      </div>
       <div class="phone-box">
 				<main>
 					<router-view></router-view>
 				</main>
-				<aside v-if="false" class="menu">
-					<recho-menu></recho-menu>
-				</aside>
-				<div v-if="false" class="mask">
-				</div>
+        <button v-if="isMenuAvailable" class="btn-menu iconfont icon-menu" @click="toShowMenu"></button>
+        <aside v-if="isMenuAvailable" class="menu" :class="{'shown': isMenuShow}">
+          <recho-menu @close="toCloseMenu"></recho-menu>
+        </aside>
+        <div v-if="isMenuShow" class="mask">
+        </div>
 			</div>
     </div>
   </div>
 </template>
 
 <script>
+import rechoMenu from './components/recho-menu'
 export default {
   name: 'recho',
   created() {
     document.title = "Recho demo"
-  }
+  },
+  components: {
+    rechoMenu,
+  },
+  data() {
+    return {
+      isMenuShow: false,
+    }
+  },
+  computed: {
+    isMenuAvailable() {
+      return this.$store.state.isRechoMenuAvailable
+    },
+  },
+  methods: {
+    toCloseMenu() {
+      this.isMenuShow = false
+    },
+    toShowMenu() {
+      this.isMenuShow = true
+    }
+  },
 }
 </script>
 
 <style lang="css">
   .recho {
-    display: flex;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, white 47%, #eee 0);
   }
 	.recho * {
 		font-family: 'DINCondensedC';
 	}
+  .recho-logo {
+    position: absolute;
+    top: 50%; left: 20%;
+    transform: translate(-40%, -50%);
+  }
   .iphone-7 {
-    display: inline-block;
-    position: relative;
+    position: absolute;
+    left: 55%; top: 0;
+    transform: translate(-50%, 0);
     width: 375px;
     height: 667px;
     margin: 20px;
     overflow: hidden;
-    box-shadow: 0px 5px 10px silver;
+    box-shadow: 0px 2px 10px hsla(0, 0%, 0%, 0.4);
   }
-	.phone-box {
-		position: relative;
-		height: 100%;
-		background: linear-gradient(to left, #F26552 50%, #F16745);
-		background-blend-mode: overlay;
-	}
   .iphone-toolbar {
-    position: absolute;
-    z-index: 2;
+    position: relative;
+    z-index: 10;
     top:0;
     width: 100%;
     height: 22px;
     background: white;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
+	.phone-box {
+		position: relative;
+		height: calc(100% - 22px);
+	}
 	.recho main {
 		position: relative;
 		height: 100%;
@@ -69,14 +100,26 @@ export default {
 	}
 	.recho .menu {
 		position: absolute;
-		width: 60%;
+		width: 234px;
 		height: 100%;
 		top: 0;
-		right: 0;
+		right: -100%;
 		background: white;
 		box-shadow: -2px 0 10px hsla(0, 0%, 0%, 0.5);
 		z-index: 1;
+    transition: right 0.4s;
 	}
+  .recho .menu.shown {
+    right: 0;
+  }
+  .recho .btn-menu {
+    position: absolute;
+    color: white;
+    right: 12px;
+    top: 12px;
+    font-size: 24px;
+    z-index: 1;
+  }
 	.recho .mask {
 		position: absolute;
 		z-index: -10px;
@@ -84,6 +127,7 @@ export default {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: hsla(0, 0%, 0%, 0.2);
-	}
+    transition: background 0.3s;
+    background: hsla(0, 0%, 0% ,0.2);
+  }
 	</style>

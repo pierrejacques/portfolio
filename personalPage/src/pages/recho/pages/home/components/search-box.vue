@@ -1,6 +1,13 @@
 <template lang="html">
-  <form class="search-box">
-    <input class="text-input" type="text" placeholder="terms/ issues/ tutorials" v-model="keyword">
+  <form class="search-box"
+        :class="{focused: isFocused}"
+        >
+    <input class="text-input"
+           type="text"
+           @focus="toFocus()"
+           @blur="toBlur()"
+           placeholder="terms/ issues/ tutorials"
+           v-model="keyword">
     <button class="btn-submit iconfont icon-search"></button>
   </form>
 </template>
@@ -11,7 +18,16 @@ export default {
   data() {
     return {
       keyword: '',
+      isFocused: true,
     }
+  },
+  methods: {
+    toFocus() {
+      this.isFocused = true
+    },
+    toBlur() {
+      this.isFocused = false
+    },
   },
 }
 </script>
@@ -22,8 +38,12 @@ export default {
   margin: auto;
   width: 343px;
   height: 50px;
-  box-shadow: 0 7px 7px 0 rgba(0, 0, 0, 0.17);
+  box-shadow: 0 7px 5px 0 rgba(0, 0, 0, 0.17);
   background: white;
+  transition: box-shadow 0.3s;
+}
+.search-box.focused {
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
 }
 .text-input, .btn-submit {
   border: none;
@@ -37,15 +57,16 @@ export default {
   height: 100%;
   font-size: 24px;
   font-family: 'DINCondensedC';
-  padding-top: 5px;
+  padding-top: 3px;
   text-indent: .5em;
 }
 .btn-submit {
   position: absolute;
   right: 5px;
-  top: 7px;
+  top: 8px;
   font-size: 30px;
   color: #e1e1e1;
+  cursor: pointer;
 }
 
 input::-webkit-input-placeholder{

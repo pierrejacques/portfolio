@@ -10,11 +10,12 @@ Vue.config.productionTip = false
 Vue.use(vuex)
 const store = new vuex.Store({
   state: {
-    isEnglish: false,
-    isBigViewOpen: false,
-    bigUrl: undefined,
-		isBlur: false,
-		pageUrl: undefined
+    isEnglish: false, // 页面中英文
+    isBigViewOpen: false, // portfolio是否查看大图
+    bigUrl: undefined, // 大图图片链接
+		isBlur: false, // 主页面是否模糊
+		pageUrl: undefined, // 大图跳转链接
+    isRechoMenuAvailable: true, // recho菜单是否可用
   },
 })
 
