@@ -7,7 +7,8 @@
            @focus="toFocus()"
            @blur="toBlur()"
            placeholder="terms/ issues/ tutorials"
-           v-model="keyword">
+           v-model="keyword"
+           autofocus>
     <button class="btn-submit iconfont icon-search"></button>
   </form>
 </template>
@@ -18,7 +19,7 @@ export default {
   data() {
     return {
       keyword: '',
-      isFocused: true,
+      isFocused: false,
     }
   },
   methods: {

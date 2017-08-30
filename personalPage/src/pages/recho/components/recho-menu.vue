@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="recho-menu">
     <header class="section-header">
-      <div class="user iconfont icon-user"></div>
+      <div class="user iconfont icon-user" @click="routoLogin()"></div>
       <span class="title">Recho</span>
       <button class="btn-close iconfont icon-close" @click="$emit('close')"></button>
     </header>
     <section class="section-body">
       <ul class="menu-list">
-        <li @click="toggleFolder">
-          <i class="iconfont icon-tutor"></i>Tutorials
+        <li>
+          <div @click="toggleFolder"><i class="iconfont icon-tutor"></i>Tutorials</div>
           <ul class="sublist" :class="{folded: isFolded}">
             <li class="sublist-item"><i class="iconfont icon-fader"></i>Fundamental</li>
             <li class="sublist-item"><i class="iconfont icon-piano"></i>Instrumental</li>
@@ -42,6 +42,10 @@ export default {
     toggleFolder() {
       this.isFolded = !this.isFolded
     },
+    routoLogin() {
+      this.$emit('close')
+      this.$router.push({ name: 'recho-login' })
+    }
   },
 }
 </script>
@@ -78,6 +82,7 @@ export default {
   margin: 0 30px 0 10px;
   vertical-align: top;
   text-align: center;
+  cursor: pointer;
 }
 .icon-user {
   font-size: 21px;
