@@ -1,6 +1,6 @@
 <template lang="html">
 <div class="tutor-list">
-  <recho-header></recho-header>
+  <recho-header title="checkout your tutorials" :has-ask="true"></recho-header>
 </div>
 </template>
 

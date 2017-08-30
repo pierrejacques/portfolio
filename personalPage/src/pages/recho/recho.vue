@@ -13,7 +13,7 @@
         <aside v-if="isMenuAvailable" class="menu" :class="{'shown': isMenuShow}">
           <recho-menu @close="toCloseMenu"></recho-menu>
         </aside>
-        <div v-if="isMenuShow" class="mask">
+        <div :class="{shown: isMenuShow}" class="mask" @click="toCloseMenu">
         </div>
 			</div>
     </div>
@@ -88,6 +88,7 @@ export default {
 	.phone-box {
 		position: relative;
 		height: calc(100% - 22px);
+    background: white;
 	}
 	.recho main {
 		position: relative;
@@ -128,6 +129,39 @@ export default {
 		right: 0;
 		bottom: 0;
     transition: background 0.3s;
+    background: hsla(0, 0%, 0% ,0);
+    pointer-events: none;
+  }
+  .recho .mask.shown {
     background: hsla(0, 0%, 0% ,0.2);
+    pointer-events: all;
+  }
+  .recho .btn-rect {
+    box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.25);
+    font-size: 24px;
+    line-height: 50px;
+    height: 50px;
+    background: white;
+  }
+  .recho .btn-rect:not(.btn-highlight) {
+    border: 1px solid #eee;
+  }
+  .recho .btn-rect.btn-highlight {
+    background: #F7624F;
+  }
+
+  /* more specific */
+  .recho .stage-hint {
+    font-size: 20px;
+  }
+  .recho .stage-hint > .icon-arrow {
+    display: inline-block;
+    transform: scale(0.5) translate(-5px, 0);
+    vertical-align: 1px;
+  }
+  .recho .persona-oval {
+    border-radius: 50%;
+    box-shadow: 0 5px 5px rgba(62, 94, 89, 0.4);
+    background: linear-gradient(120deg, #6F5F8E 65%, #6E5A7E 0);
   }
 	</style>

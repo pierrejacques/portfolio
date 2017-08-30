@@ -5,8 +5,8 @@
 		</hgroup>
 		<search-box>
 		</search-box>
-		<button class="login"><i class="iconfont icon-user"></i>Login</button>
-		<button class="start">Get Started<i class="iconfont icon-arrow"></i></button>
+		<button @click="$router.push({ name: 'recho-login' })" class="login"><i class="iconfont icon-user"></i>Login</button>
+		<button @click="$router.push({ name: 'recho-start' })" class="start">Get Started<i class="iconfont icon-arrow"></i></button>
 		<a class="latest">
 			<p>latest issues</p>
 			<p class="iconfont icon-slidedown"></p>
