@@ -11,6 +11,10 @@ export default {
 </script>
 
 <style>
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 html::-webkit-scrollbar {
 	width: 0;
 }

@@ -22,6 +22,23 @@ import api from '@/common/api'
 import menuList from './components/menu-list'
 import cover from './components/cover/cover'
 import showWorks from './components/show-works/show-works'
+
+const bindScrollFires = () => {
+  const scrollTo = targetY => {
+    $('html, body').stop().animate({
+      scrollTop: targetY - 20
+    }, 500)
+  }
+  $(document).ready(() => {
+    $('[scroll-fire]').on('click', (e) => {
+      e.preventDefault();
+      const targetId = $(e.target).attr('href')
+      const targetY = $(targetId).offset().top
+      scrollTo(targetY)
+    })
+  })
+}
+
 export default {
   name: 'home',
   data () {
@@ -55,29 +72,16 @@ export default {
 		}
   },
   created() {
-    const domOperations = () => {
-      const scrollTo = targetY => {
-        $('html, body').stop().animate({
-          scrollTop: targetY - 20
-        }, 500)
-      }
-      $(document).ready(() => {
-        $(window).scroll((event) => {
-          this.isMenuHide = $(window).scrollTop() < 0.9 * $(window).height()
-        })
-        $('[scroll-fire]').on('click', (e) => {
-          e.preventDefault();
-          const targetId = $(e.target).attr('href')
-          const targetY = $(targetId).offset().top
-          scrollTo(targetY)
-        })
-      })
-    }
-    domOperations()
     api.getMenu(this.$store.state.isEnglish).then(data => {
       this.menuList = data
+      bindScrollFires()
     })
   },
+  mounted() {
+    $(window).scroll((event) => {
+      this.isMenuHide = $(window).scrollTop() < 0.9 * $(window).height()
+    })
+  }
 }
 </script>
 
